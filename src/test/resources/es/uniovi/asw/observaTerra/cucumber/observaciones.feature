@@ -10,6 +10,7 @@ Escenario: Calcular media de observaciones
       | France  | 1,5   |
       | Italy   | 4,2   |
       | Chile   | 1     |
+      | Etiopia | 10 |
     Cuando calculo la nota media
-    Entonces obtengo el valor 2
+    Entonces obtengo el valor 3,6
     
