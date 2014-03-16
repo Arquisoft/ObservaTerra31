@@ -1,0 +1,16 @@
+{
+"espana":
+    {
+    "Paro" : "20%",
+    "Jubilacion": 70,
+    "Exportaciones": ["Alimentos", "Ropa", "Jovenes"],
+    "Capital": "Madrid"
+    },
+"alemania":
+    {
+    "Paro" : "4%",
+    "Jubilacion": 60,
+    "Exportaciones": ["Tecnologia", "Maquinaria"],
+    "Capital": "Berlin"
+    }
+}

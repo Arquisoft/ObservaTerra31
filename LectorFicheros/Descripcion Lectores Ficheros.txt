@@ -1,0 +1,47 @@
+
+Necesitamos interpretar o traducir la información guardada en la base de datos
+para poder representarla en la vista.
+
+Para eso necesitamos un "LectorCSV", "LectorExcel", "LectorJSON", etc,
+que haga dicha traducción.
+
+-- -- -- --
+
+LectorCSV
+
+Objetivo:
+Que los ficheros CSV puedan ser presentados como tablas html.
+
+Procesos:
+Descartar las líneas erroneas.
+Guardar las líneas válidas, por ejemplo en un Map<Integer, String>.
+(El "Integer" sería el número de línea, y el "String" sería el propio contenido)
+
+Finalmente, la parte de negocio o de la vista ya podrá acceder a dicho
+Map para generar la tabla html.
+
+-- -- -- --
+
+LectorJSON
+
+Objetivo:
+Que los ficheros JSON puedan ser presentados como gráficas o tablas html.
+
+Procesos:
+Se introduce el nombre de una propiedad a buscar en el JSON.
+Se devolverá, por cada ocurrencia:
+	- el nombre de los padres de esa propiedad
+	- el valor de esa propiedad
+Todo ello se guarda en un String.
+
+Finalmente, la parte de negocio o de la vista ya podrá acceder a dicho
+String para generar la gráfica o tabla html.
+
+Ejemplo:
+Tenemos un JSON con propiedades de varios paises.
+si se busca la propiedad "paro", se guardará un String del tipo
+	espana:"20%",alemania:"4%"
+
+Creo que esa cadena ya no es tan complicada de pasar a gráficas.
+
+-- -- -- --

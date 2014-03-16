@@ -1,0 +1,5 @@
+
+Para probarlo a fondo, editar los .csv con notepad, en lugar de excel.
+
+Un usuario con notepad puede insertar faltas (tabulaciones,etc)
+que excel ignora.

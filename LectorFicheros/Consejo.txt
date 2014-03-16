@@ -1,0 +1,9 @@
+
+Sabéis que la carpeta bin sólo ocupa espacio.
+
+Si la eliminamos y luego modificamos una clase, puede que
+el corrector de problemas y no relacione las dependencias
+(que no reconozca las clases de los "import").
+
+En ese caso, basta con modificar también esas otras clases importadas
+y guardar los cambios. 

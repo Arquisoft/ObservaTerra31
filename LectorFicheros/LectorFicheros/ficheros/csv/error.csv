@@ -1,0 +1,8 @@
+id,nombre,precio
+1,motor,1000
+2,ruedas,500
+3,lunas,500
+	ERROR 1,tieneTabulaciones,ERROR 1
+4,lunas tintadas,600
+
+ERROR 3,faltanCampos
