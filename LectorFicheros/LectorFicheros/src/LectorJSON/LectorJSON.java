@@ -9,10 +9,14 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
 /**
+ * 
  * http://blog.openalfa.com/como-leer-y-escribir-ficheros-json-en-java
  * http://www.adictosaltrabajo.com/tutoriales/tutoriales.php?pagina=GsonJavaJSON
  */
-
+/**
+ * Estamos usando la libreria gson, que se puede descargar aqui:
+ * http://code.google.com/p/google-gson/downloads/list
+ */
 public class LectorJSON {
 
 	private String nameFile;
@@ -30,7 +34,7 @@ public class LectorJSON {
 			//printAll(datos);
 			String resp = leerJSONElement(datos, nombrePropiedad).toString();
 			
-			//Devolvemos la respuesta, eliminando la última coma:
+			//Devolvemos la respuesta, eliminando la ï¿½ltima coma:
 			int length = resp.length();
 			if( length>0 && String.valueOf(resp.charAt(length-1)).compareTo(",")==0 )
 				resp=resp.substring(0,resp.length()-1);
@@ -78,8 +82,8 @@ public class LectorJSON {
 	private String propiedadEncontrada(JsonObject obj, String propiedad){
 		/*
 		 * Para saber si un objeto JSON tiene una propiedad dada,
-		 * basta con utilizar el método "has('nombrePropiedad')".
-		 * Ese método no ignora mayúsuclas/minúsculas, así que nos obliga
+		 * basta con utilizar el mï¿½todo "has('nombrePropiedad')".
+		 * Ese mï¿½todo no ignora mayï¿½suclas/minï¿½sculas, asï¿½ que nos obliga
 		 * a hacer varias comparaciones...
 		 */
 		String respuesta = "";
@@ -102,7 +106,7 @@ public class LectorJSON {
 	
 	/*
 	private void printAll(JsonElement datos) {
-		//añadir: import com.google.gson.Gson;
+		//aï¿½adir: import com.google.gson.Gson;
 		
 		if (datos.isJsonObject()) {
 			final Gson gson = new Gson();
