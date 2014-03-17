@@ -14,3 +14,15 @@ Escenario: Calcular media de observaciones
     Cuando calculo la nota media
     Entonces obtengo el valor 3,6
     
+Escenario: Calcular valor medio de una observación
+
+    Dada una observación de Chile con valor 3,2
+    Cuando calculo la nota media
+    Entonces obtengo el valor 3,2
+
+Escenario: Calcular valor medio de una observación de Francia
+
+    Dada una observación de Francia con valor 23
+    Cuando calculo la nota media
+    Entonces obtengo el valor 23
+    
