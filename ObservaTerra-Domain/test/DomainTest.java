@@ -1,12 +1,23 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import java.sql.Date;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.Test;
 
+import domain.Area;
+import domain.ComplexOrganization;
+import domain.Indicator;
+import domain.InstantTime;
+import domain.Observation;
 import domain.Organization;
+import domain.RangeTime;
+import domain.SampleOrganization;
 import domain.ScopeEnum;
+import domain.Time;
+import domain.User;
 
 public class DomainTest {
 
@@ -18,8 +29,9 @@ public class DomainTest {
 				"2005"));
 		Organization provider = new SampleOrganization("WorldStar HipHop",
 				"WSHH", "http://www.worldstarhiphop.com");
-		Date publish = Date.valueOf(String.valueOf(System.currentTimeMillis()));
-		Obervation observation = new Observation(time, "10%", indicator, area,
+		Long now = System.currentTimeMillis();
+		Date publish = new Date(now);
+		Observation observation = new Observation(time, "10%", indicator, area,
 				provider, publish);
 
 		assertTrue(indicator.getObservations().size() == 1);
@@ -29,10 +41,10 @@ public class DomainTest {
 		assertTrue(observation.getArea().equals(area));
 
 		assertTrue(observation.getTime().equals(time));
-		assertTrue(observation.getPublishTime().equals(publish));
+		assertTrue(observation.getPublishDate().equals(publish));
 
 		assertTrue(provider.getObservations().size() == 1);
-		assertTrue(observation.getOrganization().equals(provider));
+		assertTrue(observation.getProvider().equals(provider));
 
 	}
 
@@ -86,48 +98,45 @@ public class DomainTest {
 		Organization provider = new SampleOrganization("WorldStar HipHop",
 				"WSHH", "http://www.worldstarhiphop.com");
 
-		assertTrue(ai.getOrganization().size() == 0);
-		assertTrue(jayZ.getOrganization().size() == 0);
+		assertTrue(ai.getOrganization() == null);
+		assertTrue(jayZ.getOrganization() == null);
 		assertTrue(provider.getUsers().size() == 0);
 		assertTrue(provider.getObservations().size() == 0);
 
-		Obervation observation = new Observation(null, "14%", null, null,
-				provider, null);
 		provider.addUser(ai);
 
-		assertTrue(ai.getOrganization().size() == 1);
-		assertTrue(jayZ.getOrganization().size() == 0);
+		assertTrue(ai.getOrganization().equals(provider));
+		assertTrue(jayZ.getOrganization() == null);
 		assertTrue(provider.getUsers().size() == 1);
-		assertTrue(provider.getObservations().size() == 1);
 
 		provider.removeUser(ai);
 
-		assertTrue(ai.getOrganization().size() == 0);
-		assertTrue(jayZ.getOrganization().size() == 0);
+		assertTrue(ai.getOrganization() == null);
+		assertTrue(jayZ.getOrganization() == null);
 		assertTrue(provider.getUsers().size() == 0);
 
 		provider.removeUser(ai);
 
-		assertTrue(ai.getOrganization().size() == 0);
-		assertTrue(jayZ.getOrganization().size() == 0);
-		assertTrue(provider.getUsers().size() == 1);
+		assertTrue(ai.getOrganization() == null);
+		assertTrue(jayZ.getOrganization() == null);
+		assertTrue(provider.getUsers().size() == 0);
 
 		provider.addUser(ai);
 		provider.addUser(ai);
 
-		assertTrue(ai.getOrganization().size() == 1);
-		assertTrue(jayZ.getOrganization().size() == 0);
+		assertTrue(ai.getOrganization().equals(provider));
+		assertTrue(jayZ.getOrganization() == null);
 		assertTrue(provider.getUsers().size() == 1);
 
 		provider.removeUser(ai);
 		provider.addUser(jayZ);
 
-		assertTrue(ai.getOrganization().size() == 0);
-		assertTrue(jayZ.getOrganization().size() == 1);
+		assertTrue(ai.getOrganization() == null);
+		assertTrue(jayZ.getOrganization().equals(provider));
 		assertTrue(provider.getUsers().size() == 1);
 
-		assertFalse(ai.belongsTo(provider));
-		assertTrue(jayZ.belongstTo(provider));
+		assertTrue(ai.getOrganization() == null);
+		assertTrue(jayZ.getOrganization().equals(provider));
 
 	}
 
@@ -162,8 +171,27 @@ public class DomainTest {
 		assertTrue(nba.addUser(ai).getUsers().size() == 1);
 		assertTrue(cosaNostra.getUsers().size() == 1);
 
-		assertFalse(jayZ.belongsTo(wshh));
-		assertTrue(ai.belongsTo(cosaNostra));
+		assertTrue(jayZ.getOrganization() == null);
+		assertTrue(ai.getOrganization().equals(nba));
+		assertTrue(cosaNostra.getUsers().contains(ai));
+
+	}
+
+	@Test
+	public void testAddOrganizations() {
+		Organization wshh = new SampleOrganization("WorldStar HipHop", "WSHH",
+				"http://www.worldstarhiphop.com");
+		Organization nba = new SampleOrganization(
+				"National Basketball Association", "NBA", "http://www.nba.com");
+		Organization cosaNostra = nba.addOrganization("La cosa nostra",
+				"http://www.tonysopranoJustTakeItEasy.com", "TS", wshh);
+		assertFalse(cosaNostra == null);
+		assertTrue(cosaNostra.removeOrganization(nba).getOrganizations().size() == 1);
+		assertTrue(cosaNostra.removeOrganization(wshh).getOrganizations()
+				.size() == 0);
+		assertTrue(cosaNostra != null);
+		assertTrue(cosaNostra.addOrganization("Iluminati",
+				"http://www.kaynewest.com", "KW", nba) != null);
 
 	}
 
