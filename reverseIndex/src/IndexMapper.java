@@ -13,16 +13,15 @@ public class IndexMapper extends MapReduceBase implements
 		Mapper<Text, Text, Text, Text> {
 
 	/**
-	 * Est método recibe una línea del fichero leído.
-	 * Por cada palabra de la línea escribe en un OutputCollector<Text, Text>
+	 * Est mï¿½todo recibe una lï¿½nea del fichero leï¿½do.
+	 * Por cada palabra de la lï¿½nea escribe en un OutputCollector<Text, Text>
 	 * el par <"palabra", "fichero_actual">.
 	 * <br/>
 	 * No se controla si la "palabra" se repite dentro del mismo fichero.
-	 * Ya se encargará el "IndexReducer" de eliminar repeticiones.
+	 * Ya se encargarï¿½ el "IndexReducer" de eliminar repeticiones.
 	 * <br/>
-	 * Se llamará a este método varias veces, una por cada línea de cada fichero.
-	 * (NOTA: en nuestro caso, siempre va a ser un único fichero).
-	 * Después se llamará a la clase "IndexReducer"
+	 * Se llamarï¿½ a este mï¿½todo varias veces, una por cada lï¿½nea de cada fichero.
+	 * Despuï¿½s se llamarï¿½ a la clase "IndexReducer"
 	 */
 	public void map(Text key, Text value, OutputCollector<Text, Text> output,
 			Reporter reporter) throws IOException {
