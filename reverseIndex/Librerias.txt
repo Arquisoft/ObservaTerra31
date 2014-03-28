@@ -1,0 +1,24 @@
+
+Maven y yo estamos en guerra.
+Así que de momento me limito a poner aquí una lista de jars
+necesarios para este proyecto "reverseIndex".
+Los podemos descargar del enlace que pongo abajo...
+
+-- -- -- -- -- -- --
+
+Hadoop hadoop-0.20.2: 
+La mayoría de los manuales en Internet ignoran las versiones 
+más recientes de hadoop.
+
+Descarga:
+https://archive.apache.org/dist/hadoop/core/hadoop-0.20.2/
+
+Son varios jars.
+En este proyecto nos interesa importar estos:
+	commons-cli-1.2 (en hadoop-0.20.2\lib)
+	commons-httpclient-3.0.1 (en hadoop-0.20.2\lib)
+	commons-logging-1.0.4 (en hadoop-0.20.2\lib)
+	log4j-1.2.15 (en hadoop-0.20.2\lib)
+	hadoop-0.20.2-core (en hadoop-0.20.2)
+
+-- -- -- -- -- -- --

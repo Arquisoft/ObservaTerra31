@@ -1,0 +1,37 @@
+
+Maven y yo estamos en guerra.
+Así que de momento me limito a poner aquí una lista de jars
+necesarios para este proyecto "convertToTxt".
+Los podemos descargar de los enlaces que pongo abajo...
+
+-- -- -- -- -- -- --
+
+Apache POI: 
+Para leer con Java ficheros doc, .docx, y más.
+
+Descarga:
+http://poi.apache.org/download.html
+
+Son varios jars. Aquí se indica una descripción:
+http://poi.apache.org/overview.html#components
+En este proyecto nos interesa importar estos:
+	dom4j-1.6.1
+	stax-api-1.0.1
+	xmlbeans-2.3.0
+	poi-3.10-FINAL-20140208
+	poi-ooxml-3.10-FINAL-20140208.jar
+	poi-scratchpad-3.10-FINAL-20140208.jar
+	poi-ooxml-3.10-FINAL-20140208.jar
+
+-- -- -- -- -- -- --
+
+iText:
+Para leer .pdf
+
+Descarga:
+http://sourceforge.net/projects/itext/files/latest/download
+
+Son varios jars. Nos interesa importar este:
+	itextpdf-5.5.0.jar
+
+-- -- -- -- -- -- --
