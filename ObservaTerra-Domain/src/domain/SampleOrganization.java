@@ -1,6 +1,5 @@
 package domain;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +12,6 @@ import java.util.Set;
  */
 public class SampleOrganization extends Organization {
 
-	private Set<User> users = new HashSet<User>();
 
 	public SampleOrganization(String name, String site, String acronym) {
 		super(name, site, acronym);
@@ -54,26 +52,14 @@ public class SampleOrganization extends Organization {
 	public Set<Organization> getOrganizations() {
 		return new HashSet<Organization>();
 	}
-
+	
 	@Override
 	public Set<User> getUsers() {
-		return Collections.unmodifiableSet(users);
-	}
+		Set<User> users = new HashSet<User>();
+		for (Membership mmb : this.memberships)
+			users.add(mmb.getUser());
+		return users;
 
-	@Override
-	public Organization addUser(User user) {
-		user.setOrganization(this);
-		this.users.add(user);
-		return this;
-	}
-
-	@Override
-	public Organization removeUser(User user) {
-		if (this.users.contains(user)) {
-			this.users.remove(user);
-			user.setOrganization(null);
-		}
-		return this;
 	}
 
 }

@@ -17,7 +17,8 @@ public abstract class Organization {
 	private String site;
 	private String acronym;
 
-	private Set<Observation> observations = new HashSet<Observation>();
+	protected Set<Observation> observations = new HashSet<Observation>();
+	protected Set<Membership> memberships = new HashSet<Membership>();
 
 	public Organization(String name, String site, String acronym) {
 		super();
@@ -59,6 +60,31 @@ public abstract class Organization {
 
 	protected Set<Observation> _getObservations() {
 		return observations;
+	}
+
+	public Set<Membership> getMemberships() {
+		return Collections.unmodifiableSet(memberships);
+	}
+
+	public Set<Membership> _getMemberships() {
+		return memberships;
+	}
+
+	public Organization addUser(User user) {
+		for (Membership mmb : memberships)
+			if (mmb.getUser().equals(user))
+				return this;
+		new Membership(user, this);
+		return this;
+	}
+
+	public Organization removeUser(User user) {
+		for (Membership mmb : memberships)
+			if (mmb.getUser().equals(user)) {
+				mmb.unlink();
+				return this;
+			}
+		return this;
 	}
 
 	@Override
@@ -112,10 +138,6 @@ public abstract class Organization {
 	public abstract Organization removeOrganization(Organization organization);
 
 	public abstract Set<Organization> getOrganizations();
-
-	public abstract Organization addUser(User user);
-
-	public abstract Organization removeUser(User user);
 
 	public abstract Set<User> getUsers();
 

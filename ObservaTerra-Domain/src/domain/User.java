@@ -18,7 +18,7 @@ public class User {
 	private String password;
 
 	private Set<Follow> follows = new HashSet<Follow>();
-	private Organization organization;
+	private Set<Membership> memberships = new HashSet<Membership>();
 
 	public User(String name, String surname, String email, String password) {
 		super();
@@ -44,17 +44,6 @@ public class User {
 		return password;
 	}
 
-	public Organization getOrganization() {
-		return organization;
-	}
-
-	public User setOrganization(Organization organization) {
-		if (this.organization != null)
-			this.organization.removeUser(this);
-		this.organization = organization;
-		return this;
-	}
-
 	public Set<Follow> getFollows() {
 		return Collections.unmodifiableSet(follows);
 	}
@@ -63,7 +52,19 @@ public class User {
 		return follows;
 	}
 
+	public Set<Membership> getMemberships() {
+		return Collections.unmodifiableSet(memberships);
+	}
+
+	protected Set<Membership> _getMemberships() {
+		return memberships;
+	}
+
 	public User follow(Indicator indicator) {
+		for (Follow f : follows)
+			if (f.getIndicator().equals(indicator))
+				return this;
+		
 		new Follow(indicator, this);
 		return this;
 	}
@@ -76,6 +77,13 @@ public class User {
 			}
 		return this;
 
+	}
+
+	public Set<Organization> getOrganizations() {
+		Set<Organization> orgs = new HashSet<Organization>();
+		for (Membership mmb : this.memberships)
+			orgs.add(mmb.getOrganization());
+		return orgs;
 	}
 
 }

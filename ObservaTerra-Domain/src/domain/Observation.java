@@ -11,16 +11,18 @@ import java.util.Date;
 public class Observation {
 
 	private Time time;
+	private String value;
 	private String measure;
 	private Indicator indicator;
 	private Area area;
 	private Organization provider;
 	private Date publishDate;
 
-	public Observation(Time time, String measure, Indicator indicator,
+	public Observation(Time time, String value, String measure, Indicator indicator,
 			Area area, Organization provider, Date publishDate) {
 		super();
 		this.time = time;
+		this.value = value;
 		this.measure = measure;
 		this.indicator = indicator;
 		this.area = area;
@@ -43,6 +45,10 @@ public class Observation {
 	public Indicator getIndicator() {
 		return indicator;
 	}
+	
+	public String getValue() {
+		return value;
+	}
 
 	public Area getArea() {
 		return area;
@@ -55,5 +61,7 @@ public class Observation {
 	public Date getPublishDate() {
 		return publishDate;
 	}
+
+	
 
 }

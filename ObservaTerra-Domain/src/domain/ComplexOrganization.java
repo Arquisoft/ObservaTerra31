@@ -62,19 +62,15 @@ public class ComplexOrganization extends Organization {
 	@Override
 	public Set<User> getUsers() {
 		Set<User> users = new HashSet<User>();
-		for (Organization org : organizations)
+		
+		for (Membership mmb : this.memberships)
+			users.add(mmb.getUser());
+		
+		for (Organization org : this.organizations)
 			users.addAll(org.getUsers());
+		
 		return users;
 	}
 
-	@Override
-	public Organization addUser(User user) {
-		return null;
-	}
-
-	@Override
-	public Organization removeUser(User user) {
-		return null;
-	}
 
 }

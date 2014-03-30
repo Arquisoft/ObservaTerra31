@@ -1,3 +1,4 @@
+package test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -31,7 +32,7 @@ public class DomainTest {
 				"WSHH", "http://www.worldstarhiphop.com");
 		Long now = System.currentTimeMillis();
 		Date publish = new Date(now);
-		Observation observation = new Observation(time, "10%", indicator, area,
+		Observation observation = new Observation(time, "10", "%", indicator, area,
 				provider, publish);
 
 		assertTrue(indicator.getObservations().size() == 1);
@@ -98,45 +99,45 @@ public class DomainTest {
 		Organization provider = new SampleOrganization("WorldStar HipHop",
 				"WSHH", "http://www.worldstarhiphop.com");
 
-		assertTrue(ai.getOrganization() == null);
-		assertTrue(jayZ.getOrganization() == null);
+		assertTrue(ai.getOrganizations().size() == 0);
+		assertTrue(jayZ.getOrganizations().size() == 0);
 		assertTrue(provider.getUsers().size() == 0);
 		assertTrue(provider.getObservations().size() == 0);
 
 		provider.addUser(ai);
 
-		assertTrue(ai.getOrganization().equals(provider));
-		assertTrue(jayZ.getOrganization() == null);
+		assertTrue(ai.getOrganizations().contains(provider));
+		assertTrue(jayZ.getOrganizations().size() == 0);
 		assertTrue(provider.getUsers().size() == 1);
 
 		provider.removeUser(ai);
 
-		assertTrue(ai.getOrganization() == null);
-		assertTrue(jayZ.getOrganization() == null);
+		assertTrue(ai.getOrganizations().size() == 0);
+		assertTrue(jayZ.getOrganizations().size() == 0);
 		assertTrue(provider.getUsers().size() == 0);
 
 		provider.removeUser(ai);
 
-		assertTrue(ai.getOrganization() == null);
-		assertTrue(jayZ.getOrganization() == null);
+		assertTrue(ai.getOrganizations().size() == 0);
+		assertTrue(jayZ.getOrganizations().size() == 0);
 		assertTrue(provider.getUsers().size() == 0);
 
 		provider.addUser(ai);
 		provider.addUser(ai);
 
-		assertTrue(ai.getOrganization().equals(provider));
-		assertTrue(jayZ.getOrganization() == null);
+		assertTrue(ai.getOrganizations().contains(provider));
+		assertTrue(jayZ.getOrganizations().size() == 0);
 		assertTrue(provider.getUsers().size() == 1);
 
 		provider.removeUser(ai);
 		provider.addUser(jayZ);
 
-		assertTrue(ai.getOrganization() == null);
-		assertTrue(jayZ.getOrganization().equals(provider));
+		assertTrue(ai.getOrganizations().size() == 0);
+		assertTrue(jayZ.getOrganizations().contains(provider));
 		assertTrue(provider.getUsers().size() == 1);
 
-		assertTrue(ai.getOrganization() == null);
-		assertTrue(jayZ.getOrganization().equals(provider));
+		assertTrue(ai.getOrganizations().size() == 0);
+		assertTrue(jayZ.getOrganizations().contains(provider));
 
 	}
 
@@ -171,8 +172,8 @@ public class DomainTest {
 		assertTrue(nba.addUser(ai).getUsers().size() == 1);
 		assertTrue(cosaNostra.getUsers().size() == 1);
 
-		assertTrue(jayZ.getOrganization() == null);
-		assertTrue(ai.getOrganization().equals(nba));
+		assertTrue(jayZ.getOrganizations().size() == 0);
+		assertTrue(ai.getOrganizations().contains(nba));
 		assertTrue(cosaNostra.getUsers().contains(ai));
 
 	}
@@ -194,5 +195,62 @@ public class DomainTest {
 				"http://www.kaynewest.com", "KW", nba) != null);
 
 	}
+	
+	@Test
+	public void complexOrganizationsMembers() {
+		Organization wshh = new SampleOrganization("WorldStar HipHop", "WSHH",
+				"http://www.worldstarhiphop.com");
+		Organization nba = new SampleOrganization(
+				"National Basketball Association", "NBA", "http://www.nba.com");
+		Organization cosaNostra = nba.addOrganization("La cosa nostra",
+				"http://www.tonysopranoJustTakeItEasy.com", "TS", wshh);
+		
+		User jayZ = new User("Jay", "Z", "jayz@brookylnfinest.com",
+				"DrunkInL0veWitBeyonnn");
+		User ai = new User("Allen", "Iverson", "ai@philly.com",
+				"weTalkinBoutPractiseNotRealGame");
+		User tonySoprano = new User("Tony", "Soprano", "tony@cosanostra.com",
+				"whatHappened2GaryC00per");
+		
+		assertTrue(cosaNostra.getUsers().size() == 0);
+		
+		nba.addUser(ai);
+		assertTrue(cosaNostra.getUsers().size() == 1);
+		assertTrue(nba.getUsers().size() == 1);
+		assertTrue(wshh.getUsers().size() == 0);
+		
+		wshh.addUser(jayZ);
+		assertTrue(cosaNostra.getUsers().size() == 2);
+		assertTrue(nba.getUsers().size() == 1);
+		assertTrue(wshh.getUsers().size() == 1);
+		
+		cosaNostra.addUser(tonySoprano);
+		assertTrue(cosaNostra.getUsers().size() == 3);
+		assertTrue(nba.getUsers().size() == 1);
+		assertTrue(wshh.getUsers().size() == 1);
+		
+		cosaNostra.addUser(ai);
+		assertTrue(cosaNostra.getUsers().size() == 3);
+		assertTrue(nba.getUsers().size() == 1);
+		assertTrue(wshh.getUsers().size() == 1);
+		assertTrue(ai.getOrganizations().size() == 2);
+		
+		cosaNostra.removeUser(jayZ);
+		assertTrue(cosaNostra.getUsers().size() == 3);
+		assertTrue(nba.getUsers().size() == 1);
+		assertTrue(wshh.getUsers().size() == 1);
+		assertTrue(ai.getOrganizations().size() == 2);
+		
+		cosaNostra.removeUser(ai);
+		assertTrue(cosaNostra.getUsers().size() == 3);
+		assertTrue(nba.getUsers().size() == 1);
+		assertTrue(wshh.getUsers().size() == 1);
+		assertTrue(ai.getOrganizations().size() == 1);
+		
+		
+		
+	}
+	
+	
 
 }
