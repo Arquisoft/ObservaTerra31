@@ -5,6 +5,12 @@ import persistence.Organization;
 
 public abstract class AbstractParser implements Parser {
 
+   /* En esta clase abstracta se encuentran los métodos get y set para
+    * añadir las palabras clave que queramos que el parser busque,
+	* así como los get y set de los elementos de lo que consta una
+	* observación y de la misma observación
+	*/
+
 	protected String getAreaKeyWord() {
 		return areaKeyWord;
 	}
@@ -141,6 +147,9 @@ public abstract class AbstractParser implements Parser {
 		this.dataKeyWord = observationKeyWord;
 	}
 
+	/* Analiza el documento y crea una nueva observación
+	 * @return this.returnOrganization()
+	 */
 	public Observation parse() {
 		this.parseDocument();
 		this.validateDocument();
@@ -159,6 +168,9 @@ public abstract class AbstractParser implements Parser {
 
 	public abstract void parseDocument();
 
+	/* Se crea una nueva observación a partir de los datos obtenidos
+	 * @return observación
+	 */
 	public Observation returnOrganization() {
 		return new Observation(this.area, this.country, this.indicator,
 				this.time, this.measure, this.organization, this.data,

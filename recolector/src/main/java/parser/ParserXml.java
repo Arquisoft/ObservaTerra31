@@ -22,6 +22,11 @@ public class ParserXml extends AbstractParser {
 	
 		 		
 	}
+	
+	/*
+	 * Parsea el docuento XML que se le haya añadido,pasando por todos
+	 * elementos del arbol
+	 */
 	@Override
 	public void parseDocument() {
 		
@@ -46,7 +51,7 @@ public class ParserXml extends AbstractParser {
 	                            new FileInputStream(new File(xmlFileURL.toURI())));
 	                } else throw new FileNotFoundException();
 	                
-	              //iterate as long as there are more events on the input stream
+	              // Se continua ejecutando siempre que haya elementos dentro del arbol
 	                while (r.hasNext()) {
 	                    XMLEvent e = r.nextEvent();
 	                    if (e.isStartElement()) {
@@ -88,6 +93,13 @@ public class ParserXml extends AbstractParser {
 		 
 		 
 	}
+	
+	/* 
+	 * Devuelve los datos existentes (en el caso de que los haya) dentro
+	 * del elemento
+	 * @param rdr
+	 * @return e.asCharacters().getData() o null
+	 */
     
     private String getCharacters(XMLEventReader rdr) throws XMLStreamException {
         XMLEvent e = rdr.nextEvent();
