@@ -1,180 +1,78 @@
 package parser;
 
-import persistence.Observation;
-import persistence.Organization;
+import java.util.Date;
+
+import domain.Area;
+import domain.Indicator;
+import domain.Organization;
+import domain.Time;
+import domain.User;
 
 public abstract class AbstractParser implements Parser {
 
-   /* En esta clase abstracta se encuentran los métodos get y set para
-    * añadir las palabras clave que queramos que el parser busque,
-	* así como los get y set de los elementos de lo que consta una
-	* observación y de la misma observación
-	*/
 
-	protected String getAreaKeyWord() {
-		return areaKeyWord;
-	}
+	protected Time time;
+	protected String value;
+	protected String measure;
+	protected Indicator indicator;
+	protected Area area;
+	protected Organization provider;
+	protected Date publishDate;
+	
+	
 
-	protected String getTimeKeyWord() {
-		return timeKeyWord;
-	}
-
-	protected String getCountryKeyWord() {
-		return countryKeyWord;
-	}
-
-	protected String getIndicatorKeyWord() {
-		return indicatorKeyWord;
-	}
-
-	protected String getMeasureKeyWord() {
-		return measureKeyWord;
-	}
-
-	protected String getDataKeyWord() {
-		return dataKeyWord;
-	}
-
-	private String areaKeyWord;
-	private String timeKeyWord;
-	private String countryKeyWord;
-	private String indicatorKeyWord;
-	private String measureKeyWord;
-	private String dataKeyWord;
-
-	private String area;
-
-	protected String getArea() {
-		return area;
-	}
-
-	protected void setArea(String area) {
-		this.area = area;
-	}
-
-	protected String getCountry() {
-		return country;
-	}
-
-	protected void setCountry(String country) {
-		this.country = country;
-	}
-
-	protected String getIndicator() {
-		return indicator;
-	}
-
-	protected void setIndicator(String indicator) {
-		this.indicator = indicator;
-	}
-
-	protected String getTime() {
-		return time;
-	}
-
-	protected void setTime(String time) {
+	protected void setTime(Time time) {
 		this.time = time;
 	}
 
-	protected String getMeasure() {
-		return measure;
+
+
+	protected void setValue(String value) {
+		this.value = value;
 	}
+
+
 
 	protected void setMeasure(String measure) {
 		this.measure = measure;
 	}
 
-	protected String getData() {
-		return data;
+
+
+	protected void setIndicator(Indicator indicator) {
+		this.indicator = indicator;
 	}
 
-	protected void setData(String data) {
-		this.data = data;
+
+
+	protected void setArea(Area area) {
+		this.area = area;
 	}
 
-	protected Organization getOrganization() {
-		return organization;
+
+
+	public void setProvider(Organization provider) {
+		this.provider = provider;
 	}
 
-	protected String getUser() {
-		return user;
+
+
+	protected void setPublishDate(Date publishDate) {
+		this.publishDate = publishDate;
 	}
 
-	private String country;
-	private String indicator;
-	private String time;
-	private String measure;
-	private Organization organization;
-	private String user;
-	private String data;
 
-	public void setUser(String user) {
-		this.user = user;
 
-	}
+//	private void validateDocument() {
+//		if(area==null||country==null||measure==null||time==null||indicator==null||data==null){
+//			throw new IllegalStateException("Documento con formato incorrecto, o palabras clave definidas incorrectamente.");
+//		}
+//		if(user==null||organization==null){
+//			throw new IllegalStateException("No se han definido organización o usuario para el documento");
+//		}
+//		
+//	}
 
-	public void setOrganization(Organization organization) {
-		this.organization = organization;
 
-	}
-
-	public void setAreaKeyWord(String areaKeyWord) {
-		this.areaKeyWord = areaKeyWord;
-
-	}
-
-	public void setTimeKeyWord(String timeKeyWord) {
-		this.timeKeyWord = timeKeyWord;
-
-	}
-
-	public void setCountryKeyWord(String countryKeyWord) {
-		this.countryKeyWord = countryKeyWord;
-
-	}
-
-	public void setIndicatorKeyWord(String indicatorKeyWord) {
-		this.indicatorKeyWord = indicatorKeyWord;
-
-	}
-
-	public void setMeasureKeyWord(String measureKeyWord) {
-		this.measureKeyWord = measureKeyWord;
-
-	}
-
-	public void setObservationKeyWord(String observationKeyWord) {
-		this.dataKeyWord = observationKeyWord;
-	}
-
-	/* Analiza el documento y crea una nueva observación
-	 * @return this.returnOrganization()
-	 */
-	public Observation parse() {
-		this.parseDocument();
-		this.validateDocument();
-		return this.returnOrganization();
-	}
-
-	private void validateDocument() {
-		if(area==null||country==null||measure==null||time==null||indicator==null||data==null){
-			throw new IllegalStateException("Documento con formato incorrecto, o palabras clave definidas incorrectamente.");
-		}
-		if(user==null||organization==null){
-			throw new IllegalStateException("No se han definido organización o usuario para el documento");
-		}
-		
-	}
-
-	public abstract void parseDocument();
-
-	/* Se crea una nueva observación a partir de los datos obtenidos
-	 * @return observación
-	 */
-	public Observation returnOrganization() {
-		return new Observation(this.area, this.country, this.indicator,
-				this.time, this.measure, this.organization, this.data,
-				this.user);
-	}
 
 }
