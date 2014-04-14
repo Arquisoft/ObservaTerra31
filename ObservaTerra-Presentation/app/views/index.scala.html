@@ -3,39 +3,32 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-3">
-			<ul class="nav nav-sidebar">
-				<li class="active"><a href="#">Overview</a></li>
-				<li><a href="#">Reports</a></li>
-				<li><a href="#">Analytics</a></li>
-				<li><a href="#">Export</a></li>
-			</ul>
-			<ul class="nav nav-sidebar">
-				<li><a href="">Nav item</a></li>
-				<li><a href="">Nav item again</a></li>
-				<li><a href="">One more nav</a></li>
-				<li><a href="">Another nav item</a></li>
-				<li><a href="">More navigation</a></li>
-			</ul>
-			<ul class="nav nav-sidebar">
-				<li><a href="">Nav item again</a></li>
-				<li><a href="">One more nav</a></li>
-				<li><a href="">Another nav item</a></li>
-			</ul>
+		<h2>Chart</h2>
+			<br />
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Chart</h3>
+				</div>
+				<div class="panel-body" id="chart"></div>
+
+			</div>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-8">
 			<h2>Observations</h2>
 			<br />
-			<div class="list-group">
-			@for(observation <- observations) { 
-				<a href="#" class="list-group-item">
+			<div class="list-group" id="observations">
+				@for(observation <- observations) { <a href="#"
+					class="list-group-item" data-toggle="modal"
+					data-value="@observation.getValue()">
 					<h5 class="list-group-item-heading">@observation</h5>
 					<p class="list-group-item-text">
-					<p class="text-right">Source</p>
+					<h6 class="text-right">@observation.getPublishDate()</h6>
 					</p>
-				</a>
-				}
+
+				</a> }
 			</div>
 		</div>
 	</div>
-</div>
-}
+
+
+	}

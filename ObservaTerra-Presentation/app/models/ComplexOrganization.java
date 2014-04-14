@@ -10,8 +10,9 @@ import java.util.Set;
  * @author Sergio
  * 
  */
-public class ComplexOrganization extends Organization {
 
+public class ComplexOrganization extends Organization {
+	
 	private Set<Organization> organizations = new HashSet<Organization>();
 
 	public ComplexOrganization(String name, String site, String acronym,

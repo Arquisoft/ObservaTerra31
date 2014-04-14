@@ -4,6 +4,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import play.libs.Json;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
 /**
  * Clase abstracta que representa una organizacion (tanto simple como
  * compuesta).
@@ -11,8 +15,10 @@ import java.util.Set;
  * @author Sergio
  * 
  */
+
 public abstract class Organization {
 
+	
 	private String name;
 	private String site;
 	private String acronym;
@@ -145,5 +151,11 @@ public abstract class Organization {
 	public String toString() {
 		return name;
 	}
+	
+	public static JsonNode toJson(Organization organization) {
+		return Json.toJson(organization);
+	  }
+	
+	
 
 }

@@ -41,9 +41,8 @@ public class Application extends Controller {
     }
     
     public static Result bars(String indicator) {
-    	return ok(bars.render(Indicator.findByCode(indicator)));
-    }
-*/
+    	return ok(comparator.render(PersistenceSimulator.getInstance().findHVIObservations()));
+    }*/
    
 
 }

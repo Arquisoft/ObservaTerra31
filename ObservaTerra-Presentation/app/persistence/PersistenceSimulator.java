@@ -255,4 +255,12 @@ public class PersistenceSimulator {
 
 	}
 
+	public List<Observation> findHVIObservations() {
+		List<Observation> ret = new ArrayList<Observation>();
+		for (Observation ob : observations)
+			if (ob.getIndicator().getName().contains("HIV"))
+				ret.add(ob);
+		return ret;
+	}
+
 }
