@@ -2,24 +2,15 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-3">
-		<h2>Chart</h2>
-			<br />
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Chart</h3>
-				</div>
-				<div class="panel-body" id="chart"></div>
-
-			</div>
+		<div class="col-md-3" id="divChart">
 		</div>
-		<div class="col-xs-12 col-sm-6 col-md-8">
+		<div class="col-xs-12 col-sm-6 col-md-8" id="divMain">
 			<h2>Observations</h2>
 			<br />
 			<div class="list-group" id="observations">
 				@for(observation <- observations) { <a href="#"
 					class="list-group-item" data-toggle="modal"
-					data-value="@observation.getValue()">
+					data-value="@observation.getValue()" data-date="@observation.getTime()" data-area="@observation.getArea()">
 					<h5 class="list-group-item-heading">@observation</h5>
 					<p class="list-group-item-text">
 					<h6 class="text-right">@observation.getPublishDate()</h6>
