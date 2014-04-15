@@ -1,4 +1,6 @@
-observaTerraPlay
+ObservaTerra
 ================
 
-Example of ObservaTerra using PlayFramework
+Front-end of ObservaTerra31 project. Mainly, we use Play Framework and Bootstraps.
+
+
