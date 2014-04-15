@@ -70,7 +70,7 @@ $(document).ready(
 		*/
 			function appendChartDiv() {
 				var divChart = $('<h2>Chart</h2>'
-						+ '<br />' + '<div class="panel panel-default">'
+						+ '<br />' + '<div class="panel panel-success">'
 						+ '<div class="panel-heading">'
 						+ '<h3 class="panel-title">Chart</h3>' + '</div>'
 						+ '<div class="panel-body" id="chart"></div>'
