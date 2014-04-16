@@ -3,6 +3,10 @@ package models;
 import java.util.HashSet;
 import java.util.Set;
 
+import play.libs.Json;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
 /**
  * Representa una organizacion simple. Las organizaciones simples tienen un
  * conjunto de usuarios.
@@ -62,6 +66,9 @@ public class SampleOrganization extends Organization {
 
 	}
 	
+	public static JsonNode toJson(SampleOrganization organization) {
+		return Json.toJson(organization);
+	  }
 	
 
 }

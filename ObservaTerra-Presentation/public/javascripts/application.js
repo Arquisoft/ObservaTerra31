@@ -34,12 +34,23 @@ $(document).ready(
 			}
 			
 			
+			
 		/**
 		 * Función que dibuja barras estilo bootstraps.
 		 */
 			function drawBarsBootstraps() {
+				
+				var max = data.reduce (function(previous,current) { 
+                    return previous > current ? 
+                    		previous
+                    		: current;
+                });
+				
+				alert(max);
+				
 				d3.selectAll(".progress").remove();
 				d3.selectAll(".progress-bar progress-bar-danger").remove();
+				
 				
 				d3.select("#chart")
 				.selectAll(".panel-body")
@@ -52,8 +63,8 @@ $(document).ready(
 				.attr("class","progress-bar progress-bar-danger")
 				.attr("aria-valuemin", "0")
 				.attr("aria-valuemax", "100")
-				.attr("aria-valuenow", function(d) { return d; })
-				.text(function(d) { return d; });
+				.attr("aria-valuenow", function(d) { return d.attr("data-value"); })
+				.text(function(d) { return d.attr("data-value") + (((x = d.attr("data-measure")).lenght) != 1 ? " "+ x: x); });
 
 				$(".progress-bar").each(
 						function() {
@@ -96,33 +107,54 @@ $(document).ready(
 
 			$("#observations").find(".list-group-item").on(
 					'click', function() {
-
-						if ($(this).attr("class") == "list-group-item active") {
-							// Borrar dato
-							var i = data.indexOf($(this).attr("data-value"));
+						
+						function addData(element) {
+							if(!compatibleValues(element, data[0]))
+								clearData();
+							data.push(element);
+							element.addClass("list-group-item active");
+							return data;
+						}
+						
+						function deleteData(element) {
+							var i = data.indexOf(element);
 							if (i != -1)
 								data.splice(i, 1);
-							// Borar highlight
-							$(this).removeClass("list-group-item active")
-									.addClass("list-group-item");
-							// draw();
-							drawBarsBootstraps();
+							element.removeClass("list-group-item active")
+								   .addClass("list-group-item");
 							if (data.length == 0)
 								$("#divChart").children().remove();
-
+							return data;
 						}
-
-						else {
-							if (data.length == 0)
+						
+						function clearData() {
+							data = [];
+							var x = $(".list-group-item active");
+							$(".list-group-item").removeClass("list-group-item active")
+							   .addClass("list-group-item");
+							return data;
+						}
+						
+						function compatibleValues(element, head) {
+							if (head == null) {
 								appendChartDiv();
-							// Añadir dato
-							
-							data.push($(this).attr("data-value"));
-							// Añadir highlight
-							$(this).addClass("list-group-item active");
-							// draw();
-							drawBarsBootstraps();
+								return true;
+							}
+							else {
+								var newMeasure = element.attr("data-measure");
+								var oldMeasure = head.attr("data-measure");
+								return newMeasure == "%" && oldMeasure == "%"
+									||  newMeasure != "%" && oldMeasure != "%";
+							}
 						}
+						
+						
+						if ($(this).attr("class") == "list-group-item active")
+							deleteData($(this));
+						else
+							addData($(this));
+						
+						drawBarsBootstraps();
 					});
 
 		});

@@ -1,4 +1,9 @@
 package models;
+
+import play.libs.Json;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
 /**
  * Representa la membresia de un usuario en una organizacion.
  * @author Sergio
@@ -37,7 +42,9 @@ public class Membership {
 		organization._getMemberships().remove(this);
 	}
 	
-	
+	public static JsonNode toJson(Membership membership) {
+		return Json.toJson(membership);
+	  }
 	
 	
 

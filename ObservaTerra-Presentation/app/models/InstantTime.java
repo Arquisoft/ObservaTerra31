@@ -1,11 +1,14 @@
 package models;
 
+import play.libs.Json;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
 public class InstantTime implements Time {
 
 	private String instant;
 
 	public InstantTime(String instant) {
-		super();
 		this.instant = instant;
 	}
 
@@ -49,6 +52,8 @@ public class InstantTime implements Time {
 		return instant;
 	}
 	
-	
+	/*public static JsonNode toJson(InstantTime time) {
+		return Json.toJson(time);
+	  }*/
 
 }

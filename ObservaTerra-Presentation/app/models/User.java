@@ -4,6 +4,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import play.libs.Json;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
 import utils.Hashin;
 
 /**
@@ -100,6 +104,9 @@ public class User {
 		this.password = Hashin.md5(password);
 	}
 	
+	public static JsonNode toJson(User user) {
+		return Json.toJson(user);
+	  }
 	
 
 }

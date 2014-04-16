@@ -1,5 +1,9 @@
 package models;
 
+import play.libs.Json;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
 
 
 /**
@@ -37,5 +41,9 @@ public class Follow {
 		indicator._getFollows().remove(this);
 		user._getFollows().remove(this);
 	}
+	
+	public static JsonNode toJson(Follow follow) {
+		return Json.toJson(follow);
+	  }
 
 }

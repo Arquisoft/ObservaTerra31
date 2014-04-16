@@ -1,5 +1,9 @@
 package models;
 
+import play.libs.Json;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
 /**
  * Representa un intervalo de tiempo. Esta construido mediante un patron
  * composite. Cada rango tiene un punto inicial y final.
@@ -68,5 +72,9 @@ public class RangeTime implements Time {
 				
 		return "From " + start.toLowerCase() + "to " + end.toLowerCase();
 	}
+	
+	public static JsonNode toJson(RangeTime range) {
+		return Json.toJson(range);
+	  }
 
 }

@@ -4,6 +4,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import play.libs.Json;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
 /**
  * Representa el objeto de estudio de una observacion.
  * 
@@ -46,6 +50,9 @@ public class Indicator {
 		return name;
 	}
 	
+	public static JsonNode toJson(Indicator indicator) {
+		return Json.toJson(indicator);
+	  }
 	
 
 }

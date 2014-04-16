@@ -4,6 +4,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import play.libs.Json;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
 /**
  * Representa una organizacion compuesta de otras organizaciones.
  * 
@@ -72,6 +76,10 @@ public class ComplexOrganization extends Organization {
 		
 		return users;
 	}
+	
+	public static JsonNode toJson(ComplexOrganization organization) {
+		return Json.toJson(organization);
+	  }
 
 
 }

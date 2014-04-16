@@ -2,14 +2,25 @@ package models;
 
 import java.util.Date;
 
+import javax.management.RuntimeErrorException;
+
+import play.libs.Json;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+
 /**
  * Representa una observacion.
  * 
  * @author Sergio
  * 
  */
-public class Observation {
 
+public class Observation {
+	
 	private Time time;
 	private String value;
 	private String measure;
@@ -70,5 +81,19 @@ public class Observation {
 				+ provider + ".";
 
 	}
+	
+	public String toJson() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("{");
+		sb.append("\t\"time\": ").append(time.toString());
+		sb.append("\t\"value\": ").append(value);
+		sb.append("\t\"measure\": ").append(measure);
+		sb.append("\t\"indicator\": ").append(indicator.toString());
+		sb.append("\t\"area\": ").append(area.toString());
+		sb.append("\t\"provider\": ").append(provider.toString());
+		sb.append("\t\"publishDate\": ").append(publishDate.toString());
+		sb.append("}");
+		return sb.toString();
+	  }
 
 }
