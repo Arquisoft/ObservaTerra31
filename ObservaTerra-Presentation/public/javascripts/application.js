@@ -40,14 +40,16 @@ $(document).ready(
 		 */
 			function drawBarsBootstraps() {
 				
-				var max = data.reduce (function(previous,current) { 
+				
+				var values = data.map (function(d) { return d.attr("data-value").valueOf();});
+				
+				maxValue = values.reduce (function(previous,current) { 
                     return previous > current ? 
                     		previous
                     		: current;
                 });
 				
-				alert(max);
-				
+
 				d3.selectAll(".progress").remove();
 				d3.selectAll(".progress-bar progress-bar-danger").remove();
 				
@@ -70,24 +72,29 @@ $(document).ready(
 						function() {
 							$(this).attr(
 									"style",
-									"width: " + $(this).attr("aria-valuenow")
+									"width: " + widthValue($(this).attr("aria-valuenow"), maxValue)
 											+ "%");
 						});
 
+			}
+			
+			
+			function widthValue (elementValue, maxValue) {
+				return maxValue <= 100 ? elementValue : (elementValue/maxValue) * 100;
 			}
 			
 	   /**
 		* Función que añade el componente contenedor de las gráficas.
 		*/
 			function appendChartDiv() {
-				var divChart = $('<h2>Chart</h2>'
-						+ '<br />' + '<div class="panel panel-success">'
+				var divChart =  '<h2>Chart</h2><br><div class="panel panel-success"data-spy="affix" data-offset-top="90">'
 						+ '<div class="panel-heading">'
 						+ '<h3 class="panel-title">Chart</h3>' + '</div>'
 						+ '<div class="panel-body" id="chart"></div>'
-						+ '</div>');
+						+ '</div>';
+				
 
-				$("#divChart").append(divChart);
+				$("#divLeft").append(divChart);
 			}
 			
 			/**

@@ -2,29 +2,29 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-3" id="divChart"></div>
-		<div class="col-xs-12 col-sm-6 col-md-8" id="divMain">
+		<div class="col-md-3" id="divLeft"> 
+		</div>
+		<div class="col-xs-12 col-sm-6" id="divMain">
 			<h2>Observations</h2>
 			<br />
 			<div class="list-group" id="observations">
-				@for(observation <- observations) { 
-				<a href="#"
+				@for(observation <- observations) { <a href="#"
 					class="list-group-item" data-toggle="modal"
 					data-value="@observation.getValue()"
 					data-date="@observation.getTime()"
 					data-area="@observation.getArea()"
 					data-measure="@observation.getMeasure()"
 					data-provider="@observation.getProvider()"
-					data-indicator="@observation.getIndicator()"
-					>
-						<h5 class="list-group-item-heading">@observation</h5>
+					data-indicator="@observation.getIndicator()">
+					<h5 class="list-group-item-heading">@observation</h5>
 					<p class="list-group-item-text">
-						<h6 class="text-right">@observation.getPublishDate()</h6>
+					<h6 class="text-right">@observation.getPublishDate()</h6>
 					</p>
 
 				</a> }
 			</div>
 		</div>
+	</div>
 	</div>
 
 

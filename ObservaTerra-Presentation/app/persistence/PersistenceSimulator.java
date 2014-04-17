@@ -214,19 +214,19 @@ public class PersistenceSimulator {
 		observations.add(ob_criminal_rate_4);
 		observations.add(ob_criminal_rate_5);
 
-		Observation ob_population_1 = new Observation(_2k5, "28.000.000.000",
+		Observation ob_population_1 = new Observation(_2k5, "28000000000",
 				"habitants", population, china, google,
 				dateParser.parse("20010-08-10"));
-		Observation ob_population_2 = new Observation(_2k5, "100.000",
+		Observation ob_population_2 = new Observation(_2k5, "10000000000",
 				"habitants", population, baltimore, google,
 				dateParser.parse("20010-08-10"));
-		Observation ob_population_3 = new Observation(_2k5, "28.000.000",
+		Observation ob_population_3 = new Observation(_2k5, "30000000000",
 				"habitants", population, canada, google,
 				dateParser.parse("20010-08-10"));
-		Observation ob_population_4 = new Observation(_2k5, "21.000.000.000",
+		Observation ob_population_4 = new Observation(_2k5, "21000000000",
 				"habitants", population, usa, google,
 				dateParser.parse("20010-08-10"));
-		Observation ob_population_5 = new Observation(_2k5, "11.000.000.000",
+		Observation ob_population_5 = new Observation(_2k5, "11000000000",
 				"habitants", population, brazil, google,
 				dateParser.parse("20010-08-10"));
 

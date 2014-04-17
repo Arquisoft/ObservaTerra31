@@ -1,13 +1,5 @@
-import play.*;
-import play.libs.*;
-
-import java.util.*;
-
-import models.*;
-
-import com.avaje.ebean.*;
-
-import models.Observation;
+import play.Application;
+import play.GlobalSettings;
 
 
 public class Global extends GlobalSettings {
@@ -18,7 +10,6 @@ public class Global extends GlobalSettings {
     
 	static class InitialData {
 		public static void insert(Application app) {
-			System.out.println("Real nigga shit.");
 			/*if (Country.all().isEmpty()) {
 				
 				@SuppressWarnings("unchecked")

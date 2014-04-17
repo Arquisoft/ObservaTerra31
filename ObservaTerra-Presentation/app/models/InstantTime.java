@@ -1,8 +1,5 @@
 package models;
 
-import play.libs.Json;
-
-import com.fasterxml.jackson.databind.JsonNode;
 
 public class InstantTime implements Time {
 
