@@ -11,6 +11,7 @@ import java.util.Date;
 
 public class Observation {
 	
+	private Long id;
 	private Time time;
 	private String value;
 	private String measure;
@@ -19,10 +20,11 @@ public class Observation {
 	private Organization provider;
 	private Date publishDate;
 
-	public Observation(Time time, String value, String measure,
+	public Observation(Long id, Time time, String value, String measure,
 			Indicator indicator, Area area, Organization provider,
 			Date publishDate) {
-		super();
+		
+		this.id= id;
 		this.time = time;
 		this.value = value;
 		this.measure = measure;
@@ -85,5 +87,11 @@ public class Observation {
 		sb.append("}");
 		return sb.toString();
 	  }
+
+	public Long getId() {
+		return id;
+	}
+	
+	
 
 }

@@ -1,3 +1,4 @@
+
 $(document).ready(
 		function() {
 			
@@ -23,6 +24,7 @@ $(document).ready(
 		 * Función que dibuja barras simples.
 		 */
 			function draw() {
+				
 				d3.selectAll(".bar").remove();
 
 				d3.select("#chart").selectAll(".panel-body").data(data).enter()
@@ -51,7 +53,7 @@ $(document).ready(
 				
 
 				d3.selectAll(".progress").remove();
-				d3.selectAll(".progress-bar progress-bar-danger").remove();
+				d3.selectAll(".progress-bar-danger").remove();
 				
 				
 				d3.select("#chart")
@@ -87,7 +89,7 @@ $(document).ready(
 		* Función que añade el componente contenedor de las gráficas.
 		*/
 			function appendChartDiv() {
-				var divChart =  '<h2>Chart</h2><br><div class="panel panel-success"data-spy="affix" data-offset-top="90">'
+				var divChart =  '<h2>Chart</h2><br><div class="panel panel-success" id="divChart">'
 						+ '<div class="panel-heading">'
 						+ '<h3 class="panel-title">Chart</h3>' + '</div>'
 						+ '<div class="panel-body" id="chart"></div>'
@@ -124,13 +126,18 @@ $(document).ready(
 						}
 						
 						function deleteData(element) {
-							var i = data.indexOf(element);
-							if (i != -1)
-								data.splice(i, 1);
+							var index;
+							for (var i = 0; i < data.length; i++)
+								if(data[i].attr("data-id") == element.attr("data-id"))
+									index = i;
+							
+							
+							if (index != -1)
+								data.splice(index, 1);
 							element.removeClass("list-group-item active")
 								   .addClass("list-group-item");
 							if (data.length == 0)
-								$("#divChart").children().remove();
+								$("#divLeft").children().remove();
 							return data;
 						}
 						
@@ -163,5 +170,6 @@ $(document).ready(
 						
 						drawBarsBootstraps();
 					});
+					
 
 		});

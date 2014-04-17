@@ -29,6 +29,7 @@ public class PersistenceSimulator {
 	private List<Indicator> indicators;
 	private List<Observation> observations;
 	private List<User> users;
+	private Long counter = 1L;
 
 	private PersistenceSimulator() {
 		try {
@@ -179,15 +180,15 @@ public class PersistenceSimulator {
 
 		SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd");
 
-		Observation ob_hiv_1 = new Observation(_2k3, "10", "%", hiv, brazil,
+		Observation ob_hiv_1 = new Observation(++counter, _2k3, "10", "%", hiv, brazil,
 				wshh, dateParser.parse("2004-08-10"));
-		Observation ob_hiv_2 = new Observation(_2k3, "60", "%", hiv, usa, wshh,
+		Observation ob_hiv_2 = new Observation(++counter,_2k3, "60", "%", hiv, usa, wshh,
 				dateParser.parse("2004-08-10"));
-		Observation ob_hiv_3 = new Observation(_2k3, "40", "%", hiv, canada,
+		Observation ob_hiv_3 = new Observation(++counter,_2k3, "40", "%", hiv, canada,
 				wshh, dateParser.parse("2004-08-10"));
-		Observation ob_hiv_4 = new Observation(_2k3, "20", "%", hiv, crimea,
+		Observation ob_hiv_4 = new Observation(++counter,_2k3, "20", "%", hiv, crimea,
 				wshh, dateParser.parse("2004-08-10"));
-		Observation ob_hiv_5 = new Observation(_2k3, "100", "%", hiv,
+		Observation ob_hiv_5 = new Observation(++counter,_2k3, "100", "%", hiv,
 				baltimore, wshh, dateParser.parse("2004-08-10"));
 
 		observations.add(ob_hiv_1);
@@ -195,17 +196,17 @@ public class PersistenceSimulator {
 		observations.add(ob_hiv_3);
 		observations.add(ob_hiv_4);
 		observations.add(ob_hiv_5);
-
-		Observation ob_criminal_rate_1 = new Observation(_2k4, "10", "%",
+		
+		Observation ob_criminal_rate_1 = new Observation(++counter,_2k4, "10", "%",
 				criminalRate, usa, microsoft, dateParser.parse("2007-08-10"));
-		Observation ob_criminal_rate_2 = new Observation(_2k4, "40", "%",
+		Observation ob_criminal_rate_2 = new Observation(++counter,_2k4, "40", "%",
 				criminalRate, brazil, microsoft, dateParser.parse("2007-08-10"));
-		Observation ob_criminal_rate_3 = new Observation(_2k4, "60", "%",
+		Observation ob_criminal_rate_3 = new Observation(++counter,_2k4, "60", "%",
 				criminalRate, baltimore, microsoft,
 				dateParser.parse("2007-08-10"));
-		Observation ob_criminal_rate_4 = new Observation(_2k4, "20", "%",
+		Observation ob_criminal_rate_4 = new Observation(++counter,_2k4, "20", "%",
 				criminalRate, crimea, microsoft, dateParser.parse("2007-08-10"));
-		Observation ob_criminal_rate_5 = new Observation(_2k4, "50", "%",
+		Observation ob_criminal_rate_5 = new Observation(++counter,_2k4, "50", "%",
 				criminalRate, canada, microsoft, dateParser.parse("2007-08-10"));
 
 		observations.add(ob_criminal_rate_1);
@@ -214,19 +215,19 @@ public class PersistenceSimulator {
 		observations.add(ob_criminal_rate_4);
 		observations.add(ob_criminal_rate_5);
 
-		Observation ob_population_1 = new Observation(_2k5, "28000000000",
+		Observation ob_population_1 = new Observation(++counter,_2k5, "28000000000",
 				"habitants", population, china, google,
 				dateParser.parse("20010-08-10"));
-		Observation ob_population_2 = new Observation(_2k5, "10000000000",
+		Observation ob_population_2 = new Observation(++counter,_2k5, "10000000000",
 				"habitants", population, baltimore, google,
 				dateParser.parse("20010-08-10"));
-		Observation ob_population_3 = new Observation(_2k5, "30000000000",
+		Observation ob_population_3 = new Observation(++counter,_2k5, "30000000000",
 				"habitants", population, canada, google,
 				dateParser.parse("20010-08-10"));
-		Observation ob_population_4 = new Observation(_2k5, "21000000000",
+		Observation ob_population_4 = new Observation(++counter,_2k5, "21000000000",
 				"habitants", population, usa, google,
 				dateParser.parse("20010-08-10"));
-		Observation ob_population_5 = new Observation(_2k5, "11000000000",
+		Observation ob_population_5 = new Observation(++counter,_2k5, "11000000000",
 				"habitants", population, brazil, google,
 				dateParser.parse("20010-08-10"));
 
@@ -236,15 +237,15 @@ public class PersistenceSimulator {
 		observations.add(ob_population_4);
 		observations.add(ob_population_5);
 
-		Observation ob_hiphop_1 = new Observation(_2k7, "80", "%", hiphop, usa,
+		Observation ob_hiphop_1 = new Observation(++counter,_2k7, "80", "%", hiphop, usa,
 				wshh, dateParser.parse("2012-08-10"));
-		Observation ob_hiphop_2 = new Observation(_2k7, "80", "%", hiphop,
+		Observation ob_hiphop_2 = new Observation(++counter,_2k7, "80", "%", hiphop,
 				china, wshh, dateParser.parse("2012-08-10"));
-		Observation ob_hiphop_3 = new Observation(_2k7, "20", "%", hiphop,
+		Observation ob_hiphop_3 = new Observation(++counter,_2k7, "20", "%", hiphop,
 				canada, wshh, dateParser.parse("2012-08-10"));
-		Observation ob_hiphop_4 = new Observation(_2k7, "50", "%", hiphop,
+		Observation ob_hiphop_4 = new Observation(++counter,_2k7, "50", "%", hiphop,
 				brazil, wshh, dateParser.parse("2012-08-10"));
-		Observation ob_hiphop_5 = new Observation(_2k7, "90", "%", hiphop,
+		Observation ob_hiphop_5 = new Observation(++counter,_2k7, "90", "%", hiphop,
 				baltimore, wshh, dateParser.parse("2012-08-10"));
 
 		observations.add(ob_hiphop_1);
