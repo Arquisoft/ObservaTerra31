@@ -61,14 +61,17 @@ $(document).ready(
 				.data(data)
 				.enter()
 				.append("div")
-				.attr("class", "progress")
+				.attr("class", "progress progress-striped active")
 				.append("div")
 				.attr("role", "progressbar")
+				.attr("animation", "true")
 				.attr("class","progress-bar progress-bar-danger")
 				.attr("aria-valuemin", "0")
 				.attr("aria-valuemax", "100")
+				.attr("data-content", function(d) { var x = d.children("h5").text(); return x; })
+				.attr("data-trigger", "click")
 				.attr("aria-valuenow", function(d) { return d.attr("data-value"); })
-				.text(function(d) { return d.attr("data-value") + (((x = d.attr("data-measure")).lenght) != 1 ? " "+ x: x); });
+				.text(function(d) { return d.attr("data-value") + (((x = d.attr("data-measure")).lenght) != 1 ? " "+ x: x)});
 
 				$(".progress-bar").each(
 						function() {
@@ -77,6 +80,16 @@ $(document).ready(
 									"width: " + widthValue($(this).attr("aria-valuenow"), maxValue)
 											+ "%");
 						});
+				
+				
+				 $('.progress-bar').popover({
+				        content: $(this).attr("data-content"),
+				        trigger: 'hover',
+				        animation: 'true',
+				        delay: '500',
+				        placement: 'bottom'
+				       
+				    });
 
 			}
 			

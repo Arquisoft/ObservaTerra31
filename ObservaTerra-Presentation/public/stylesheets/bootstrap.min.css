@@ -4566,7 +4566,7 @@ a.thumbnail.active {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
 }
 .progress-bar-danger {
-  background-color: #e74c3c;
+  background-color: #323232; /*! Color barra*/
 }
 .progress-striped .progress-bar-danger {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -5324,7 +5324,7 @@ button.close {
 .popover-title {
   margin: 0;
   padding: 8px 14px;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: normal;
   line-height: 18px;
   background-color: #f7f7f7;
@@ -5332,7 +5332,8 @@ button.close {
   border-radius: 5px 5px 0 0;
 }
 .popover-content {
-  padding: 9px 14px;
+  padding: 9px 15px;
+  font-size: 13px;
 }
 .popover > .arrow,
 .popover > .arrow:after {
@@ -5944,12 +5945,13 @@ input:focus {
   opacity: 1;
 }
 .progress {
-  height: 10px;
+  height: 15px;
+  font-weight: bold;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 .progress .progress-bar {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 10px;
 }
 .well {
