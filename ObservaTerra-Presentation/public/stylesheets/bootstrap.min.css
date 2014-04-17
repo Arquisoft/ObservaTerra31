@@ -3830,10 +3830,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .navbar-left {
     float: left !important;
+    padding-left:40px;
   }
   .navbar-right {
     float: right !important;
+    padding-right: 20px;
   }
+  
 }
 .navbar-form {
   margin-left: -15px;

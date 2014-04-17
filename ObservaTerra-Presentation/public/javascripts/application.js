@@ -42,7 +42,6 @@ $(document).ready(
 		 */
 			function drawBarsBootstraps() {
 				
-				
 				var values = data.map (function(d) { return d.attr("data-value").valueOf();});
 				
 				maxValue = values.reduce (function(previous,current) { 
