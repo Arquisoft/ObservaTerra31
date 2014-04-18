@@ -1,5 +1,5 @@
-name = nombre
-create = Crear
+name 				= nombre
+create 				= Crear
 Wellcome			= Bienvenido al portal ObservaTerra
 Country				= País
 Indicator			= Indicador

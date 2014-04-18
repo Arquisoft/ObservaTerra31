@@ -1,12 +1,14 @@
-@(message: String, observations: List[Observation]) @navbarLoggedUser {
+@(message: String, observations: List[Observation]) 
+@import play.i18n.Messages
+
+@navbarLoggedUser {
 
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-3" id="divLeft"> 
 		</div>
-		<div class="col-xs-12 col-sm-6" id="divMain">
-			<h2>Observations</h2>
-			<br />
+		<div class="col-xs-12-offset-6 col-sm-6" id="divMain">
+			<h2>@Messages.get("observations")</h2>
 			<div class="list-group" id="observations">
 				@for(observation <- observations) { <a href="#"
 					class="list-group-item" data-toggle="modal"

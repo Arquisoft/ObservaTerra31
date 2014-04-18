@@ -5966,5 +5966,11 @@ input:focus {
     position: fixed;
     width:23%;
   }
+   
+  body {
+  	padding-top: 80px;
+  }
+  
+
 
 
