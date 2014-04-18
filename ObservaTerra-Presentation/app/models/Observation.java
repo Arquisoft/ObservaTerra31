@@ -77,13 +77,13 @@ public class Observation {
 	public String toJson() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{");
-		sb.append("\t\"time\": ").append(time.toString());
-		sb.append("\t\"value\": ").append(value);
-		sb.append("\t\"measure\": ").append(measure);
-		sb.append("\t\"indicator\": ").append(indicator.toString());
-		sb.append("\t\"area\": ").append(area.toString());
-		sb.append("\t\"provider\": ").append(provider.toString());
-		sb.append("\t\"publishDate\": ").append(publishDate.toString());
+		sb.append("\"time\": ").append("\"" +time.toString() + "\"");
+		sb.append(",\"value\": ").append("\"" +value +"\"");
+		sb.append(",\"measure\": ").append("\"" + measure+ "\"" );
+		sb.append(",\"indicator\": ").append("\"" + indicator.toString() +"\"");
+		sb.append(",\"area\": ").append("\"" + area.toString() + "\"");
+		sb.append(",\"provider\": ").append("\"" +provider.toString()+ "\"");
+		sb.append(",\"publishDate\": ").append("\"" +publishDate.toString()+ "\"");
 		sb.append("}");
 		return sb.toString();
 	  }

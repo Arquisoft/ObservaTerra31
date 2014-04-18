@@ -6,6 +6,34 @@ $(document).ready(
 			var data = []
 			
 			
+			function ajaxObservationReload () {
+				$("#divMain").children().remove();
+				
+				    $.ajax(
+				       { url:"/api/observations/sida",
+				    	 dataType: 'json',
+				         success: function(data) {
+				        	 
+				        	 alert(data);
+				        	
+				         }
+				        	 
+				        	 
+				        	 
+				        	 
+				        	 /*function(data){
+				      	 		$('#divToFill').html(' ');
+				      	 		$('#divToFill').append('<ul>');
+				      			for (var i in data) {
+				        			$('#divToFill').append('<li>Country: ' + data[i].name);
+				      			}
+				      	 		$('#divToFill').append('</ul>');
+				      	 }*/
+					   });
+				 
+				}
+			
+			
 /**
 			
 			***********************************************************
@@ -125,6 +153,15 @@ $(document).ready(
 			
 			*/
 			
+			
+			
+			$("#searchTextArea").keyup(function (event) {
+				
+				var keycode = (event.keyCode ? event.keyCode : event.which);
+				console.log("uknowwahtI'msayin huh");
+				ajaxObservationReload();
+				console.log("realshit");
+			});
 
 			$("#observations").find(".list-group-item").on(
 					'click', function() {
