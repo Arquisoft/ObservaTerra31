@@ -155,7 +155,7 @@ public abstract class Organization {
 			ComplexOrganization sampleOrganization);
 
 	public abstract Organization removeOrganization(Organization organization);
-
+	
 	public abstract Set<Organization> getOrganizations();
 
 	public abstract Set<User> getUsers();

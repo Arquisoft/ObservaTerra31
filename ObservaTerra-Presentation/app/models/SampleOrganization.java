@@ -24,6 +24,8 @@ public class SampleOrganization extends Organization {
 	@Override
 	public Organization addOrganization(String name, String site,
 			String acronym, Organization organization) {
+		if (this.getParent() != null && organization.getParent() != null)
+			return null;
 		Organization newOrganization = organization.appendOrganization(this);
 		if (newOrganization != null)
 			return newOrganization.setName(name).setAcronym(acronym)
@@ -40,6 +42,7 @@ public class SampleOrganization extends Organization {
 			Organization org = new ComplexOrganization("", "", "", organizations);
 			this.setParent(org);
 			sampleOrganization.setParent(org);
+			return org;
 		}
 		return null;
 	}

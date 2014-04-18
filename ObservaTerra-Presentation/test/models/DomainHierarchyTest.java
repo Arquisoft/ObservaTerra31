@@ -51,7 +51,7 @@ public class DomainHierarchyTest {
 	}
 
 	@Test
-	public void testComplexAppendOrganization() {
+	public void testComplexAppendRemoveOrganization() {
 		Organization apple = orgs.get("Apple");
 		Organization nike = orgs.get("Nike");
 		Organization wshh = orgs.get("World Star Hiphop");
@@ -74,12 +74,19 @@ public class DomainHierarchyTest {
 				"", wshh);
 		assertTrue(djKhaled2 == null);
 
-		Organization illuminati = djKhaled.addOrganization("Illuminati", "TRIANGLE",
-				"KAYNEWESTWHYULEFTNIKE???", result);
-		
+		Organization illuminati = djKhaled.addOrganization("Illuminati",
+				"TRIANGLE", "KAYNEWESTWHYULEFTNIKE???", result);
+
 		assertTrue(illuminati != null);
 		assertTrue(djKhaled.getParent().equals(illuminati));
 		assertTrue(result.getParent().equals(illuminati));
+
+		illuminati.removeOrganization(djKhaled);
+		assertTrue(djKhaled.getParent() == null);
+		assertFalse(illuminati.getOrganizations().contains(djKhaled));
+		Organization revert = illuminati.addOrganization("", "", "", djKhaled);
+		assertTrue(!revert.equals(illuminati));
+		assertTrue(revert.getName().isEmpty());
 	}
 
 }

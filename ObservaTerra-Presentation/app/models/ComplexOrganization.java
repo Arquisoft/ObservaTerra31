@@ -28,15 +28,23 @@ public class ComplexOrganization extends Organization {
 	@Override
 	public Organization addOrganization(String name, String site,
 			String acronym, Organization organization) {
+		if (this.getParent() != null && organization.getParent() != null)
+			return null;
 		Organization newOrganization = organization.appendOrganization(this);
-		if (newOrganization != null)
+		
+		if(newOrganization == null)
+			return null;
+		else if (newOrganization.equals(this))
+			return this;
+		else
 			return newOrganization.setName(name).setAcronym(acronym)
 					.setSite(site);
-		return null;
+		
 	}
 
 	@Override
-	protected Organization appendOrganization(SampleOrganization sampleOrganization) {
+	protected Organization appendOrganization(
+			SampleOrganization sampleOrganization) {
 		if (sampleOrganization.getParent() == null) {
 			sampleOrganization.setParent(this);
 			organizations.add(sampleOrganization);
@@ -51,9 +59,11 @@ public class ComplexOrganization extends Organization {
 		Set<Organization> organizations = new HashSet<Organization>();
 		organizations.addAll(complexOrganization.organizations);
 		if (organizations.addAll(this.organizations)) {
-			Organization org = new ComplexOrganization("", "", "", organizations);
+			Organization org = new ComplexOrganization("", "", "",
+					organizations);
 			this.setParent(org);
 			complexOrganization.setParent(org);
+			return org;
 		}
 		return null;
 
@@ -61,11 +71,16 @@ public class ComplexOrganization extends Organization {
 
 	@Override
 	public Organization removeOrganization(Organization organization) {
+		
+		
+		for (Organization org : organization.getOrganizations())
+			organizations.remove(org);
 		organizations.remove(organization);
 		organization.setParent(null);
 		return this;
 	}
-
+	
+	
 	@Override
 	public Set<Organization> getOrganizations() {
 		return Collections.unmodifiableSet(this.organizations);
@@ -87,5 +102,7 @@ public class ComplexOrganization extends Organization {
 	public static JsonNode toJson(ComplexOrganization organization) {
 		return Json.toJson(organization);
 	}
+
+	
 
 }
