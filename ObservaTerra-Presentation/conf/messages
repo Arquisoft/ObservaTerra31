@@ -34,3 +34,9 @@ organizations		= My Organizations
 follows				= My Follows
 settings 			= My Account Settings
 exit				= Exit
+language 			= Language
+submit 				= Submit
+select 				= Select language
+spa 				= Spanish
+en					= English
+

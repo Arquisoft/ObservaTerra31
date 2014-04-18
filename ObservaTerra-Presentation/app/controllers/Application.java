@@ -27,6 +27,18 @@ public class Application extends Controller {
     public static Result bars(String indicator) {
     	return ok(comparator.render(PersistenceSimulator.getInstance().findHVIObservations()));
     }*/
+    
+    public static Result change(String langCode) {
+
+    	changeLang(langCode);
+
+    	return ok();
+
+    	}
+    
+    public static Result idioma(){
+    	return TODO;
+    }
    
 
 }
