@@ -25,3 +25,12 @@ file.uploaded		= Uploaded file with {0} observations
 read.excel.error	= Error reading excel file
 upload.excel.file	= Upload Excel File
 upload				= Upload
+
+home 				= Home
+discover			= Discover
+log					= Login
+account				= Account
+organizations		= My Organizations
+follows				= My Follows
+settings 			= My Account Settings
+exit				= Exit

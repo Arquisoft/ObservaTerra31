@@ -26,3 +26,11 @@ read.excel.error	= Error al leer fichero Excel
 upload.excel.file	= Cargar fichero Excel
 upload				= Cargar
 
+home 				= Principal
+discover			= Descubre
+log					= Entrar
+account				= Cuenta
+organizations		= Mis organizaciones
+follows				= Siguiendo
+settings 			= Ajustes
+exit				= Salir

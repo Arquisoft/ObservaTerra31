@@ -1,4 +1,6 @@
 @(userOptions: Html) 
+@()(implicit l:Lang)
+@import play.i18n.Messages
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="container-fluid">
@@ -17,8 +19,9 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#">Discover</a></li>
+						<li class="active"><a href="#">@Messages.get("home")</a></li>
+						<li><a href="#">@Messages.get("discover")</a></li>
+						<li><a href="#">@Messages.get("log")</a></li>
 					</ul>
 					<form class="navbar-form navbar-left" role="search">
 						<div class="form-group">
