@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.junit.Test;
 import org.junit.Before;
 

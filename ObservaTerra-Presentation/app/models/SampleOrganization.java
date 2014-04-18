@@ -36,8 +36,11 @@ public class SampleOrganization extends Organization {
 			SampleOrganization sampleOrganization) {
 		Set<Organization> organizations = new HashSet<Organization>();
 		organizations.add(sampleOrganization);
-		if (organizations.add(this))
-			return new ComplexOrganization("", "", "", organizations);
+		if (organizations.add(this)) {
+			Organization org = new ComplexOrganization("", "", "", organizations);
+			this.setParent(org);
+			sampleOrganization.setParent(org);
+		}
 		return null;
 	}
 
