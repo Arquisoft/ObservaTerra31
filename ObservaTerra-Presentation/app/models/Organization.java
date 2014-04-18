@@ -18,6 +18,7 @@ public abstract class Organization {
 	private String name;
 	private String site;
 	private String acronym;
+	private Organization parent;
 
 	protected Set<Observation> observations = new HashSet<Observation>();
 	protected Set<Membership> memberships = new HashSet<Membership>();
@@ -27,6 +28,14 @@ public abstract class Organization {
 		this.name = name;
 		this.site = site;
 		this.acronym = acronym;
+	}
+	
+	public Organization(String name, String site, String acronym, Organization parent) {
+		super();
+		this.name = name;
+		this.site = site;
+		this.acronym = acronym;
+		this.parent = parent;
 	}
 
 	public String getName() {
@@ -39,6 +48,14 @@ public abstract class Organization {
 
 	public String getAcronym() {
 		return acronym;
+	}
+	
+	public Organization getParent() {
+		return parent;
+	}
+
+	public void setParent(Organization parent) {
+		this.parent = parent;
 	}
 
 	protected Organization setName(String name) {
@@ -147,6 +164,8 @@ public abstract class Organization {
 	public String toString() {
 		return name;
 	}
+
+	
 	
 
 	

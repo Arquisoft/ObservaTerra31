@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.JsonNode;
  */
 
 public class ComplexOrganization extends Organization {
-	
+
 	private Set<Organization> organizations = new HashSet<Organization>();
 
 	public ComplexOrganization(String name, String site, String acronym,
@@ -36,10 +36,13 @@ public class ComplexOrganization extends Organization {
 	}
 
 	@Override
-	protected Organization appendOrganization(
-			SampleOrganization sampleOrganization) {
-		organizations.add(sampleOrganization);
-		return this;
+	protected Organization appendOrganization(SampleOrganization sampleOrganization) {
+		if (sampleOrganization.getParent() == null) {
+			sampleOrganization.setParent(this);
+			organizations.add(sampleOrganization);
+			return this;
+		}
+		return null;
 	}
 
 	@Override
@@ -56,6 +59,7 @@ public class ComplexOrganization extends Organization {
 	@Override
 	public Organization removeOrganization(Organization organization) {
 		organizations.remove(organization);
+		organization.setParent(null);
 		return this;
 	}
 
@@ -67,19 +71,18 @@ public class ComplexOrganization extends Organization {
 	@Override
 	public Set<User> getUsers() {
 		Set<User> users = new HashSet<User>();
-		
+
 		for (Membership mmb : this.memberships)
 			users.add(mmb.getUser());
-		
+
 		for (Organization org : this.organizations)
 			users.addAll(org.getUsers());
-		
+
 		return users;
 	}
-	
+
 	public static JsonNode toJson(ComplexOrganization organization) {
 		return Json.toJson(organization);
-	  }
-
+	}
 
 }
