@@ -2,8 +2,6 @@
 $(document).ready(
 		function() {
 			
-		// Array usado para almacenar temporalmente los datos
-			//var data = []
 				
 			
 /**
@@ -47,13 +45,6 @@ $(document).ready(
 			}
 			
 			function deleteData(element) {
-				/*var index;
-				for (var i = 0; i < array.length; i++)
-					if(array[i].attr("data-id") == element.attr("data-id"))
-						index = i;
-				
-				if (index != -1)
-					array.splice(index, 1);*/
 				element.removeClass("list-group-item active")
 					   .addClass("list-group-item");
 				var array= $("#observations").children(".active");
@@ -79,7 +70,6 @@ $(document).ready(
 					
 					var newMeasure = element.attr("data-measure");
 					var oldMeasure = head;
-					//var oldMeasure = head.valueOf().attr("data-measure");
 					return newMeasure == "%" && oldMeasure == "%"
 						||  newMeasure != "%" && oldMeasure != "%";
 				}
@@ -87,8 +77,8 @@ $(document).ready(
 			
 			
 			function actionClick(element) {
-				
-				if (element.attr("class") == "list-group-item active")
+				var isThereActiveElements = $("#observations").children(".active").length;
+				if (element.attr("class") == "list-group-item active" && isThereActiveElements)
 					deleteData(element);
 				else
 					addData(element);
@@ -119,7 +109,6 @@ $(document).ready(
 					if(values[i] > maxValue)
 						maxValue = values[i];
 				
-				console.log("MaxValue: " + maxValue);
 			
 				
 				d3.selectAll(".progress").remove();
@@ -164,6 +153,7 @@ $(document).ready(
 			
 			
 			function observationRequest(indicator) {
+				$("#observations").children(".active").removeClass();
 				$("#observations").children().remove();
 				$("#divLeft").children().remove();;
 				$.ajax({
@@ -198,15 +188,15 @@ $(document).ready(
 								
 								$("#observations").append(taghead +body + footer);
 								$("#observations").children().last().addClass("list-group-item");
+								$("#observations").undelegate();
 								
-								$("#observations").delegate("a", "click", function() {
+								$("#observations").delegate(".list-group-item", "click", function() {
 									actionClick($(this));
-								});
-								
-								
+								});	
 								
 							}
-							
+						
+						
 
 					}
 				});
@@ -243,11 +233,7 @@ $(document).ready(
 			*/
 			
 
-			$("#searchTextArea").keyup(function(event){
-				if(event.keyCode == 13) {
-					observationRequest("sida");
-				}
-			});
+			
 	
 			
 
@@ -255,6 +241,11 @@ $(document).ready(
 					'click', function() {
 						actionClick($(this));
 					});
-					
+			
+			$("#search").submit(function (event) {
+				 alert( "Handler for .submit() called." );
+				 event.preventDefault();
+				 observationRequest($("#searchTextArea").val());
+			});					
 
 		});

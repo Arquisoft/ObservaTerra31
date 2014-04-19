@@ -22,8 +22,12 @@
 				<li><a href="#">@Messages.get("log")</a></li>
 				<li><a href="@routes.Application.idioma">@Messages.get("language")</a></li>
 			</ul>
-					<input type="text" placeholder="Search"
+			<form class="navbar-form navbar-left" role="search" id="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search"
 						id="searchTextArea">
+				</div>
+			</form>
 			<ul class="nav navbar-nav navbar-right">@userOptions
 			</ul>
 		</div>
