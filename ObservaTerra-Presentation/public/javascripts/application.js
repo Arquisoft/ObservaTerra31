@@ -3,7 +3,7 @@ $(document).ready(
 		function() {
 			
 		// Array usado para almacenar temporalmente los datos
-			var data = []
+			//var data = []
 				
 			
 /**
@@ -37,38 +37,37 @@ $(document).ready(
 			
 			
 			function addData(element) {
-				console.log("Entra en addData");
-				var data2 = [].concat(data);
-				if(!compatibleValues(element, data[0]))
+				var data2 = $("#observations").children(".active");
+				var measure = $("#observations").children(".active").data("measure");
+				if(!compatibleValues(element, measure))
 					clearData(data2);
 				data2.push(element);
-				console.log(data2);
 				element.addClass("list-group-item active");
-				return data;
+				return data2;
 			}
 			
 			function deleteData(element) {
-				var index;
-				for (var i = 0; i < data.length; i++)
-					if(data[i].attr("data-id") == element.attr("data-id"))
+				/*var index;
+				for (var i = 0; i < array.length; i++)
+					if(array[i].attr("data-id") == element.attr("data-id"))
 						index = i;
 				
-				
 				if (index != -1)
-					data.splice(index, 1);
+					array.splice(index, 1);*/
 				element.removeClass("list-group-item active")
 					   .addClass("list-group-item");
-				if (data.length == 0)
+				var array= $("#observations").children(".active");
+				if (array.length == 0)
 					$("#divLeft").children().remove();
-				return data;
+				return array;
 			}
 			
-			function clearData() {
-				data = [];
+			function clearData(array) {
+				array = [];
 				var x = $(".list-group-item active");
 				$(".list-group-item").removeClass("list-group-item active")
 				   .addClass("list-group-item");
-				return data;
+				return array;
 			}
 			
 			function compatibleValues(element, head) {
@@ -77,8 +76,10 @@ $(document).ready(
 					return true;
 				}
 				else {
+					
 					var newMeasure = element.attr("data-measure");
-					var oldMeasure = head.attr("data-measure");
+					var oldMeasure = head;
+					//var oldMeasure = head.valueOf().attr("data-measure");
 					return newMeasure == "%" && oldMeasure == "%"
 						||  newMeasure != "%" && oldMeasure != "%";
 				}
@@ -86,15 +87,22 @@ $(document).ready(
 			
 			
 			function actionClick(element) {
+				
 				if (element.attr("class") == "list-group-item active")
 					deleteData(element);
 				else
 					addData(element);
-				
 				drawBarsBootstraps();
+				
 			}
 			
-			
+			function getElementsFromBars () {
+				var ids = $(".progress").map (function(d) { return d.attr("data-id").valueOf();});
+				var elements = $("#divMain").children().filter(function() {
+					return ids.contains($(this).attr("data-id").valueOf());
+				});
+				return elements;
+			}
 			
 			
 			
@@ -102,44 +110,40 @@ $(document).ready(
 		 * Función que dibuja barras estilo bootstraps.
 		 */
 			function drawBarsBootstraps() {
+				var array = $("#observations").children(".active");
+				var elements = array.map (function() {return $(this).valueOf(); });
+				var values = array.map (function() { return parseInt($(this).data("value")); });
 				
-				var values = data.map (function(d) { return d.attr("data-value").valueOf();});
-				maxValue = values.reduce (function(previous,current) { 
-                    return previous > current ? 
-                    		previous
-                    		: current;
-                });
+				var maxValue = -1;
+				for (var i = 0 ; i < values.length; i++)
+					if(values[i] > maxValue)
+						maxValue = values[i];
 				
-
+				console.log("MaxValue: " + maxValue);
+			
+				
 				d3.selectAll(".progress").remove();
 				d3.selectAll(".progress-bar-danger").remove();
 				
 				
-				d3.select("#chart")
-				.selectAll(".panel-body")
-				.data(data)
-				.enter()
-				.append("div")
-				.attr("class", "progress progress-striped active")
-				.append("div")
-				.attr("role", "progressbar")
-				.attr("animation", "true")
-				.attr("class","progress-bar progress-bar-danger")
-				.attr("aria-valuemin", "0")
-				.attr("aria-valuemax", "100")
-				.attr("data-content", function(d) { var x = d.children("h5").text(); return x; })
-				.attr("data-trigger", "click")
-				.attr("aria-valuenow", function(d) { return d.attr("data-value"); })
-				.text(function(d) { return d.attr("data-value") + (((x = d.attr("data-measure")).lenght) != 1 ? " "+ x: x)});
-
-				$(".progress-bar").each(
-						function() {
-							$(this).attr(
-									"style",
-									"width: " + widthValue($(this).attr("aria-valuenow"), maxValue)
-											+ "%");
-						});
+				for (var i = 0 ; i < elements.length; i++) {
+					var x;
+					$("#chart").append("<div class=\"progress progress-striped active\"> </div>");
+					var progressBar = "<div role=\progressbar\" class=\"progress-bar progress-bar-danger\" aria-valuemin=\"0 \" aria-valuemax=\"100\" "
+										+ "data-id=\"" + elements[i].data("id") 
+										+ "\" data-content=\"" + elements[i].children("h5").text() 
+										+ "\" aria-valuenow=\"" + values[i]
+										+ "\" style=\"width: " + widthValue(values[i], parseInt(maxValue)) + "%"
+										+ "\" >" 
+										+ values[i] + ((x = elements[i].data("measure")).lenght > 1 ? " " + x : x )
+										+ "</div>"
+										
+					$("#chart").children().last().append(progressBar);
+					
+				}
+					
 				
+			
 				
 				 $('.progress-bar').popover({
 				        content: $(this).attr("data-content"),
@@ -160,7 +164,8 @@ $(document).ready(
 			
 			
 			function observationRequest(indicator) {
-				$("#observations").children(".list-group-item").remove();
+				$("#observations").children().remove();
+				$("#divLeft").children().remove();;
 				$.ajax({
 					url : "/api/observations/sida",
 					dataType : 'json',
@@ -168,7 +173,6 @@ $(document).ready(
 						for (var i in data)
 							for (var x in i) {
 								var obj = data[i][x].valueOf();
-								console.log(obj);
 								var ind = obj.indicator;
 								//var ind = indicator;
 								var value = obj.value;
