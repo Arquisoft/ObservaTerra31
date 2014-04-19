@@ -155,13 +155,6 @@ $(document).ready(
 			
 			
 			
-			$("#searchTextArea").keyup(function (event) {
-				
-				var keycode = (event.keyCode ? event.keyCode : event.which);
-				console.log("uknowwahtI'msayin huh");
-				ajaxObservationReload();
-				console.log("realshit");
-			});
 
 			$("#observations").find(".list-group-item").on(
 					'click', function() {

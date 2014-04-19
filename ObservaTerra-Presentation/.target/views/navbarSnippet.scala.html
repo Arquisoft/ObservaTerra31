@@ -1,38 +1,57 @@
-@(userOptions: Html) 
-@import play.i18n.Messages
+@(userOptions: Html) @import play.i18n.Messages
+
+<script type="text/javascript">
+
+
+	function ajaxObservationReload() {
+		console.log(1);
+		$.ajax({
+			
+			url : "/api/observations/sida",
+			dataType : 'json',
+			success :  function(data) {
+				console.log("ok");
+			},
+			error : function(data) {
+				console.log("shit");
+			}
+		});
+		console.log(2);
+	}
+</script>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">ObservaTerra</a>
-				</div>
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">ObservaTerra</a>
+		</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">@Messages.get("home")</a></li>
-						<li><a href="#">@Messages.get("discover")</a></li>
-						<li><a href="#">@Messages.get("log")</a></li>
-						<li><a href="@routes.Application.idioma">@Messages.get("language")</a></li>
-					</ul>
-					<form class="navbar-form navbar-left" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search" id="searchTextArea">
-						</div>
-					</form>
-					<ul class="nav navbar-nav navbar-right">
-						@userOptions
-					</ul>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="#">@Messages.get("home")</a></li>
+				<li><a href="#">@Messages.get("discover")</a></li>
+				<li><a href="#">@Messages.get("log")</a></li>
+				<li><a href="@routes.Application.idioma">@Messages.get("language")</a></li>
+			</ul>
+			<form class="navbar-form navbar-left" role="search" action="/" onsubmit="ajaxObservationReload()">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search"
+						id="searchTextArea">
 				</div>
-				<!-- /.navbar-collapse -->
-			</div>
-			<!-- /.container-fluid -->
-		</nav>
+			</form>
+			<ul class="nav navbar-nav navbar-right">@userOptions
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container-fluid -->
+</nav>

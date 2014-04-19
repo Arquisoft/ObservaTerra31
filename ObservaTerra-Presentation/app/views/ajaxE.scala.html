@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>AJAX</title>
+<script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		function ajax() {
+			$.ajax({
+
+				url : "/api/observations/sida",
+				dataType : 'json',
+				success : function(data) {
+					for (var i in data)
+						for (var x in i)
+						$(".list").append("<li>" + data[i][x].value + "</li>");
+
+				}
+			});
+		}
+	</script>
+	<input type="button" value="AJAX" onclick="ajax()" />
+	<div class="insert">
+		<ul class="list">
+		</ul>
+	</div>
+</body>
+</html>
