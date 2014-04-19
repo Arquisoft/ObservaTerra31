@@ -4,35 +4,7 @@ $(document).ready(
 			
 		// Array usado para almacenar temporalmente los datos
 			var data = []
-			
-			
-			function ajaxObservationReload () {
-				$("#divMain").children().remove();
 				
-				    $.ajax(
-				       { url:"/api/observations/sida",
-				    	 dataType: 'json',
-				         success: function(data) {
-				        	 
-				        	 alert(data);
-				        	
-				         }
-				        	 
-				        	 
-				        	 
-				        	 
-				        	 /*function(data){
-				      	 		$('#divToFill').html(' ');
-				      	 		$('#divToFill').append('<ul>');
-				      			for (var i in data) {
-				        			$('#divToFill').append('<li>Country: ' + data[i].name);
-				      			}
-				      	 		$('#divToFill').append('</ul>');
-				      	 }*/
-					   });
-				 
-				}
-			
 			
 /**
 			
@@ -64,6 +36,67 @@ $(document).ready(
 			}
 			
 			
+			function addData(element) {
+				console.log("Entra en addData");
+				var data2 = [].concat(data);
+				if(!compatibleValues(element, data[0]))
+					clearData(data2);
+				data2.push(element);
+				console.log(data2);
+				element.addClass("list-group-item active");
+				return data;
+			}
+			
+			function deleteData(element) {
+				var index;
+				for (var i = 0; i < data.length; i++)
+					if(data[i].attr("data-id") == element.attr("data-id"))
+						index = i;
+				
+				
+				if (index != -1)
+					data.splice(index, 1);
+				element.removeClass("list-group-item active")
+					   .addClass("list-group-item");
+				if (data.length == 0)
+					$("#divLeft").children().remove();
+				return data;
+			}
+			
+			function clearData() {
+				data = [];
+				var x = $(".list-group-item active");
+				$(".list-group-item").removeClass("list-group-item active")
+				   .addClass("list-group-item");
+				return data;
+			}
+			
+			function compatibleValues(element, head) {
+				if (head == null) {
+					appendChartDiv();
+					return true;
+				}
+				else {
+					var newMeasure = element.attr("data-measure");
+					var oldMeasure = head.attr("data-measure");
+					return newMeasure == "%" && oldMeasure == "%"
+						||  newMeasure != "%" && oldMeasure != "%";
+				}
+			}
+			
+			
+			function actionClick(element) {
+				if (element.attr("class") == "list-group-item active")
+					deleteData(element);
+				else
+					addData(element);
+				
+				drawBarsBootstraps();
+			}
+			
+			
+			
+			
 			
 		/**
 		 * Función que dibuja barras estilo bootstraps.
@@ -71,7 +104,6 @@ $(document).ready(
 			function drawBarsBootstraps() {
 				
 				var values = data.map (function(d) { return d.attr("data-value").valueOf();});
-				
 				maxValue = values.reduce (function(previous,current) { 
                     return previous > current ? 
                     		previous
@@ -125,6 +157,59 @@ $(document).ready(
 				return maxValue <= 100 ? elementValue : (elementValue/maxValue) * 100;
 			}
 			
+			
+			
+			function observationRequest(indicator) {
+				$("#observations").children(".list-group-item").remove();
+				$.ajax({
+					url : "/api/observations/sida",
+					dataType : 'json',
+					success : function(data) {
+						for (var i in data)
+							for (var x in i) {
+								var obj = data[i][x].valueOf();
+								console.log(obj);
+								var ind = obj.indicator;
+								//var ind = indicator;
+								var value = obj.value;
+								var measure = obj.measure;
+								var area = obj.area;
+								var provider = obj.provider;
+								var publishDate = obj.publishDate;
+								var time = obj.time;
+								var id = obj.id;
+								
+								var item = ind + " " + "at" + " " + time
+								+ " in " + " " + area + " " + " was "
+								+ " " + value + (measure.length == 1 ? "" : " ") + measure
+								+ " " + "by" + provider + ".";
+								
+								
+								var taghead = "<a href=\"#\" class=\"list-group-item\" data-toggle=\"modal\" data-value=\"" + value +
+									"\" data-indicator=\""+ ind + "\" data-measure=\""+ measure + "\" data-area=\"" + area + "\" data-provider=\"" + provider + "\" data-publish=\"" + publishDate +
+									"\" data-date=\"" + time + "\" data-id=\""+ id + "\">"
+								
+								var body = "<h5 class=\"list-group-item-heading\">" + item + "</h5>";
+								var footer = "<p class=\"list-group-item-text\"> <h6 class=\"text-right\">" + publishDate + "</h6> </p></a>";
+								
+								$("#observations").append(taghead +body + footer);
+								$("#observations").children().last().addClass("list-group-item");
+								
+								$("#observations").delegate("a", "click", function() {
+									actionClick($(this));
+								});
+								
+								
+								
+							}
+							
+
+					}
+				});
+				
+				
+			}
+			
 	   /**
 		* Función que añade el componente contenedor de las gráficas.
 		*/
@@ -153,64 +238,18 @@ $(document).ready(
 			
 			*/
 			
-			
+
+			$("#searchTextArea").keyup(function(event){
+				if(event.keyCode == 13) {
+					observationRequest("sida");
+				}
+			});
+	
 			
 
-			$("#observations").find(".list-group-item").on(
+			$(".list-group-item").on(
 					'click', function() {
-						
-						function addData(element) {
-							if(!compatibleValues(element, data[0]))
-								clearData();
-							data.push(element);
-							element.addClass("list-group-item active");
-							return data;
-						}
-						
-						function deleteData(element) {
-							var index;
-							for (var i = 0; i < data.length; i++)
-								if(data[i].attr("data-id") == element.attr("data-id"))
-									index = i;
-							
-							
-							if (index != -1)
-								data.splice(index, 1);
-							element.removeClass("list-group-item active")
-								   .addClass("list-group-item");
-							if (data.length == 0)
-								$("#divLeft").children().remove();
-							return data;
-						}
-						
-						function clearData() {
-							data = [];
-							var x = $(".list-group-item active");
-							$(".list-group-item").removeClass("list-group-item active")
-							   .addClass("list-group-item");
-							return data;
-						}
-						
-						function compatibleValues(element, head) {
-							if (head == null) {
-								appendChartDiv();
-								return true;
-							}
-							else {
-								var newMeasure = element.attr("data-measure");
-								var oldMeasure = head.attr("data-measure");
-								return newMeasure == "%" && oldMeasure == "%"
-									||  newMeasure != "%" && oldMeasure != "%";
-							}
-						}
-						
-						
-						if ($(this).attr("class") == "list-group-item active")
-							deleteData($(this));
-						else
-							addData($(this));
-						
-						drawBarsBootstraps();
+						actionClick($(this));
 					});
 					
 

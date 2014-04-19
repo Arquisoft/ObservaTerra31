@@ -1,25 +1,5 @@
 @(userOptions: Html) @import play.i18n.Messages
 
-<script type="text/javascript">
-
-
-	function ajaxObservationReload() {
-		console.log(1);
-		$.ajax({
-			
-			url : "/api/observations/sida",
-			dataType : 'json',
-			success :  function(data) {
-				console.log("ok");
-			},
-			error : function(data) {
-				console.log("shit");
-			}
-		});
-		console.log(2);
-	}
-</script>
-
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
@@ -42,12 +22,8 @@
 				<li><a href="#">@Messages.get("log")</a></li>
 				<li><a href="@routes.Application.idioma">@Messages.get("language")</a></li>
 			</ul>
-			<form class="navbar-form navbar-left" role="search" action="/" onsubmit="ajaxObservationReload()">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search"
+					<input type="text" placeholder="Search"
 						id="searchTextArea">
-				</div>
-			</form>
 			<ul class="nav navbar-nav navbar-right">@userOptions
 			</ul>
 		</div>

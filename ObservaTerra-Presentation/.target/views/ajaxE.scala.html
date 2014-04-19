@@ -1,25 +1,62 @@
+@import play.i18n.Messages
+
 <html>
 <head>
 <title>AJAX</title>
 <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/search.js")" type="text/javascript"></script>
+<script type="text/javascript">
+function observationRequest(indicator) {
+	
+	$.ajax({
+		url : "/api/observations/sida",
+		dataType : 'json',
+		success : function(data) {
+			for (var i in data)
+				for (var x in i) {
+					
+					var indicator = data[i][x].indicator;
+					var value = data[i][x].value;
+					var measure = data[i][x].measure;
+					var area = data[i][x].area;
+					var provider = data[i][x].provider;
+					var publishDate = data[i][x].publishDate;
+					var time = data[i][x].time;
+					var id = data[i][x].id;
+					
+					var item = indicator + " " + "at" + " " + time
+					+ " in " + " " + area + " " + " was "
+					+ " " + value + (measure.length == 1 ? "" : " ") + measure
+					+ " " + "by" + provider + ".";
+					
+					console.log(item);
+					
+					var taghead = "<a href=\"#\" class=\"list-group-item\" data-toggle=\"modal\" data-value=\"" + value +
+					"\" data-measure=\""+ measure + "\" data-area=\"" + area + "\" data-provider=\"" + provider + "\" data-publish=\"" + publishDate +
+					"\" data-time=\"" + time + "\ data-id=\""+ id + "\">"
+					
+					console.log(taghead);
+					var body = "<h5 class=\"list-group-item-heading\">" + item + "</h5>";
+					
+					console.log(body);
+					var footer = "<p class=\"list-group-item-text\"> <h6 class=\"text-right\">" + publishDate + "</h6> </p></a>";
+					console.log(footer);
+					
+					$(".insert").append(taghead +body + footer);
+					
+				}
+				
+
+		}
+	});
+}
+
+</script>
+
 </head>
 <body>
-	<script type="text/javascript">
-		function ajax() {
-			$.ajax({
-
-				url : "/api/observations/sida",
-				dataType : 'json',
-				success : function(data) {
-					for (var i in data)
-						for (var x in i)
-						$(".list").append("<li>" + data[i][x].value + "</li>");
-
-				}
-			});
-		}
-	</script>
-	<input type="button" value="AJAX" onclick="ajax()" />
+	
+	<input type="button" value="AJAX" onclick="observationRequest('sida')" />
 	<div class="insert">
 		<ul class="list">
 		</ul>

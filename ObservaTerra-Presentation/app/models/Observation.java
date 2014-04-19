@@ -2,6 +2,8 @@ package models;
 
 import java.util.Date;
 
+import play.i18n.Messages;
+
 /**
  * Representa una observacion.
  * 
@@ -10,7 +12,7 @@ import java.util.Date;
  */
 
 public class Observation {
-	
+
 	private Long id;
 	private Time time;
 	private String value;
@@ -23,8 +25,8 @@ public class Observation {
 	public Observation(Long id, Time time, String value, String measure,
 			Indicator indicator, Area area, Organization provider,
 			Date publishDate) {
-		
-		this.id= id;
+
+		this.id = id;
 		this.time = time;
 		this.value = value;
 		this.measure = measure;
@@ -68,30 +70,32 @@ public class Observation {
 
 	@Override
 	public String toString() {
-		return "The " + indicator + " at " + time + " in " + area + " was "
-				+ value + (measure.length() == 1 ? "" : " ") + measure + " by "
-				+ provider + ".";
+		return indicator + " " + Messages.get("at") + " " + time
+				+ Messages.get("in") + " " + area + " " + Messages.get("was")
+				+ " " + value + (measure.length() == 1 ? "" : " ") + measure
+				+ " " + Messages.get("by") + provider + ".";
 
 	}
-	
+
 	public String toJson() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{");
-		sb.append("\"time\": ").append("\"" +time.toString() + "\"");
-		sb.append(",\"value\": ").append("\"" +value +"\"");
-		sb.append(",\"measure\": ").append("\"" + measure+ "\"" );
-		sb.append(",\"indicator\": ").append("\"" + indicator.toString() +"\"");
+		sb.append("\"id\":").append("\"" + id + "\"");
+		sb.append(",\"time\": ").append("\"" + time.toString() + "\"");
+		sb.append(",\"value\": ").append("\"" + value + "\"");
+		sb.append(",\"measure\": ").append("\"" + measure + "\"");
+		sb.append(",\"indicator\": ")
+				.append("\"" + indicator.toString() + "\"");
 		sb.append(",\"area\": ").append("\"" + area.toString() + "\"");
-		sb.append(",\"provider\": ").append("\"" +provider.toString()+ "\"");
-		sb.append(",\"publishDate\": ").append("\"" +publishDate.toString()+ "\"");
+		sb.append(",\"provider\": ").append("\"" + provider.toString() + "\"");
+		sb.append(",\"publishDate\": ").append(
+				"\"" + publishDate.toString() + "\"");
 		sb.append("}");
 		return sb.toString();
-	  }
+	}
 
 	public Long getId() {
 		return id;
 	}
-	
-	
 
 }
