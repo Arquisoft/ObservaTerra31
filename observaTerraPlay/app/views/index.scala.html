@@ -1,0 +1,17 @@
+@(areas: List[Area])
+
+@import play.i18n._
+
+@main("ObservaTerra") {
+<h1>@Messages.get("Wellcome")</h1>
+<h2>@Messages.get("list.areas")</h2>
+<table>
+<tr>	
+<th>@Messages.get("Area")</th>
+</tr>
+@for(area <- areas) {
+	<tr>
+	<td>@area.getName()</td>
+	</tr> 
+}
+}

@@ -1,0 +1,35 @@
+@(areas: List[Area], areaForm: Form[Area])
+
+@import play.i18n._
+@import helper._
+
+@main(Messages.get("list.areas")) {
+
+<h1>@Messages.get("areas")</h1>
+<table>
+@for(area <- areas) { 
+  <tr>
+	<td>@area.getName()</td>
+	<td>@helper.form(routes.Admin.deleteArea(area.getId())) {
+		<input type="image" 
+			src='@{routes.Assets.at("images/delete.gif")}' 
+			alt='@{Messages.get("delete.country")}'>
+		}
+	</td>
+  </tr>
+}
+</table>
+
+<h2>@{Messages.get("add.area")}</h2>
+	@form(action = routes.Admin.newArea()) {
+		@select(
+			areaForm("ScopeEnum"),
+			options(models.types.ScopeEnum.options),
+			'_label -> {Messages.get("Scope")},
+			'_showConstraints -> true
+		)
+        
+		@inputText(areaForm("name"))
+		<input type="submit" value='@{Messages.get("create")}'>
+	}
+}

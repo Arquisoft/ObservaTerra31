@@ -1,0 +1,12 @@
+name = Name
+create = Create
+Wellcome			= Wellcome to ObservaTerra
+Area 				= Area
+Scope				= Scope
+list.areas			= List of Areas
+add.area 			= Add Area
+delete.area 		= Delete Area
+REGION				= Region
+COUNTRY				= Country
+GROUPOFCOUNTRIES	= Group Of Countries
+CONTINENT			= Continent
