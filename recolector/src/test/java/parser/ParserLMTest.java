@@ -10,6 +10,5 @@ public class ParserLMTest {
 	public void testXmlCorrecto() {
 		ProcesadorLM procesador = new ProcesadorLM();
 		procesador.procesar();
-
 	}
 }

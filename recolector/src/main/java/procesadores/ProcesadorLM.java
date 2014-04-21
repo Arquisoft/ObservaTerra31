@@ -3,8 +3,13 @@ package procesadores;
 import parser.ParserObservationLM;
 import domain.*;
 
+/**
+ * Clase encargada de llamar al procesador de Observaciones LM para el documento de esta.
+ * @author Victor
+ *
+ */
 public class ProcesadorLM {
-	public static final String[] ARCHIVOS={"all.xml"};
+	public static final String[] ARCHIVOS={"LM/all.xml"};
 	public static final Organization LM= new SampleOrganization("Land Matrix", "", "LM");
 	
 	public void procesar(){

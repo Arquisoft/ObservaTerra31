@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/main/java/Crawler/UNDownloader.java=UTF-8
+encoding//src/main/java/parser/AbstractParser.java=UTF-8
+encoding//src/main/java/parser/ParserObservationLM.java=UTF-8
+encoding//src/main/java/parser/ParserObservationUN.java=UTF-8
+encoding//src/main/java/parser/ParserObservationXml.java=UTF-8

@@ -6,8 +6,14 @@ import domain.Area;
 import domain.Indicator;
 import domain.Organization;
 import domain.Time;
-import domain.User;
 
+/**
+ * Clase abstracta que contiene la lógica básica para todos los parsers, que
+ * actualmente se reduce a almacenar los datos que posteriormente utilizarán para la generación
+ * de Observaciones.
+ * @author Victor
+ *
+ */
 public abstract class AbstractParser implements Parser {
 
 
@@ -60,18 +66,6 @@ public abstract class AbstractParser implements Parser {
 	protected void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
 	}
-
-
-
-//	private void validateDocument() {
-//		if(area==null||country==null||measure==null||time==null||indicator==null||data==null){
-//			throw new IllegalStateException("Documento con formato incorrecto, o palabras clave definidas incorrectamente.");
-//		}
-//		if(user==null||organization==null){
-//			throw new IllegalStateException("No se han definido organizaci�n o usuario para el documento");
-//		}
-//		
-//	}
 
 
 
