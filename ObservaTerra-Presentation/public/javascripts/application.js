@@ -157,14 +157,14 @@ $(document).ready(
 				$("#observations").children().remove();
 				$("#divLeft").children().remove();;
 				$.ajax({
-					url : "/api/observations/sida",
+					url : "/api/observations/"+indicator,
 					dataType : 'json',
 					success : function(data) {
 						for (var i in data)
 							for (var x in i) {
 								var obj = data[i][x].valueOf();
+								
 								var ind = obj.indicator;
-								//var ind = indicator;
 								var value = obj.value;
 								var measure = obj.measure;
 								var area = obj.area;
@@ -243,9 +243,11 @@ $(document).ready(
 					});
 			
 			$("#search").submit(function (event) {
-				 alert( "Handler for .submit() called." );
+				
+				var keyword = $("#searchTextArea").val();
 				 event.preventDefault();
-				 observationRequest($("#searchTextArea").val());
+				 if (keyword.trim().length != 0)
+				 observationRequest(keyword);
 			});					
 
 		});

@@ -264,4 +264,13 @@ public class PersistenceSimulator {
 		return ret;
 	}
 
+	public List<Observation> findObservations(String indicator) {
+		List<Observation> ret = new ArrayList<Observation>();
+		for (Observation ob : observations)
+			if (ob.getIndicator().toString().contains(indicator) || indicator.trim().isEmpty())
+				ret.add(ob);
+		return ret;
+				
+	}
+
 }

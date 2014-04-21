@@ -12,7 +12,7 @@ import views.html.*;
 public class API  extends Controller {
 	
 	  public static Result observationsByIndicator(String indicator) {
-		 List<Observation> obs = PersistenceSimulator.getInstance().findHVIObservations();
+		 List<Observation> obs = PersistenceSimulator.getInstance().findObservations(indicator);
 		 String ret = Jsonin.observations2json(obs);
 		 return ok(ret);
 	    }
