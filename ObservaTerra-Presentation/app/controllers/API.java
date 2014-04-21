@@ -15,7 +15,9 @@ public class API  extends Controller {
 		 List<Observation> obs = PersistenceSimulator.getInstance().findObservations(indicator);
 		 String ret = Jsonin.observations2json(obs);
 		 return ok(ret);
-	    }
+	   }
+	  
+	  
 
 	  public static Result ajax() {
 		  return ok (ajaxE.render());

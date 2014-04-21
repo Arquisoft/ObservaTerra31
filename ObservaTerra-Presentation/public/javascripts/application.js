@@ -247,7 +247,7 @@ $(document).ready(
 				var keyword = $("#searchTextArea").val();
 				 event.preventDefault();
 				 if (keyword.trim().length != 0)
-				 observationRequest(keyword);
+					 observationRequest(keyword);
 			});					
 
 		});
