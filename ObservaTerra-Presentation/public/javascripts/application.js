@@ -247,5 +247,5 @@ $(document).ready(
 			});		
 			
 
-
+	$('a[href="' + this.location.pathname + '"]').parent().addClass('active');
 		});
