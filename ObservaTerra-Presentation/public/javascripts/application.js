@@ -35,30 +35,23 @@ $(document).ready(
 			
 			
 			function addData(element) {
-				var data2 = $("#observations").children(".active");
 				var measure = $("#observations").children(".active").data("measure");
 				if(!compatibleValues(element, measure))
-					clearData(data2);
-				data2.push(element);
+					clearData();
 				element.addClass("list-group-item active");
-				return data2;
 			}
 			
 			function deleteData(element) {
 				element.removeClass("list-group-item active")
 					   .addClass("list-group-item");
-				var array= $("#observations").children(".active");
-				if (array.length == 0)
+				var active= $("#observations").children(".active");
+				if (active.length == 0)
 					$("#divLeft").children().remove();
-				return array;
 			}
 			
-			function clearData(array) {
-				array = [];
-				var x = $(".list-group-item active");
+			function clearData() {
 				$(".list-group-item").removeClass("list-group-item active")
 				   .addClass("list-group-item");
-				return array;
 			}
 			
 			function compatibleValues(element, head) {
@@ -95,6 +88,19 @@ $(document).ready(
 			}
 			
 			
+		function getMaxValue(collection) {
+				var maxValue = -1;
+				for (var i = 0 ; i < collection.length; i++)
+					if(collection[i] > maxValue)
+						maxValue = collection[i];
+				return maxValue;
+			}
+		
+		function removeProgressBar() {
+			d3.selectAll(".progress").remove();
+			d3.selectAll(".progress-bar-danger").remove();
+		}
+			
 			
 		/**
 		 * Función que dibuja barras estilo bootstraps.
@@ -104,15 +110,9 @@ $(document).ready(
 				var elements = array.map (function() {return $(this).valueOf(); });
 				var values = array.map (function() { return parseInt($(this).data("value")); });
 				
-				var maxValue = -1;
-				for (var i = 0 ; i < values.length; i++)
-					if(values[i] > maxValue)
-						maxValue = values[i];
-				
-			
-				
-				d3.selectAll(".progress").remove();
-				d3.selectAll(".progress-bar-danger").remove();
+				var maxValue = getMaxValue(values);
+				removeProgressBar();
+		
 				
 				
 				for (var i = 0 ; i < elements.length; i++) {
