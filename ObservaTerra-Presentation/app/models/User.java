@@ -108,5 +108,11 @@ public class User {
 		return Json.toJson(user);
 	  }
 	
+	public String validate() {
+	    /*if (User.authenticate(email, password) == null) {
+	      return "Invalid user or password";
+	    }*/
+	    return null;
+	}
 
 }

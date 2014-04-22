@@ -28,7 +28,6 @@ upload				= Upload
 
 home 				= Home
 discover			= Discover
-log					= Login
 account				= Account
 organizations		= My Organizations
 follows				= My Follows
@@ -44,4 +43,8 @@ at					= at
 in					= in
 by					= by
 register			= Register
+greetings			= Log in with your account!
+email				= Email
+password			= Password
+sign				= Sign in
 

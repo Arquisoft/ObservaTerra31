@@ -28,7 +28,6 @@ upload				= Cargar
 
 home 				= Principal
 discover			= Descubre
-log					= Entrar
 account				= Cuenta
 organizations		= Mis organizaciones
 follows				= Siguiendo
@@ -44,3 +43,7 @@ at					= en
 in					= en
 by					= según
 register			= Registro
+greetings			= Conéctacte con tu cuenta
+email				= Correo electrónico
+password			= Contraseña
+sign				= Entrar
