@@ -1,4 +1,6 @@
-@(form: Form[User]) @import play.i18n.Messages @navbarGuest {
+@(form: Form[User]) 
+@import play.i18n.Messages 
+@navbarGuest {
 @helper.form(routes.Application.authenticate) {
 <div class="col-xs-4 col-md-offset-4">
 	<form class="form-signin" role="form">
@@ -6,8 +8,7 @@
 
 
 		<h2 class="form-signin-heading">@Messages.get("greetings")</h2>
-		<input type="email" class="form-control" value="@form("
-			email").value" placeholder="@Messages.get(" email")" required
+		<input type="email" class="form-control" value="@form("email").value" placeholder="@Messages.get(" email")" required
 			autofocus> <input type="password" class="form-control"
 			placeholder="@Messages.get(" password")" required> <br>
 			@if(form.hasGlobalErrors) {
@@ -17,4 +18,5 @@
 	</form>
 
 </div>
-} }
+} 
+}

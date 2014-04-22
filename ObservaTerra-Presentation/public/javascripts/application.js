@@ -233,10 +233,6 @@ $(document).ready(
 			*/
 			
 
-			
-	
-			
-
 			$(".list-group-item").on(
 					'click', function() {
 						actionClick($(this));
@@ -248,6 +244,8 @@ $(document).ready(
 				 event.preventDefault();
 				 if (keyword.trim().length != 0)
 					 observationRequest(keyword);
-			});					
+			});		
+			
+
 
 		});

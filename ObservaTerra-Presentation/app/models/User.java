@@ -26,6 +26,12 @@ public class User {
 	private Set<Follow> follows = new HashSet<Follow>();
 	private Set<Membership> memberships = new HashSet<Membership>();
 
+	
+	
+	public User() {
+		
+	}
+	
 	public User(String name, String surname, String email, String password) {
 		super();
 		this.name = name;

@@ -47,3 +47,4 @@ greetings			= Conéctacte con tu cuenta
 email				= Correo electrónico
 password			= Contraseña
 sign				= Entrar
+orgs				= Organizaciones

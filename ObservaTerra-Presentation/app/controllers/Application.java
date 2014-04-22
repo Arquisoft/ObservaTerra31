@@ -29,8 +29,18 @@ public class Application extends Controller {
 		return ok(login.render(Form.form(User.class)));
 	}
 	
+	public static Result discover(){
+		return ok(discover.render());
+	}
+	
+	public static Result organizations(){
+		return ok(organizations.render());
+	}
 	
 	public static Result authenticate() {
+		return TODO;
+		
+		/*
 	    Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
 	    if (loginForm.hasErrors()) {
 	        return badRequest(login.render(loginForm));
@@ -40,7 +50,7 @@ public class Application extends Controller {
 	        return redirect(
 	            routes.Application.index()
 	        );
-	    }
+	    }*/
 	}
 	
 	
