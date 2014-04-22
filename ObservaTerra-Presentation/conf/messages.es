@@ -43,3 +43,4 @@ was					= fue
 at					= en
 in					= en
 by					= según
+register			= Registro

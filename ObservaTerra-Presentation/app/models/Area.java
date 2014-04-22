@@ -4,10 +4,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import play.libs.Json;
-
-import com.fasterxml.jackson.databind.JsonNode;
-
 /**
  * Representa un area demografica determinada. Un area tiene un nombre, un
  * ambito y una lista de observaciones asociadas.
@@ -49,8 +45,15 @@ public class Area {
 		return name;
 	}
 
-	public static JsonNode toJson(Area area) {
-		return Json.toJson(area);
+	public String toJson() {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("{")
+		  .append("\"name\": \"").append(name).append("\"")
+		  .append("\"scope\": \"").append(scope.name()).append("\"")
+		  .append("}");
+		
+		return sb.toString();
 	  }
 
 }
