@@ -61,7 +61,6 @@ public class ParserObservationLM extends ParserObservationXml {
 					+ texto.replaceAll("[\n\t]", "") + "\n");
 		}
 		
-		System.out.println(a);
 	}
 
 	@Override
