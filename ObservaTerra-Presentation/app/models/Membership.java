@@ -1,8 +1,5 @@
 package models;
 
-import play.libs.Json;
-
-import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * Representa la membresia de un usuario en una organizacion.
@@ -42,8 +39,15 @@ public class Membership {
 		organization._getMemberships().remove(this);
 	}
 	
-	public static JsonNode toJson(Membership membership) {
-		return Json.toJson(membership);
+	public String toJson() {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("{")
+		  .append("\"user\":").append(user.toJson())
+		  .append("\"organization\":").append(organization.toJson())
+		  .append("}");
+		
+		return sb.toString();
 	  }
 	
 	

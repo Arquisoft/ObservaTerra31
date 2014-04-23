@@ -49,8 +49,4 @@ public class InstantTime implements Time {
 		return instant;
 	}
 	
-	/*public static JsonNode toJson(InstantTime time) {
-		return Json.toJson(time);
-	  }*/
-
 }

@@ -45,5 +45,16 @@ public class Follow {
 	public static JsonNode toJson(Follow follow) {
 		return Json.toJson(follow);
 	  }
+	
+	public String toJson() {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("{")
+		  .append("\"indicator\": \"").append(indicator).append("\"")
+		  .append("\"user\": \"").append(user).append("\"")
+		  .append("}");
+		
+		return sb.toString();
+	  }
 
 }

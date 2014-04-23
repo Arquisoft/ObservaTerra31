@@ -1,8 +1,5 @@
 package models;
 
-import play.libs.Json;
-
-import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * Representa un intervalo de tiempo. Esta construido mediante un patron
@@ -70,11 +67,9 @@ public class RangeTime implements Time {
 		String end = this.end instanceof InstantTime ? this.end.toString()
 				.split(" ")[1] : this.end.toString();
 				
-		return "From " + start.toLowerCase() + "to " + end.toLowerCase();
+		return  start.toLowerCase() + "-" + end.toLowerCase();
 	}
 	
-	public static JsonNode toJson(RangeTime range) {
-		return Json.toJson(range);
-	  }
+
 
 }

@@ -166,6 +166,19 @@ public abstract class Organization {
 	}
 
 	
+	public String toJson() {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("{")
+		  .append("\"name\": \"").append(name).append("\"")
+		  .append("\"site\": \"").append(site).append("\"")
+		  .append("\"acronym\": \"").append(site).append("\"")
+		  .append("\"parent\": ").append(parent != null ? parent.toJson() : null)
+		  .append("}");
+		
+		return sb.toString();
+	  }
+	
 	
 
 	

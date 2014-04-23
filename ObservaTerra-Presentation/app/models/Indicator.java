@@ -54,5 +54,15 @@ public class Indicator {
 		return Json.toJson(indicator);
 	  }
 	
+	public String toJson() {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("{")
+		  .append("\"name\": \"").append(name).append("\"")
+		  .append("}");
+		
+		return sb.toString();
+	  }
+	
 
 }

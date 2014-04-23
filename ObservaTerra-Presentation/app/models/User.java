@@ -120,5 +120,17 @@ public class User {
 	    }*/
 	    return null;
 	}
+	
+	public String toJson() {
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("{")
+		  .append("\"name\": \"").append(name).append("\"")
+		  .append("\"surname\": \"").append(surname).append("\"")
+		  .append("\"email\": \"").append(email).append("\"")
+		  .append("}");
+		
+		return sb.toString();
+	  }
 
 }
