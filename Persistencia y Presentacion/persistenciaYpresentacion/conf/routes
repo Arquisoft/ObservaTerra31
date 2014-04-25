@@ -1,0 +1,20 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                          														controllers.Application.index()
+GET		/idioma																			controllers.Application.idioma()
+GET		/login																			controllers.Application.login()
+POST    /login                      													controllers.Application.authenticate()
+GET		/discover																		controllers.Application.discover()
+GET		/organizations																	controllers.Application.organizations()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               													controllers.Assets.at(path="/public", file)
+
+
+# API
+GET		/api/observations/:indicator													controllers.API.observationsByIndicator(indicator: String)
+GET		/ajaxE																			controllers.API.ajax()
