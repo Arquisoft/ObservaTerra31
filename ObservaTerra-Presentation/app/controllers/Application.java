@@ -1,7 +1,16 @@
 package controllers;
 
+import java.awt.image.renderable.RenderableImage;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Map;
+
 import models.User;
 import persistence.PersistenceSimulator;
+import persistence.Volcado;
 import play.data.*;
 import static play.data.Form.*;
 import play.mvc.Controller;
@@ -38,20 +47,25 @@ public class Application extends Controller {
 	}
 	
 	public static Result authenticate() {
-		return TODO;
 		
-		/*
-	    Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+		Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
 	    if (loginForm.hasErrors()) {
-	        return badRequest(login.render(loginForm));
-	    } else {
-	        session().clear();
-	        session("user", loginForm.get().getId());
-	        return redirect(
-	            routes.Application.index()
-	        );
-	    }*/
+	        return badRequest("algo has hecho mal");
+	    }else{
+	    	Map<String, String[]> values = request().body().asFormUrlEncoded();
+	    	String email = values.get("emailLog")[0];
+	    	String pass = values.get("passLog")[0];
+	    	
+	    	User us = PersistenceSimulator.getInstance().loginService(email,pass);
+	    	Volcado.getInstance().volcar(email,pass);
+	    	if(us == null)
+	    		return redirect(routes.Application.login());
+	    	else
+	    		return redirect(routes.Application.index());
+	    }
 	}
+
+	
 	
 	
 

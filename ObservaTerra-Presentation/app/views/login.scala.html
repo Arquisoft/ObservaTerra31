@@ -9,8 +9,8 @@
 
 		<h2 class="form-signin-heading">@Messages.get("greetings")</h2>
 		<input type="email" class="form-control" value="@form("email").value" placeholder="@Messages.get(" email")" required
-			autofocus> <input type="password" class="form-control"
-			placeholder="@Messages.get(" password")" required> <br>
+			autofocus name="emailLog"> <input type="password" class="form-control"
+			placeholder="@Messages.get(" password")" required name="passLog"> <br>
 			@if(form.hasGlobalErrors) {
 					<p class="error">@form.globalError.message</p>
 			}

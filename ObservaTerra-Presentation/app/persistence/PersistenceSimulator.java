@@ -53,8 +53,8 @@ public class PersistenceSimulator {
 
 	public User loginService(String email, String password) {
 		for (User user : users)
-			if (user.getEmail().equals(email)
-					&& user.getPassword().equals(password))
+			if (user.getEmail().equalsIgnoreCase(email)
+					&& user.getPassword().equalsIgnoreCase(password))
 				return user;
 		return null;
 	}
@@ -140,7 +140,7 @@ public class PersistenceSimulator {
 		User sergio = new User("Sergio", "G", "real@gangsta.com",
 				"alleniverson<3nohomo");
 		User labra = new User("Emilio", "Labra", "labra@uniovi.com", "labra");
-		User easyLogin = new User("user", "user", "user", "user");
+		User easyLogin = new User("user", "user", "user@user", "user");
 
 		users.add(natalia);
 		users.add(gonzalo);
