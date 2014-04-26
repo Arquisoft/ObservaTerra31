@@ -1,24 +1,23 @@
-
-(Todo esto también se explica en el "Informe de persistencia")
+(Todo esto tambie se explica en el "Informe de persistencia")
 
 LO QUE HAY QUE HACER ANTES DE ACCEDER A localhost:9000...
 
 Introduce tu IP real en hosting24.
 Para ello, seguir estos pasos:
-Entrar en la página:
+Entrar en la pagina:
 	http://www.hosting24.com/members/
-Loguearse con mi cuenta (que ya ta pagao):
-	Email: galonso333@gmail.com
-	Contraseña: observaterra31
+Loguearse con nuestra nueva cuenta:
+	Email: observaterra31@gmail.com
+	Contrasena: observaterra31
 Una vez logueado:
-Ir a "CPanel" (está bajo el botón verde)
+En el â€œGeneral Informationâ€ del dominio http://www.observaterra31.host22.com, ir a â€œCPanelâ€.
 Loguearse otra vez:
 	Usuario: obser620
-	Contraseña: hostcp6600138
+	Contrasena: hostcp6600138
 
-En el CPanel, vamos al enlace "MySQL Remote" (está en la sección de "Bases de datos", o "Data Bases").
-Introduce tu IP real y dale al botón de añadir host.
+En el CPanel, vamos al enlace "MySQL Remote" (estï¿½ en la secciï¿½n de "Bases de datos", o "Data Bases").
+Introduce tu IP real y dale al boton de anadir host.
 (Tu IP real puedes verla en http://www.cualesmiip.com/).
 
-Si quieres ver la base de datos, en el CPanel ve a "phpMyAdmin" (está en la misma sección, "Bases de datos").
+Si quieres ver la base de datos, en el CPanel ve a "phpMyAdmin" (estï¿½ en la misma secciï¿½n, "Bases de datos").
 Nuestra base de datos es "obser620_play".
