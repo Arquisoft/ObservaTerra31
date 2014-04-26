@@ -1,0 +1,12 @@
+name = Nombre
+create = Crear
+Wellcome			= Bienvenido al portal ObservaTerra
+Area				= Área
+Scope				= Ámbito
+list.areas			= Lista de áreas
+add.area 			= Añadir área
+delete.area 		= Borrar área
+REGION				= Región
+COUNTRY				= País
+GROUPOFCOUNTRIES	= Grupo de Países
+CONTINENT			= Continente
