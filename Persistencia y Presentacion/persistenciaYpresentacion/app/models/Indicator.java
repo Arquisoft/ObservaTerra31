@@ -86,6 +86,10 @@ public class Indicator extends Model {
 		return find.where().eq("name", name).findUnique();
 	}
 	
+	public static List<Indicator> filterByName(String name) {
+		return find.where().contains("name", name).findList();
+	}
+	
 	/**
 	 * Devuelve una lista de Indicators cuya lista de Observations contenga la
 	 * Observation recibida por parametro

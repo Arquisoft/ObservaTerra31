@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import models.Indicator;
@@ -30,8 +31,11 @@ public class API extends Controller {
 		 * .findObservations(indicator); String ret =
 		 * Jsonin.observations2json(obs); return ok(ret);
 		 */
-		Indicator ind = Indicator.findById(Long.parseLong(indicator));
-		List<Observation> obs = Observation.findByIndicator(ind);
+		List<Indicator> indicators = Indicator.filterByName(indicator);
+		List<Observation> obs = new ArrayList<Observation>();
+		for (Indicator ind: indicators)
+			obs.addAll(Observation.findByIndicator(ind));
+		//List<Observation> obs = Observation.findByIndicator(ind);
 		String ret = Jsonin.observations2json(obs);
 		return ok(ret);
 	}
@@ -44,7 +48,7 @@ public class API extends Controller {
 	}
 
 	public static Result allOrganizations() {
-		List<Organization> orgs = Organization.findAll();
+		List<Organization> orgs = null;//Organization.findAll();
 		String ret = Jsonin.organizations2json(orgs);
 		return ok(ret);
 
