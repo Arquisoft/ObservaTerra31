@@ -9,6 +9,7 @@ GET		/login																			controllers.Application.login()
 POST    /login                      													controllers.Application.authenticate()
 GET		/discover																		controllers.Application.discover()
 GET		/organizations																	controllers.Application.organizations()
+POST	/register																		controllers.Application.register()
 
 
 # Map static resources from the /public folder to the /assets URL path

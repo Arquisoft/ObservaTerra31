@@ -1,4 +1,5 @@
-name 				= nombre
+name 				= Nombre
+surname				= Apellido
 create 				= Crear
 Wellcome			= Bienvenido al portal ObservaTerra
 Country				= País
@@ -48,3 +49,4 @@ email				= Correo electrónico
 password			= Contraseña
 sign				= Entrar
 orgs				= Organizaciones
+regist				= Regístrate

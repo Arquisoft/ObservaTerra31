@@ -4,6 +4,7 @@ import java.util.Map;
 
 import models.Observation;
 import models.User;
+import play.Routes;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -60,4 +61,10 @@ public class Application extends Controller {
 				return redirect(routes.Application.login());
 		}
 	}
+	
+	public static Result register() {
+		return redirect(routes.Application.index());
+		
+	}
+	
 }
