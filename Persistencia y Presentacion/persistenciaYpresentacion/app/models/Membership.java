@@ -186,7 +186,7 @@ public class Membership extends Model {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{")
 		  .append("\"user\":").append(user.toJson())
-		  .append("\"organization\":").append(organization.toJson())
+		  .append(",\"organization\":").append(organization.toJson())
 		  .append("}");
 		
 		return sb.toString();

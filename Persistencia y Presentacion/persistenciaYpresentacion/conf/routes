@@ -18,4 +18,5 @@ GET     /assets/*file               													controllers.Assets.at(path="/pu
 
 # API
 GET		/api/observations/:indicator													controllers.API.observationsByIndicator(indicator: String)
+GET		/api/follows/:id																controllers.API.followsByIDUser(id: Long)
 GET		/ajaxE																			controllers.API.ajax()

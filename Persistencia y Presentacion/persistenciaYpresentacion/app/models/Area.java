@@ -174,7 +174,7 @@ public class Area extends Model {
 	public String toJson() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{")
-		  .append("\"name\": \"").append(getName()).append("\"")
+		  .append("\"name\": \"").append(getName()).append("\",")
 		  .append("\"scope\": \"").append(getScope().name()).append("\"")
 		  .append("}");
 		

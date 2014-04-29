@@ -193,8 +193,8 @@ public class Follow extends Model {
 	public String toJson() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{")
-		  .append("\"indicator\": \"").append(indicator).append("\"")
-		  .append("\"user\": \"").append(user).append("\"")
+		  .append("\"indicator\": \"").append(indicator).append("\",")
+		  .append("\"user\":").append(user.toJson())
 		  .append("}");
 		
 		return sb.toString();

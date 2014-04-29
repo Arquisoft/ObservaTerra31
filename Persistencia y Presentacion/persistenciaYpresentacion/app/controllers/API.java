@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.Follow;
 import models.Indicator;
 import models.Observation;
 import models.Organization;
@@ -14,11 +15,6 @@ import views.html.ajaxE;
 public class API extends Controller {
 
 	public static Result allObservations() {
-		/*
-		 * List<Observation> obs = PersistenceSimulator.getInstance()
-		 * .getObservations(); String ret = Jsonin.observations2json(obs);
-		 * return ok(ret);
-		 */
 
 		List<Observation> obs = Observation.all();
 		String ret = Jsonin.observations2json(obs);
@@ -26,16 +22,11 @@ public class API extends Controller {
 	}
 
 	public static Result observationsByIndicator(String indicator) {
-		/*
-		 * List<Observation> obs = PersistenceSimulator.getInstance()
-		 * .findObservations(indicator); String ret =
-		 * Jsonin.observations2json(obs); return ok(ret);
-		 */
+
 		List<Indicator> indicators = Indicator.filterByName(indicator);
 		List<Observation> obs = new ArrayList<Observation>();
 		for (Indicator ind: indicators)
 			obs.addAll(Observation.findByIndicator(ind));
-		//List<Observation> obs = Observation.findByIndicator(ind);
 		String ret = Jsonin.observations2json(obs);
 		return ok(ret);
 	}
@@ -48,10 +39,14 @@ public class API extends Controller {
 	}
 
 	public static Result allOrganizations() {
-		List<Organization> orgs = null;//Organization.findAll();
+		List<Organization> orgs = Organization.findAll();
 		String ret = Jsonin.organizations2json(orgs);
 		return ok(ret);
-
+	}
+	
+	public static Result followsByIDUser(Long id){
+		List<Follow> follows = Follow.findByUserId(id);
+		return ok(Jsonin.follow2json(follows));
 	}
 
 	public static Result arganizationsByName(String name) {

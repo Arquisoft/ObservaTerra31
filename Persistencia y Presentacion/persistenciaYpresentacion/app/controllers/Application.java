@@ -4,7 +4,6 @@ import java.util.Map;
 
 import models.Observation;
 import models.User;
-import play.Routes;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -18,8 +17,6 @@ import views.html.organizations;
 public class Application extends Controller {
 
 	public static Result index() {
-		/*return ok(index.render("Started...", PersistenceSimulator.getInstance()
-				.getObservations()));*/
 		return ok(index.render("Started...", Observation.all()));
 	}
 

@@ -153,6 +153,10 @@ public abstract class Organization extends Model{
 		return find.where().eq("name", name).findUnique();
 	}
 	
+	public static List<Organization> findAll() {
+		return find.all();
+	}
+	
 	/**
 	 * Devuelve una lista de Organizations cuya lista de Observations contenga
 	 *  la Observation recibida por parametro
@@ -291,13 +295,15 @@ public abstract class Organization extends Model{
 	public String toJson() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{")
-		  .append("\"name\": \"").append(getName()).append("\"")
-		  .append("\"site\": \"").append(getSite()).append("\"")
-		  .append("\"acronym\": \"").append(getAcronym()).append("\"")
+		  .append("\"name\": \"").append(getName()).append("\",")
+		  .append("\"site\": \"").append(getSite()).append("\",")
+		  .append("\"acronym\": \"").append(getAcronym()).append("\",")
 		  .append("\"parent\": ")
 		  .append(getParent() != null ? getParent().toJson() : null)
 		  .append("}");
 		
 		return sb.toString();
 	 }
+
+	
 }
