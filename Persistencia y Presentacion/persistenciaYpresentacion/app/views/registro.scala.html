@@ -1,6 +1,7 @@
 @(form: Form[User]) 
 @import play.i18n.Messages 
 @navbarGuest {
+@helper.form(routes.Application.registerAut) {
 <div class="col-xs-4 col-md-offset-4">
 	<form class="form-register" role="form">
 		<h2 class="form-register-heading">@Messages.get("regist")</h2>
@@ -15,5 +16,6 @@
 	</form>
 
 </div>
+}
 }
 

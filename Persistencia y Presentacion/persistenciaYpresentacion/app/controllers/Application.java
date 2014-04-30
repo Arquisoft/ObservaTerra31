@@ -67,12 +67,9 @@ public class Application extends Controller {
 
 	public static Result registerAut() {
 		
-		return ok(organizations.render());
 		
-		
-		/*Form<User> loginForm = Form.form(User.class).bindFromRequest();
-		 * 
-		 * if (loginForm.hasErrors())
+		Form<User> loginForm = Form.form(User.class).bindFromRequest();
+		 if (loginForm.hasErrors())
 			return badRequest("algo has hecho mal");
 		else {
 			Map<String, String[]> values = request().body().asFormUrlEncoded();
@@ -85,7 +82,7 @@ public class Application extends Controller {
 			User.create(user);
 			return redirect(routes.Application.index());
 
-		}*/
+		}
 	}
 
 }
