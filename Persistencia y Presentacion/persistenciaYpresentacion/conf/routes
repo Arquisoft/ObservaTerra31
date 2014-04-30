@@ -5,7 +5,7 @@
 # Home page
 GET     /                          														controllers.Application.index()
 GET		/idioma																			controllers.Application.idioma()
-GET		/login																			controllers.Application.register()
+GET		/login																			controllers.Application.login()
 POST    /login                      													controllers.Application.authenticate()
 GET		/discover																		controllers.Application.discover()
 GET		/organizations																	controllers.Application.organizations()
