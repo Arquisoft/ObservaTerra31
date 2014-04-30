@@ -66,18 +66,17 @@ public class Application extends Controller {
 	}
 
 	public static Result registerAut() {
-		
-		
+	
 		Form<User> loginForm = Form.form(User.class).bindFromRequest();
 		 if (loginForm.hasErrors())
 			return badRequest("algo has hecho mal");
 		else {
+			
 			Map<String, String[]> values = request().body().asFormUrlEncoded();
 			String email = values.get("emailReg")[0];
 			String password = values.get("passReg")[0];
 			String name = values.get("nameReg")[0];
 			String surname = values.get("surnameReg")[0];
-			
 			User user = new User(name, surname, email, password);
 			User.create(user);
 			return redirect(routes.Application.index());
