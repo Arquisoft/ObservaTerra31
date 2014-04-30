@@ -14,7 +14,7 @@ public class Volcado {
 			volcado = new Volcado();
 		if(fichero == null && pw == null){
 			try {
-				fichero = new FileWriter("C:/Users/Lara/Desktop/Tercero/prueba.txt");
+				fichero = new FileWriter("C:/Users/Lara/Desktop/Tercero/asco.txt");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

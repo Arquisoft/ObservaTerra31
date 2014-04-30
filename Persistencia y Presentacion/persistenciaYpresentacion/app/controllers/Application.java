@@ -12,6 +12,7 @@ import views.html.discover;
 import views.html.index;
 import views.html.login;
 import views.html.organizations;
+import views.html.registro;
 
 
 public class Application extends Controller {
@@ -60,8 +61,12 @@ public class Application extends Controller {
 	}
 	
 	public static Result register() {
-		return redirect(routes.Application.index());
+		return ok(registro.render(Form.form(User.class)));
 		
+	}
+	
+	public static Result registerAut(){
+		return ok();
 	}
 	
 }
