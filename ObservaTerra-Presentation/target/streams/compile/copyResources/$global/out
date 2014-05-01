@@ -1,9 +1,0 @@
-[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
-[0m[[0mdebug[0m] [0m	(/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/conf/application.conf,/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/target/scala-2.10/classes/application.conf)[0m
-[0m[[0mdebug[0m] [0m	(/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/conf/evolutions,/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/target/scala-2.10/classes/evolutions)[0m
-[0m[[0mdebug[0m] [0m	(/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/conf/initial-data.yml,/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/target/scala-2.10/classes/initial-data.yml)[0m
-[0m[[0mdebug[0m] [0m	(/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/conf/messages,/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/target/scala-2.10/classes/messages)[0m
-[0m[[0mdebug[0m] [0m	(/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/conf/messages.es,/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/target/scala-2.10/classes/messages.es)[0m
-[0m[[0mdebug[0m] [0m	(/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/conf/routes,/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/target/scala-2.10/classes/routes)[0m
-[0m[[0mdebug[0m] [0m	(/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/conf/evolutions/default,/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/target/scala-2.10/classes/evolutions/default)[0m
-[0m[[0mdebug[0m] [0m	(/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/conf/evolutions/default/1.sql,/Users/Sergio/ObservaTerra31/ObservaTerra-Presentation/target/scala-2.10/classes/evolutions/default/1.sql)[0m
