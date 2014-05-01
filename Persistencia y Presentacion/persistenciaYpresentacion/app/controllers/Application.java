@@ -3,6 +3,7 @@ package controllers;
 import java.util.Map;
 
 import models.Observation;
+import models.Organization;
 import models.User;
 import play.data.Form;
 import play.mvc.Controller;
@@ -38,7 +39,7 @@ public class Application extends Controller {
 	}
 
 	public static Result organizations() {
-		return ok(organizations.render());
+		return ok(organizations.render(Organization.all()));
 	}
 
 	public static Result authenticate() {
