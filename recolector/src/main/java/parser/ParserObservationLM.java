@@ -60,7 +60,9 @@ public class ParserObservationLM extends ParserObservationXml {
 			stringBuilder.append("Field: " + name + "Data:"
 					+ texto.replaceAll("[\n\t]", "") + "\n");
 		}
-		
+
+		this.setMeasure("none");
+
 	}
 
 	@Override
