@@ -25,7 +25,7 @@ public class ParserObservationUN extends ParserObservationXml {
 	private String instantTime = "_[0-9][0-9][0-9][0-9].+";
 	private String hdi = "_[0-9][0-9][0-9][0-9]_hdi.+";
 	private String porcent = "0.[0-9][0-9][0-9]";
-	private String unit = "[1-9]+.[0-9][0-9][0-9]";
+	private String unit = "[0-9]+[0-9].[0-9][0-9][0-9]";
 
 	public ParserObservationUN(String filename) {
 		super(filename);
