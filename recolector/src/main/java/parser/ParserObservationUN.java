@@ -25,7 +25,7 @@ public class ParserObservationUN extends ParserObservationXml {
 	private String instantTime = "_[0-9][0-9][0-9][0-9].+";
 	private String hdi = "_[0-9][0-9][0-9][0-9]_hdi.+";
 	private String porcent = "0.[0-9][0-9][0-9]";
-	private String unit = "[0-9]+[0-9].[0-9][0-9][0-9]";
+	private String unit = "([0-9]+[0-9].[0-9][0-9][0-9]) | ([1-9].[0-9][0-9][0-9])";
 
 	public ParserObservationUN(String filename) {
 		super(filename);
@@ -53,7 +53,6 @@ public class ParserObservationUN extends ParserObservationXml {
 		if (name.matches(rangeTime) || name.matches(instantTime)) {
 			String value = r.getText();
 			obtainMeasure(value);
-			this.setValue(value);
 		}
 	}
 
@@ -80,11 +79,17 @@ public class ParserObservationUN extends ParserObservationXml {
 
 	public void obtainMeasure(String value) {
 		if (value.matches(porcent)) {
+			int multipli = 100;
+			int valuePor = Integer.valueOf(value) * multipli;
+			String valuePorcent = Integer.toString(valuePor);
 			this.setMeasure("%");
+			this.setValue(valuePorcent);
 		} else if (value.matches(unit)) {
 			this.setMeasure("u");
+			this.setValue(value);
 		} else {
 			this.setMeasure("none");
+			this.setValue(value);
 		}
 
 	}
