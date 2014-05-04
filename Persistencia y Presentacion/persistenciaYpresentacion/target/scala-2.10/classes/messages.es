@@ -51,4 +51,5 @@ sign				= Entrar
 orgs				= Organizaciones
 regist				= Regístrate
 
-org					=Organizaciones
+org					= Organizaciones
+orgsMsg				= ObservaTerra es un proyecto ambicioso respaldado por grandes multinacionales, entidades de remombre y ONGs cuya mayor motivación es el desarrollo del saber.

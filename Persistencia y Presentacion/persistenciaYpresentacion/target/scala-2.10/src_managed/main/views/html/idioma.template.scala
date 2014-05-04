@@ -53,10 +53,10 @@ Seq[Any](format.raw/*1.19*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Thu May 01 17:27:16 CEST 2014
-                    SOURCE: C:/Users/Lara/Documents/GitHub/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/app/views/idioma.scala.html
-                    HASH: 096fd4e00d065bd06edf8ed25dd1d39b3f8647ff
-                    MATRIX: 775->1|913->18|942->49|979->52|1003->68|1042->70|1144->137|1160->145|1192->156|1265->194|1281->202|1312->212
+                    DATE: Sat May 03 19:10:34 CEST 2014
+                    SOURCE: /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/app/views/idioma.scala.html
+                    HASH: 9cef8960cbad556de73f0e63366ec9ec23b5368f
+                    MATRIX: 775->1|912->18|940->47|976->49|1000->65|1039->67|1137->130|1153->138|1185->149|1257->186|1273->194|1304->204
                     LINES: 26->1|30->1|31->3|32->4|32->4|32->4|36->8|36->8|36->8|37->9|37->9|37->9
                     -- GENERATED --
                 */

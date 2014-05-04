@@ -42,10 +42,10 @@ Seq[Any](_display_(Seq[Any](/*2.2*/navbarGuest/*2.13*/ {_display_(Seq[Any](forma
 }
                 /*
                     -- GENERATED --
-                    DATE: Thu May 01 17:27:16 CEST 2014
-                    SOURCE: C:/Users/Lara/Documents/GitHub/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/app/views/discover.scala.html
-                    HASH: 23d1155077af7504642b21c2c703c099c9d7215e
-                    MATRIX: 867->3|886->14|925->16
+                    DATE: Sat May 03 19:10:34 CEST 2014
+                    SOURCE: /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/app/views/discover.scala.html
+                    HASH: 3b5b0d2327e6b8d8386a7806d2ca7684f136fa30
+                    MATRIX: 867->2|886->13|925->15
                     LINES: 29->2|29->2|29->2
                     -- GENERATED --
                 */

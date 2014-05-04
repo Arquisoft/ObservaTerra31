@@ -1,4 +1,4 @@
-[0m[[0minfo[0m] [0mUpdating {file:/C:/Users/Lara/Documents/GitHub/ObservaTerra31/Persistencia%20y%20Presentacion/persistenciaYpresentacion/}persistenciaypresentacion...[0m
+[0m[[0minfo[0m] [0mUpdating {file:/Users/Sergio/ObservaTerra31/Persistencia%20y%20Presentacion/persistenciaYpresentacion/}persistenciaypresentacion...[0m
 [0m[[0mdebug[0m] [0m:: resolving dependencies :: observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT[0m
 [0m[[0mdebug[0m] [0m	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool, jacoco][0m
 [0m[[0mdebug[0m] [0m	validate = true[0m
@@ -7,7 +7,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT [compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.3 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.10.3 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@666a944[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@4c53c99[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.10.3[0m
 [0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#scala-library;2.10.3[0m
 [0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.10.3 in sbt-chain[0m
@@ -6869,7 +6869,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT->org.jacoco#org.jacoco.agent;0.6.4.201312101107 [jacoco->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT->org.jacoco#org.jacoco.agent;0.6.4.201312101107 [jacoco->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT->org.jacoco#org.jacoco.agent;0.6.4.201312101107 [jacoco->master][0m
-[0m[[0mdebug[0m] [0m	resolved ivy file produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\observaterraplay\observaterraplay_2.10\1.0-SNAPSHOT\resolved.xml.xml[0m
+[0m[[0mdebug[0m] [0m	resolved ivy file produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/observaterraplay/observaterraplay_2.10/1.0-SNAPSHOT/resolved.xml.xml[0m
 [0m[[0mdebug[0m] [0m:: downloading artifacts ::[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-library;2.10.3!scala-library.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.typesafe.play#play-java-jdbc_2.10;2.2.2!play-java-jdbc_2.10.jar[0m
@@ -7020,20 +7020,20 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#jline;2.10.3!jline.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.jacoco#org.jacoco.agent;0.6.4.201312101107!org.jacoco.agent.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 11972ms :: artifacts dl 342ms[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT compile produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-compile.xml[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT runtime produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-runtime.xml[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT test produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-test.xml[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT provided produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-provided.xml[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT optional produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-optional.xml[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT compile-internal produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-compile-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT runtime-internal produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-runtime-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT test-internal produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-test-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT plugin produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-plugin.xml[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT sources produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-sources.xml[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT docs produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-docs.xml[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT pom produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-pom.xml[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT scala-tool produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT jacoco produced in C:\Users\Lara\Documents\GitHub\ObservaTerra31\Persistencia y Presentacion\persistenciaYpresentacion\target\resolution-cache\reports\observaterraplay-observaterraplay_2.10-jacoco.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (11972ms resolve - 342ms download)[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 3411ms :: artifacts dl 114ms[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT compile produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-compile.xml[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT runtime produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-runtime.xml[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT test produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-test.xml[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT provided produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-provided.xml[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT optional produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-optional.xml[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT compile-internal produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-compile-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT runtime-internal produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-runtime-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT test-internal produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-test-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT plugin produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-plugin.xml[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT sources produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-sources.xml[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT docs produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-docs.xml[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT pom produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-pom.xml[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT scala-tool produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-scala-tool.xml[0m
+[0m[[0mdebug[0m] [0m	report for observaterraplay#observaterraplay_2.10;1.0-SNAPSHOT jacoco produced in /Users/Sergio/ObservaTerra31/Persistencia y Presentacion/persistenciaYpresentacion/target/resolution-cache/reports/observaterraplay-observaterraplay_2.10-jacoco.xml[0m
+[0m[[0mdebug[0m] [0m	resolve done (3411ms resolve - 114ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m
