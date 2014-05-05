@@ -34,6 +34,7 @@ public class ParserObservationUN extends ParserObservationXml {
 
 	public ParserObservationUN(String filename) {
 		super(filename);
+		this.publishDate=new Date();
 	}
 
 	@Override
