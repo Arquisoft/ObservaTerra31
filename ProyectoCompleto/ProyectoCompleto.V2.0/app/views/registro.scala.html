@@ -1,0 +1,21 @@
+@(form: Form[User]) 
+@import play.i18n.Messages 
+@navbarGuest {
+@helper.form(routes.Application.registerAut) {
+<div class="col-xs-4 col-md-offset-4">
+	<form class="form-register" role="form">
+		<h2 class="form-register-heading">@Messages.get("regist")</h2>
+			<input type="text" class="form-control" placeholder="@Messages.get("name")" required autofocus name="nameReg">
+			<input type="text" class="form-control" placeholder="@Messages.get("surname")" required autofocus name="surnameReg">
+			<input type="email" class="form-control" placeholder="@Messages.get("email")" required autofocus name="emailReg">
+			<input type="password" class="form-control"	placeholder="@Messages.get("password")" required name="passReg"> <br>
+			@if(form.hasGlobalErrors) {
+					<p class="error">@form.globalError.message</p>
+			}
+		<button class="btn btn-primary " type="submit">Sign in</button>
+	</form>
+
+</div>
+}
+}
+

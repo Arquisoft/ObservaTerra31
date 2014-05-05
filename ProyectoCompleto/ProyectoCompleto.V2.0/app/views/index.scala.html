@@ -1,0 +1,38 @@
+@(message: String, observations: List[Observation]) 
+@import play.i18n.Messages
+
+@navbarGuest {
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-12 col-md-3" id="divLeft"> 
+		</div>
+		<div class="col-xs-12 col-md-9" id="divMain">
+			<h2>@Messages.get("observations")</h2>
+			<br>
+			<div class="list-group" id="observations">
+				@for(observation <- observations) { 
+				<a href="#"
+					class="list-group-item" 
+					data-toggle="modal"
+					data-value="@observation.getValue()"
+					data-date="@observation.getTime()"
+					data-area="@observation.getArea()"
+					data-measure="@observation.getMeasure()"
+					data-provider="@observation.getProvider()"
+					data-indicator="@observation.getIndicator()"
+					data-publish="@observation.getPublishDate()"
+					data-id="@observation.getId()">
+					<h5 class="list-group-item-heading">@observation</h5>
+					<p class="list-group-item-text">
+					<h6 class="text-right">@observation.getPublishDate()</h6>
+					</p>
+
+				</a> }
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+	}
