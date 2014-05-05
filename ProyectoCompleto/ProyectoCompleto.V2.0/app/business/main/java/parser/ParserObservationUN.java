@@ -24,9 +24,9 @@ public class ParserObservationUN extends ParserObservationXml {
 	// la UN.
 	private String instantTime = "_[0-9][0-9][0-9][0-9].+";
 	private String hdi = "_[0-9][0-9][0-9][0-9]_hdi.+";
-	private String porcent = "0.([0-9][0-9][0-9])+";
-	private String unit = 
-			"([0-9]+[0-9].([0-9][0-9][0-9])*) | ([1-9].([0-9][0-9][0-9])+)";
+	private String porcent = "0.[0-9]+";
+	private String unit = "[0-9]+[0-9].[0-9]*";
+	private String unitUnaUnidad= "[1-9].[0-9]+";
 
 	public ParserObservationUN(String filename) {
 		super(filename);
@@ -136,7 +136,7 @@ public class ParserObservationUN extends ParserObservationXml {
 			}
 			this.setMeasure("%");
 			this.setValue(value);
-		} else if (value.matches(unit)) {
+		} else if (value.matches(unit) || value.matches(unitUnaUnidad)) {
 			if(value.contains("-")){
 			value.split("-");
 			}
@@ -146,5 +146,6 @@ public class ParserObservationUN extends ParserObservationXml {
 			this.setMeasure("none");
 			this.setValue(value);
 		}
+
 	}
 }
