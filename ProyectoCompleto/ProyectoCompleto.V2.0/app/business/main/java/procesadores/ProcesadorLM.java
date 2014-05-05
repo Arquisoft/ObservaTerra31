@@ -12,7 +12,7 @@ import models.*;
 public class ProcesadorLM {
 	public static final String[] ARCHIVOS={"LM/all.xml"};
 	public static final Organization LM = 
-			new SampleOrganization("Land Matrix", "", "LM");
+			new SampleOrganization("Land Matrix", "http://landmatrix.org/en/", "LM");
 	
 	public void procesar(){
 		for (String archivo: ARCHIVOS){

@@ -14,7 +14,7 @@ import business.main.java.parser.ParserObservationUN;
 public class ProcesadorUN {
 	
 	public static final Organization UN = 
-			new SampleOrganization("United Nations", "", "UN");
+			new SampleOrganization("United Nations", "http://hdr.undp.org/en/statistics/hdi", "UN");
 	
 	public static void procesar(){
 		
