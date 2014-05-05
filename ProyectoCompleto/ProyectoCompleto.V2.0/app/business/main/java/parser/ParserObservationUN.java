@@ -1,5 +1,7 @@
 package business.main.java.parser;
 
+import java.util.Date;
+
 import javax.xml.stream.XMLStreamReader;
 
 import models.Area;
@@ -20,9 +22,11 @@ public class ParserObservationUN extends ParserObservationXml {
 	// Expresion regular del formato de los RangeTime en las observaciones de la
 	// UN.
 	private String rangeTime = "_[0-9][0-9][0-9][0-9]_[0-9][0-9][0-9][0-9].+";
+	private String range = "_[0-9][0-9][0-9][0-9]_[0-9][0-9][0-9][0-9]";
 	// Expresion regular del formato de los InstantTime en las observaciones de
 	// la UN.
 	private String instantTime = "_[0-9][0-9][0-9][0-9].+";
+	private String instant = "_[0-9][0-9][0-9][0-9]";
 	private String hdi = "_[0-9][0-9][0-9][0-9]_hdi.+";
 	private String porcent = "0.[0-9]+";
 	private String unit = "[0-9]+[0-9].[0-9]*";
@@ -96,12 +100,12 @@ public class ParserObservationUN extends ParserObservationXml {
 				newRangeTime = 
 					(RangeTime) newRangeTime.findByRange(timeStart, timeEnd);
 			this.setTime(newRangeTime);
-
-			Indicator ind = new Indicator(newName);
+			String indName =newName.replaceFirst(range, "").replace('_', ' ');
+			Indicator ind = new Indicator(indName);
 			// Intenta insertar el Indicator. Si ya existia (== null),
 			// la variable ind tomara el valor del que ya existia
 			if (Indicator.create(ind) == null) {
-				ind = Indicator.findByName(newName);
+				ind = Indicator.findByName(indName);
 			}
 			this.setIndicator(ind);
 
@@ -113,12 +117,12 @@ public class ParserObservationUN extends ParserObservationXml {
 			if (time.create(time) == null)
 				time = (InstantTime) time.findByInstant(timeInstant);
 			this.setTime(time);
-			
-			Indicator ind = new Indicator(newName);
+			String indName =newName.replaceFirst(instant, "").replace('_', ' ');
+			Indicator ind = new Indicator(indName);
 			// Intenta insertar el Indicator. Si ya existia (== null),
 			// la variable ind tomara el valor del que ya existia
 			if (Indicator.create(ind) == null) {
-				ind = Indicator.findByName(newName);
+				ind = Indicator.findByName(indName);
 			}
 			this.setIndicator(ind);
 		}
