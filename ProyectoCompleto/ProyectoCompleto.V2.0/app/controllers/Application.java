@@ -19,11 +19,21 @@ import views.html.registro;
 
 public class Application extends Controller {
 
+	public static Result page(int page) {
+		List<Observation> obs = Observation.all();
+		int start = 21*page;
+		if(page < 0)
+			return redirect("/page/1");
+		return ok(index.render("Started...", obs.subList(start, start+20), page));
+		
+			
+		
+	}
+	
 	public static Result index() {
 		List<Observation> obs = Observation.all();
-		System.out.println("Esta vacia: " + obs.isEmpty());
-		System.out.println(obs.get(0).getMeasure());
-		return ok(index.render("Started...", obs));
+		System.out.println(obs.size());
+		return redirect("/page/1");
 	}
 
 	public static Result change(String langCode) {
@@ -31,8 +41,9 @@ public class Application extends Controller {
 		return ok();
 	}
 
-	public static Result idioma() {
-		return TODO;
+	public static Result idioma(String langCode) {
+		changeLang(langCode);
+		return redirect(routes.Application.index());
 	}
 
 	public static Result login() {

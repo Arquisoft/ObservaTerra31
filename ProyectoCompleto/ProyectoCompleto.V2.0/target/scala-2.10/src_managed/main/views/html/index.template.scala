@@ -20,14 +20,14 @@ import play.api.data.Field
 import play.mvc.Http.Context.Implicit._
 import views.html._
 /**/
-object index extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template2[String,List[Observation],play.api.templates.HtmlFormat.Appendable] {
+object index extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template3[String,List[Observation],Integer,play.api.templates.HtmlFormat.Appendable] {
 
     /**/
-    def apply/*1.2*/(message: String, observations: List[Observation]):play.api.templates.HtmlFormat.Appendable = {
+    def apply/*1.2*/(message: String, observations: List[Observation], paginaCoger: Integer ):play.api.templates.HtmlFormat.Appendable = {
         _display_ {import play.i18n.Messages
 
 
-Seq[Any](format.raw/*1.52*/(""" 
+Seq[Any](format.raw/*1.75*/(""" 
 """),format.raw/*3.1*/("""
 """),_display_(Seq[Any](/*4.2*/navbarGuest/*4.13*/ {_display_(Seq[Any](format.raw/*4.15*/("""
 
@@ -57,29 +57,47 @@ Seq[Any](format.raw/*1.52*/("""
 					</p>
 
 				</a> """)))})),format.raw/*31.11*/("""
+			
+      	
+         <ul class="pagination" id="pageF">
+         
+  							<li><a href="""),_display_(Seq[Any](/*36.23*/{var xx= "/page/" + (paginaCoger-1); xx;})),format.raw/*36.64*/(""">&laquo;</a></li>
+  							
+ 							<li><a href="""),_display_(Seq[Any](/*38.22*/{var xx= "/page/" + (paginaCoger+1); xx;})),format.raw/*38.63*/(""">"""),_display_(Seq[Any](/*38.65*/(paginaCoger+1))),format.raw/*38.80*/("""</a></li>
+  							<li><a href="""),_display_(Seq[Any](/*39.23*/{var xx= "/page/" + (paginaCoger+2); xx;})),format.raw/*39.64*/(""">"""),_display_(Seq[Any](/*39.66*/(paginaCoger+2))),format.raw/*39.81*/("""</a></li>
+ 							<li><a href="""),_display_(Seq[Any](/*40.22*/{var xx= "/page/" + (paginaCoger+3); xx;})),format.raw/*40.63*/(""">"""),_display_(Seq[Any](/*40.65*/(paginaCoger+3))),format.raw/*40.80*/("""</a></li>
+  							<li><a href="""),_display_(Seq[Any](/*41.23*/{var xx= "/page/" + (paginaCoger+4); xx;})),format.raw/*41.64*/(""">"""),_display_(Seq[Any](/*41.66*/(paginaCoger+4))),format.raw/*41.81*/("""</a></li>
+  							<li><a href="""),_display_(Seq[Any](/*42.23*/{var xx= "/page/" + (paginaCoger+5); xx;})),format.raw/*42.64*/(""">"""),_display_(Seq[Any](/*42.66*/(paginaCoger+5))),format.raw/*42.81*/("""</a></li>
+ 							<li><a href="""),_display_(Seq[Any](/*43.22*/{var xx= "/page/" + (paginaCoger+6); xx;})),format.raw/*43.63*/(""">&raquo;</a></li>
+					</ul>
+      
+				
+					
 			</div>
+			
 		</div>
 	</div>
+
 	</div>
 
 
 	""")))})))}
     }
     
-    def render(message:String,observations:List[Observation]): play.api.templates.HtmlFormat.Appendable = apply(message,observations)
+    def render(message:String,observations:List[Observation],paginaCoger:Integer): play.api.templates.HtmlFormat.Appendable = apply(message,observations,paginaCoger)
     
-    def f:((String,List[Observation]) => play.api.templates.HtmlFormat.Appendable) = (message,observations) => apply(message,observations)
+    def f:((String,List[Observation],Integer) => play.api.templates.HtmlFormat.Appendable) = (message,observations,paginaCoger) => apply(message,observations,paginaCoger)
     
     def ref: this.type = this
 
 }
                 /*
                     -- GENERATED --
-                    DATE: Thu May 08 09:19:28 CEST 2014
+                    DATE: Thu May 08 19:42:28 CEST 2014
                     SOURCE: C:/Users/Lara/Documents/GitHub/ObservaTerra31/ProyectoCompleto/ProyectoCompleto.V2.0/app/views/index.scala.html
-                    HASH: 8b8a8c3937e2671de3a2c2c861a22d32bb4c26fc
-                    MATRIX: 792->1|963->51|992->82|1029->85|1048->96|1087->98|1294->270|1311->278|1353->298|1456->366|1504->398|1544->400|1675->495|1695->506|1728->517|1784->537|1804->548|1836->558|1892->578|1912->589|1944->599|2003->622|2023->633|2058->646|2118->670|2138->681|2174->695|2235->720|2255->731|2292->746|2351->769|2371->780|2410->797|2464->815|2484->826|2514->834|2596->880|2629->891|2740->966|2760->977|2799->994|2861->1024
-                    LINES: 26->1|30->1|31->3|32->4|32->4|32->4|39->11|39->11|39->11|42->14|42->14|42->14|46->18|46->18|46->18|47->19|47->19|47->19|48->20|48->20|48->20|49->21|49->21|49->21|50->22|50->22|50->22|51->23|51->23|51->23|52->24|52->24|52->24|53->25|53->25|53->25|54->26|54->26|56->28|56->28|56->28|59->31
+                    HASH: 1e2656c04a5eff3e68338ccd49bf30bfbc5905d3
+                    MATRIX: 800->1|994->74|1023->105|1060->108|1079->119|1118->121|1325->293|1342->301|1384->321|1487->389|1535->421|1575->423|1706->518|1726->529|1759->540|1815->560|1835->571|1867->581|1923->601|1943->612|1975->622|2034->645|2054->656|2089->669|2149->693|2169->704|2205->718|2266->743|2286->754|2323->769|2382->792|2402->803|2441->820|2495->838|2515->849|2545->857|2627->903|2660->914|2771->989|2791->1000|2830->1017|2892->1047|3022->1141|3085->1182|3172->1233|3235->1274|3273->1276|3310->1291|3379->1324|3442->1365|3480->1367|3517->1382|3585->1414|3648->1455|3686->1457|3723->1472|3792->1505|3855->1546|3893->1548|3930->1563|3999->1596|4062->1637|4100->1639|4137->1654|4205->1686|4268->1727
+                    LINES: 26->1|30->1|31->3|32->4|32->4|32->4|39->11|39->11|39->11|42->14|42->14|42->14|46->18|46->18|46->18|47->19|47->19|47->19|48->20|48->20|48->20|49->21|49->21|49->21|50->22|50->22|50->22|51->23|51->23|51->23|52->24|52->24|52->24|53->25|53->25|53->25|54->26|54->26|56->28|56->28|56->28|59->31|64->36|64->36|66->38|66->38|66->38|66->38|67->39|67->39|67->39|67->39|68->40|68->40|68->40|68->40|69->41|69->41|69->41|69->41|70->42|70->42|70->42|70->42|71->43|71->43
                     -- GENERATED --
                 */
             

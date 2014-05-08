@@ -4,7 +4,8 @@
 
 # Home page
 GET     /                          														controllers.Application.index()
-GET		/idioma																			controllers.Application.idioma()
+GET     /page/:page                   													controllers.Application.page(page:Integer)
+GET		/idioma/:codigo																	controllers.Application.idioma(codigo:String)
 GET		/login																			controllers.Application.login()
 POST    /login                      													controllers.Application.authenticate()
 GET		/discover																		controllers.Application.discover()

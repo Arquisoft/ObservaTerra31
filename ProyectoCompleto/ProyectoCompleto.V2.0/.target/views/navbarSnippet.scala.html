@@ -20,7 +20,14 @@
 				<li><a href="@routes.Application.index">@Messages.get("home")</a></li>
 				<li><a href="@routes.Application.discover">@Messages.get("discover")</a></li>
 				<li><a href="@routes.Application.organizations">@Messages.get("orgs")</a></li>
-				<li><a href="@routes.Application.idioma">@Messages.get("language")</a></li>
+				
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">@Messages.get("language") <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="/idioma/es">@Messages.get("es")</a></li>
+								<li><a href="/idioma/en">@Messages.get("en")</a></li>
+							</ul>
+							</li>
 			</ul>
 			<form class="navbar-form navbar-left" role="search" id="search">
 				<div class="form-group">

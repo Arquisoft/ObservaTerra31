@@ -1,4 +1,4 @@
-@(message: String, observations: List[Observation]) 
+@(message: String, observations: List[Observation], paginaCoger: Integer ) 
 @import play.i18n.Messages
 
 @navbarGuest {
@@ -29,9 +29,27 @@
 					</p>
 
 				</a> }
+			
+      	
+         <ul class="pagination" id="pageF">
+         
+  							<li><a href=@{var xx= "/page/" + (paginaCoger-1); xx;}>&laquo;</a></li>
+  							
+ 							<li><a href=@{var xx= "/page/" + (paginaCoger+1); xx;}>@(paginaCoger+1)</a></li>
+  							<li><a href=@{var xx= "/page/" + (paginaCoger+2); xx;}>@(paginaCoger+2)</a></li>
+ 							<li><a href=@{var xx= "/page/" + (paginaCoger+3); xx;}>@(paginaCoger+3)</a></li>
+  							<li><a href=@{var xx= "/page/" + (paginaCoger+4); xx;}>@(paginaCoger+4)</a></li>
+  							<li><a href=@{var xx= "/page/" + (paginaCoger+5); xx;}>@(paginaCoger+5)</a></li>
+ 							<li><a href=@{var xx= "/page/" + (paginaCoger+6); xx;}>&raquo;</a></li>
+					</ul>
+      
+				
+					
 			</div>
+			
 		</div>
 	</div>
+
 	</div>
 
 

@@ -147,7 +147,8 @@ $(document).ready(
 			
 			
 			function widthValue (elementValue, maxValue) {
-				return maxValue <= 100 ? elementValue : (elementValue/maxValue) * 100;
+				//return maxValue <= 100 ? elementValue : (elementValue/maxValue) * 100;
+				return (elementValue/maxValue) * 100;
 			}
 			
 			
@@ -248,4 +249,7 @@ $(document).ready(
 			
 
 	$('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+	
+
 		});
+		
