@@ -124,7 +124,7 @@ $(document).ready(
 										+ "\" aria-valuenow=\"" + values[i]
 										+ "\" style=\"width: " + widthValue(values[i], parseInt(maxValue)) + "%"
 										+ "\" >" 
-										+ values[i] + ((x = elements[i].data("measure")).lenght > 1 ? " " + x : x )
+										+ values[i]+ "  " + ((x = elements[i].data("measure")).lenght > 1 ? " " + x : x )
 										+ "</div>"
 										
 					$("#chart").children().last().append(progressBar);

@@ -13,6 +13,7 @@ import play.mvc.Result;
 import utils.Jsonin;
 import views.html.ajaxE;
 import views.html.crawler;
+import business.main.java.procesadores.ProcesadorUN;
 
 public class API extends Controller {
 
@@ -66,7 +67,7 @@ public class API extends Controller {
 	}
 	
 	public static Result crawler(){
-		//ProcesadorUN.procesar();
+		ProcesadorUN.procesar();
 		//TODO meter usuarios
 		User labra = new User("labra", "labra", "labra@uniovi.es", "1234");
 		labra.save();

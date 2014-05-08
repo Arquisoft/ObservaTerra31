@@ -265,7 +265,6 @@ public class Observation extends Model {
 				+ (measureString.length() == 1 ? "" : " ") + measureString
 				+ " " + Messages.get("by") + " " + provider + ".";
 
-		// return "mierdaaaaa";
 	}
 
 	public String toJson() {
