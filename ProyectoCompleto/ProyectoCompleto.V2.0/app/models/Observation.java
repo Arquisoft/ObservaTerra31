@@ -22,19 +22,20 @@ import play.i18n.Messages;
  */
 
 @Entity
-@Table(name="Observation")
+@Table(name = "Observation")
 public class Observation extends Model {
 
 	private static final long serialVersionUID = -1861880649383824350L;
-	
+
 	// // // // //
 	// ATRIBUTOS
 	// // // // //
-	
-	public static Finder<Long,Observation> find = 
-			new Finder<Long,Observation>(Long.class, Observation.class);
-	
-	@Id @GeneratedValue
+
+	public static Finder<Long, Observation> find = new Finder<Long, Observation>(
+			Long.class, Observation.class);
+
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String value;
 	private String measure;
@@ -52,9 +53,10 @@ public class Observation extends Model {
 	// // // // // // //
 	// CONSTRUCTORES
 	// // // // // // //
-	
-	public Observation(){}
-	
+
+	public Observation() {
+	}
+
 	public Observation(Time time, String value, String measure,
 			Indicator indicator, Area area, Organization provider,
 			Date publishDate) {
@@ -72,7 +74,7 @@ public class Observation extends Model {
 	// // // // //
 	// METODOS
 	// // // // //
-	
+
 	private void link() {
 		time._getObservations().add(this);
 		provider._getObservations().add(this);
@@ -86,22 +88,20 @@ public class Observation extends Model {
 		area._getObservations().remove(this);
 		indicator._getObservations().remove(this);
 	}
-	
+
 	// // // // // // // // // //
 	// METODOS PERSISTENCIA PLAY
 	// // // // // // // // // //
-	
+
 	public static List<Observation> all() {
 		return find.all();
 	}
 
 	public static void create(Observation obs) {
-		if ( find.where()
-				.eq("area", obs.getArea())
+		if (find.where().eq("area", obs.getArea())
 				.eq("indicator", obs.getIndicator())
 				.eq("provider", obs.getProvider())
-				.eq("publishDate", obs.getPublishDate())
-				.findUnique() == null ){
+				.eq("publishDate", obs.getPublishDate()).findUnique() == null) {
 			obs.save();
 		}
 	}
@@ -114,87 +114,91 @@ public class Observation extends Model {
 		for (Observation o : all())
 			o.delete();
 	}
-	
+
 	public static Observation findById(Long id) {
 		return find.byId(id);
 	}
 
 	/**
-	 * Devuelve una lista de Observations que pertenecen
-	 * al Indicator recibido por parametro
+	 * Devuelve una lista de Observations que pertenecen al Indicator recibido
+	 * por parametro
 	 */
 	public static List<Observation> findByIndicator(Indicator indicator) {
 		return find.where().eq("indicator", indicator).findList();
 	}
-	
+
 	/**
-	 * Devuelve una lista de Observations que pertenecen
-	 * a la Area recibida por parametro
+	 * Devuelve una lista de Observations que pertenecen a la Area recibida por
+	 * parametro
 	 */
 	public static List<Observation> findByArea(Area area) {
 		return find.where().eq("area", area).findList();
 	}
-	
+
 	/**
-	 * Devuelve una lista de Observations originados por
-	 * la Organization recibida por parametro
+	 * Devuelve una lista de Observations originados por la Organization
+	 * recibida por parametro
 	 */
 	public static List<Observation> findByProvider(Organization provider) {
 		return find.where().eq("provider", provider).findList();
 	}
-	
+
 	/**
-	 * Devuelve una lista de Observations originados
-	 * en la Date recibida por parametro
+	 * Devuelve una lista de Observations originados en la Date recibida por
+	 * parametro
 	 */
 	public static List<Observation> findByPublishDate(Date publishDate) {
 		return find.where().eq("publishDate", publishDate).findList();
 	}
-	
+
 	// // // // // // // // // //
 	// RELACION ENTRE ENTIDADES
 	// // // // // // // // // //
-	
-	/* Relacion entre entidades:
-	 *  * Observations <--> 1 Time
+
+	/*
+	 * Relacion entre entidades: * Observations <--> 1 Time
 	 */
 	void _setTime(Time t) {
 		time = t;
 	}
+
 	public Time getTime() {
 		return time;
 	}
-	
-	/* Relacion entre entidades:
-	 *  * Observations <--> 1 Indicator
+
+	/*
+	 * Relacion entre entidades: * Observations <--> 1 Indicator
 	 */
 	void _setIndicator(Indicator i) {
 		indicator = i;
 	}
+
 	public Indicator getIndicator() {
 		return indicator;
 	}
-	
-	/* Relacion entre entidades:
-	 *  * Observations <--> 1 Area
+
+	/*
+	 * Relacion entre entidades: * Observations <--> 1 Area
 	 */
 	void _setArea(Area a) {
 		area = a;
 	}
+
 	public Area getArea() {
 		return area;
 	}
-	
-	/* Relacion entre entidades:
-	 *  * Observations <--> 1 Organization
+
+	/*
+	 * Relacion entre entidades: * Observations <--> 1 Organization
 	 */
 	void _setOrganization(Organization providerOrg) {
 		provider = providerOrg;
 	}
+
 	public Organization getProvider() {
 		return provider;
 	}
-	
+
 	// // // // // // // //
 	// GETTERS & SETTERS
 	// // // // // // // //
@@ -218,7 +222,7 @@ public class Observation extends Model {
 	// // // // // // // //
 	// HASHCODE & EQUALS
 	// // // // // // // //
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -243,24 +247,25 @@ public class Observation extends Model {
 			return false;
 		return true;
 	}
-	
+
 	// // // // // // // //
 	// TO_STRING & TO_JSON
 	// // // // // // // //
-	
+
 	@Override
 	public String toString() {
-		
+
 		String measureString = measure;
-		if( measure.compareToIgnoreCase("none")==0 )
+		if (measure.compareToIgnoreCase("none") == 0)
 			measureString = "";
 		
-		return indicator + " " + Messages.get("at") + " " 
-				+ time.toString() + " "
-				+ Messages.get("in") + " " + area.getName() + " "
+		return indicator + " " + Messages.get("at") + " " + time
+				+ " " + Messages.get("in") + " " + area.getName() + " "
 				+ Messages.get("was") + " " + value
 				+ (measureString.length() == 1 ? "" : " ") + measureString
-				+ " " + Messages.get("by") + " " + provider.getName() + ".";
+				+ " " + Messages.get("by") + " " + provider + ".";
+
+		// return "mierdaaaaa";
 	}
 
 	public String toJson() {

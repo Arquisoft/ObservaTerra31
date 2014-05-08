@@ -3,12 +3,11 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import business.main.java.procesadores.ProcesadorUN;
-
 import models.Follow;
 import models.Indicator;
 import models.Observation;
 import models.Organization;
+import models.User;
 import play.mvc.Controller;
 import play.mvc.Result;
 import utils.Jsonin;
@@ -67,7 +66,10 @@ public class API extends Controller {
 	}
 	
 	public static Result crawler(){
-		ProcesadorUN.procesar();
+		//ProcesadorUN.procesar();
+		//TODO meter usuarios
+		User labra = new User("labra", "labra", "labra@uniovi.es", "1234");
+		labra.save();
 		return ok(crawler.render());
 	}
 }

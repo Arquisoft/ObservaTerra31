@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.List;
 import java.util.Map;
 
 import models.Observation;
@@ -8,6 +9,7 @@ import models.User;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import utils.Hashin;
 import utils.Volcado;
 import views.html.discover;
 import views.html.index;
@@ -18,7 +20,10 @@ import views.html.registro;
 public class Application extends Controller {
 
 	public static Result index() {
-		return ok(index.render("Started...", Observation.all()));
+		List<Observation> obs = Observation.all();
+		System.out.println("Esta vacia: " + obs.isEmpty());
+		System.out.println(obs.get(0).getMeasure());
+		return ok(index.render("Started...", obs));
 	}
 
 	public static Result change(String langCode) {
@@ -44,14 +49,16 @@ public class Application extends Controller {
 
 	public static Result authenticate() {
 		Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+		System.out.println(loginForm.hasErrors());
 		if (loginForm.hasErrors())
 			return badRequest("algo has hecho mal");
 		else {
 			Map<String, String[]> values = request().body().asFormUrlEncoded();
 			String email = values.get("emailLog")[0];
-			String pass = values.get("passLog")[0];
-
+			String pass = Hashin.md5(values.get("passLog")[0]);
+			
 			User us = User.findByEmail(email);
+			
 			Volcado.getInstance().volcar(email, pass);
 			
 			if (us != null && us.getPassword().equalsIgnoreCase(pass))

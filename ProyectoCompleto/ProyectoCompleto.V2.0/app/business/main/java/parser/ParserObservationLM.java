@@ -22,6 +22,7 @@ public class ParserObservationLM extends ParserObservationXml {
 			@SuppressWarnings("unused")
 			Observation a;
 			this.value = stringBuilder.toString();
+			System.out.println("Provider: " + this.provider);
 			a = new Observation(this.time, this.value, this.measure,
 					this.indicator, this.area, this.provider, this.publishDate);
 			stringBuilder = new StringBuilder();
