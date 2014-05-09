@@ -16,3 +16,11 @@ To start with, let's consider ObservaTerra as a earth observatory. In a tech ter
 * [Sergio G.](https://github.com/tehAnswer)
 
 
+## How to run
+  
+  * Clone the repo!
+  * At the system console, move to the repo's directory. Then, execute ``play run``.
+  * At first, the project it's clean and you will need some data. So, you have to visit /crawler before anything. This is a slow process, it will take about 2-8 min.
+  * Then, the app is ready!
+
+
