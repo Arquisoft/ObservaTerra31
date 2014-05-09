@@ -63,12 +63,21 @@ public class Indicator extends Model {
 		return find.all();
 	}
 
-	public static Indicator create(Indicator indicator) {
-		if (Indicator.findByName(indicator.name) == null) {
-			indicator.save();
-			return indicator;
+	/**
+	 * Trata de insertar un Indicator en la base de datos.
+	 * @param newIndicator Indicator a insertar
+	 * @return Devuelve un Indicator. <br>
+	 * Si tiene exito, devuelve el Indicator insertado.
+	 * Si ya exitia, devuelve el Indicator existente.
+	 */
+	public static Indicator create(Indicator newIndicator) {
+		Indicator alreadyExisting = 
+				Indicator.findByName(newIndicator.getName());
+		if( alreadyExisting == null ){
+			newIndicator.save();
+			return newIndicator;
 		}
-		return null;
+		return alreadyExisting;
 	}
 
 	public static void remove(long id) {

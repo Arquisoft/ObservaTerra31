@@ -44,14 +44,23 @@ public class RangeTime extends Time {
 	// METODOS PERSISTENCIA PLAY
 	// // // // // // // // // //
 	
-	public Time create(Time time) {
-		Time startTime = ((RangeTime)time).getStart();
-		Time endTime = ((RangeTime)time).getEnd();
-		if (findByRange(startTime, endTime) == null) {
-			time.save();
-			return time;
+	/**
+	 * Trata de insertar un RangeTime en la base de datos.
+	 * @param newTime Time a insertar
+	 * @return Devuelve un Time. <br>
+	 * Si tiene exito, devuelve el Time insertado.
+	 * Si ya exitia, devuelve el Time existente.
+	 */
+	public Time create(Time newTime) {
+		Time startTime = ((RangeTime)newTime).getStart();
+		Time endTime = ((RangeTime)newTime).getEnd();
+		
+		Time alreadyExisting = findByRange(startTime, endTime);
+		if( alreadyExisting == null ){
+			newTime.save();
+			return newTime;
 		}
-		return null;
+		return alreadyExisting;
 	}
 
 	public Time findByInstant(String instant) {

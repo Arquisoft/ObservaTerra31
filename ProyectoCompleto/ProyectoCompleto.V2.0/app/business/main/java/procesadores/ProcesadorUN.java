@@ -2,7 +2,7 @@ package business.main.java.procesadores;
 
 import models.Organization;
 import models.SampleOrganization;
-import business.main.java.Crawler.UNDownloader;
+import business.main.java.crawler.UNDownloader;
 import business.main.java.parser.ParserObservationUN;
 
 /**
@@ -11,27 +11,25 @@ import business.main.java.parser.ParserObservationUN;
  * @author Victor
  *
  */
-public class ProcesadorUN {
+public class ProcesadorUN implements Procesador {
 	
 	public static final Organization UN = 
-			new SampleOrganization("United Nations", "http://hdr.undp.org/en/statistics/hdi", "UN");
+			new SampleOrganization("United Nations", 
+					"http://hdr.undp.org/en/statistics/hdi", "UN");
 	
-	public static void procesar(){
-		
-		System.out.println(
-				"\nData are being processed. Please, wait. " +
-				"\nThis may take about two minutes...");
-		
+	@Override
+	public void procesar(){
 		Organization.create(UN);
-		
 		for (String archivo: UNDownloader.DOCUMENTS){
 			ParserObservationUN parser = 
 					new ParserObservationUN(UNDownloader.saveLocation+archivo);
 			parser.setProvider(UN);
 			parser.parse();
 		}
-		
-		System.out.println(
-				"\nFinish. Data have been inserted in data base.");
+	}
+	
+	@Override
+	public Organization getOrganization(){
+		return UN;
 	}
 }

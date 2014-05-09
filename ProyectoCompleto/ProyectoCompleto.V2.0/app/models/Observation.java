@@ -98,10 +98,17 @@ public class Observation extends Model {
 	}
 
 	public static void create(Observation obs) {
-		if (find.where().eq("area", obs.getArea())
-				.eq("indicator", obs.getIndicator())
-				.eq("provider", obs.getProvider())
-				.eq("publishDate", obs.getPublishDate()).findUnique() == null) {
+		if ( find.where()
+				.eq("area", Area.find.where()
+						.eq("id", obs.getArea().getId()).findUnique())
+				.eq("indicator", Indicator.find.where()
+						.eq("id", obs.getIndicator().getId()).findUnique())
+				.eq("provider", Organization.find.where()
+						.eq("id", obs.getProvider().getId()).findUnique())
+				.eq("time", Time.find.where()
+						.eq("id", obs.getTime().getId()).findUnique())
+				.eq("measure", obs.getMeasure())
+				.findUnique() == null ){
 			obs.save();
 		}
 	}
@@ -254,17 +261,16 @@ public class Observation extends Model {
 
 	@Override
 	public String toString() {
-
 		String measureString = measure;
 		if (measure.compareToIgnoreCase("none") == 0)
 			measureString = "";
 		
 		return indicator + " " + Messages.get("at") + " " + time
-				+ " " + Messages.get("in") + " " + area.getName() + " "
+				+ " " + Messages.get("in") + " " + area + " "
 				+ Messages.get("was") + " " + value
-				+ (measureString.length() == 1 ? "" : " ") + measureString
+				+ (measureString.length() == 1 ? "" : " ") 
+				+ Messages.get(measureString)
 				+ " " + Messages.get("by") + " " + provider + ".";
-
 	}
 
 	public String toJson() {

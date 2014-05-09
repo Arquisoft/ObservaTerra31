@@ -14,9 +14,8 @@ public class Volcado {
 			volcado = new Volcado();
 		if(fichero == null && pw == null){
 			try {
-				fichero = new FileWriter("C:/Users/Lara/Desktop/Tercero/asco.txt");
+				fichero = new FileWriter("public/volcado.txt");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			pw = new PrintWriter(fichero);
@@ -28,20 +27,18 @@ public class Volcado {
 		FileWriter fichero = null;
 		PrintWriter pw = null;
 		try {
-			fichero = new FileWriter("C:/Users/Lara/Desktop/Tercero/prueba.txt");
+			fichero = new FileWriter("public/volcado.txt");
 			pw = new PrintWriter(fichero);
 			for(String s: parametros){
 				pw.write(s);
 				pw.write("\n");}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
 			if(fichero != null)
 				try {
 					fichero.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		}

@@ -108,7 +108,7 @@ public class User extends Model {
 	}
 
 	public static void create(User user){
-		if (User.findByEmail(user.email) == null) {
+		if (User.findByEmail(user.getEmail()) == null) {
 			user.save();
 		}
 	}

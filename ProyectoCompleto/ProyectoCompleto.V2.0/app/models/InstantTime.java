@@ -30,13 +30,22 @@ public class InstantTime extends Time {
 	// METODOS PERSISTENCIA PLAY
 	// // // // // // // // // //
 	
-	public Time create(Time time) {
-		String instant = ((InstantTime)time).getInstant();
-		if (findByInstant( instant ) == null) {
-			time.save();
-			return time;
+	/**
+	 * Trata de insertar un InstantTime en la base de datos.
+	 * @param newTime Time a insertar
+	 * @return Devuelve un Time. <br>
+	 * Si tiene exito, devuelve el Time insertado.
+	 * Si ya exitia, devuelve el Time existente.
+	 */
+	public Time create(Time newTime) {
+		String instant = ((InstantTime)newTime).getInstant();
+		
+		Time alreadyExisting = findByInstant( instant );
+		if( alreadyExisting == null ){
+			newTime.save();
+			return newTime;
 		}
-		return null;
+		return alreadyExisting;
 	}
 
 	public Time findByInstant(String instant) {

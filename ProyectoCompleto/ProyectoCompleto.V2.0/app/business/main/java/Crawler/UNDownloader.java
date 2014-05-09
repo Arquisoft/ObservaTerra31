@@ -1,4 +1,4 @@
-package business.main.java.Crawler;
+package business.main.java.crawler;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;

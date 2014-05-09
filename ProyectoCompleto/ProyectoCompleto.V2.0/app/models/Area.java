@@ -68,12 +68,21 @@ public class Area extends Model {
 		return find.all();
 	}
 
-	public static Area create(Area area) {
-		if (Area.findByNameScope(area.getName(), area.getScope()) == null) {
-			area.save();
-			return area;
+	/**
+	 * Trata de insertar un Area en la base de datos.
+	 * @param newArea Area a insertar
+	 * @return Devuelve un Area. <br>
+	 * Si tiene exito, devuelve la Area insertada.
+	 * Si ya exitia, devuelve la Area existente.
+	 */
+	public static Area create(Area newArea) {
+		Area alreadyExisting = 
+				Area.findByNameScope(newArea.getName(), newArea.getScope());
+		if( alreadyExisting == null ){
+			newArea.save();
+			return newArea;
 		}
-		return null;
+		return alreadyExisting;
 	}
 
 	public static void remove(long id) {

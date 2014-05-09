@@ -7,18 +7,18 @@ import models.Follow;
 import models.Indicator;
 import models.Observation;
 import models.Organization;
-import models.User;
 import play.mvc.Controller;
 import play.mvc.Result;
 import utils.Jsonin;
 import views.html.ajaxE;
 import views.html.crawler;
+import business.main.java.procesadores.Procesador;
+import business.main.java.procesadores.ProcesadorLM;
 import business.main.java.procesadores.ProcesadorUN;
 
 public class API extends Controller {
 
 	public static Result allObservations() {
-
 		List<Observation> obs = Observation.all();
 		String ret = Jsonin.observations2json(obs);
 		return ok(ret);
@@ -67,10 +67,30 @@ public class API extends Controller {
 	}
 	
 	public static Result crawler(){
-		ProcesadorUN.procesar();
-		//TODO meter usuarios
-		User labra = new User("labra", "labra", "labra@uniovi.es", "1234");
-		labra.save();
+		Procesador procesadorUN = new ProcesadorUN();
+		Procesador procesadorLM = new ProcesadorLM();
+		
+		runProcessor(procesadorUN);
+		runProcessor(procesadorLM);
+		
 		return ok(crawler.render());
+	}
+	
+	private static void runProcessor(Procesador procesador){
+		System.out.println(
+				"\nData from " + procesador.getOrganization().getName() + 
+				" are being processed. Please, wait. " +
+				"\nThis may take about five minutes...");
+		
+		procesador.procesar();
+		
+		System.out.println(
+				"\nProcess completed. Data from " + 
+				procesador.getOrganization().getName() + 
+				" have been treated.");
+				
+		List<Observation> obs = Observation.all();
+		System.out.println(
+				"\nNow there are " + obs.size() + " observations in data bases");
 	}
 }

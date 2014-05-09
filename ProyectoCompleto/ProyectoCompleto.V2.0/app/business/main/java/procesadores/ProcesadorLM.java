@@ -9,17 +9,25 @@ import models.*;
  * @author Victor
  *
  */
-public class ProcesadorLM {
-	public static final String[] ARCHIVOS={"LM/all.xml"};
-	public static final Organization LM = 
-			new SampleOrganization("Land Matrix", "http://landmatrix.org/en/", "LM");
+public class ProcesadorLM implements Procesador {
 	
+	public static final String[] ARCHIVOS={"public/resources/LM/all.xml"};
+	public static final Organization LM = 
+			new SampleOrganization("Land Matrix", 
+					"http://landmatrix.org/en/", "LM");
+	
+	@Override
 	public void procesar(){
+		Organization.create(LM);
 		for (String archivo: ARCHIVOS){
 			ParserObservationLM parser = new ParserObservationLM(archivo);
 			parser.setProvider(LM);
 			parser.parse();
-			
 		}
+	}
+	
+	@Override
+	public Organization getOrganization(){
+		return LM;
 	}
 }

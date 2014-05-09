@@ -1,0 +1,60 @@
+
+En API.crawler() he eliminado la inserción del usuario de prueba.
+
+/app/controllers/Application:
+	El método "page()" daba IndexOfBoundsException al tratar de mostrar
+	observaciones cuando la base de datos estaba vacía. Lo he editado.
+
+/app/models/Observation.java
+	En el create(), se cambia el "if" que controla foreign-key repetidas. 
+	(antes no estaba teniendo ningún efecto, y esto provocaba problemas
+	cuando el procesador trataba de insertar datos repetidos).
+
+/app/utils/Volcado.java:
+	lin 17 y 31:
+	ahora es fichero = new FileWriter("public/volcado.txt");
+
+/app/controllers/API:
+	método crawler(). Cambia la llamada al "procesar()" de los Procesadores
+
+paquete /app/business/main/java/procesadores:
+	Añadida interfaz "Procesador", implementada por las dos clases ya existentes
+	Simplemente es para facilitar su uso desde API.crawler()
+
+paquete /app/models:
+	métodos create() de las clases Area, Indicator, InstantTime y RangedTime
+	Así se facilita el uso este método desde los ParserObservarionXX.java
+
+/app/business/main/java/parser/parserObservationLM:
+	Veo que en este xml cada Observación tiene innumerables valores.
+	Podemos quedarnos solo con 3 de ellos:
+	"production_size", "contract_size", y "intended_size".
+	(A veces son null, pero nunca los tres a la vez).
+	El cambio está en el método processElementCharacters(), el último if.
+
+	Refactorización: he sacado código repetido a métodos independientes.
+	Quizá se podría refactoriazar aún más.
+
+/app/business/main/java/parser/parserObservationUN:
+	Algunos "value" son una letra única. Para nosotros no significan nada.
+	Así que decidí evitar meter esas observaciones en la base de datos, así:
+	Método "processElementEnd", añadida al if la condición:
+	&& !this.value.matches(unkownCodeLetter)
+
+	Extraña que el measure sea una "u" sin más. No significa nada.
+	Así que, en método "obtainMeasure" sustituí 
+	this.setMeasure("u");
+	por:
+	this.setMeasure(Messages.get("units"));
+
+	Refactorización: he sacado código repetido a métodos independientes.
+	Quizá se podría refactoriazar aún más.
+
+/conf/messages y /conf/messages.es
+	líneas 46-50: nuevos mensajes "units", 
+	"production_size", "contract_size", y "intended_size"
+
+/views/crawler.scala.html:
+	Se muestra la fecha y hora de la última actualización de datos.
+	Además hace reload automáticamente cada 24 horas, 
+	así se automatiza el proceso.

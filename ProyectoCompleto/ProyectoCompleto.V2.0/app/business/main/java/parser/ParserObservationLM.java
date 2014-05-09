@@ -1,5 +1,8 @@
 package business.main.java.parser;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.*;
 
 import javax.xml.stream.XMLStreamReader;
@@ -8,25 +11,28 @@ import models.types.*;
 
 public class ParserObservationLM extends ParserObservationXml {
 	Pattern pattern = Pattern.compile("[0-9][0-9][0-9][0-9]");
-	StringBuilder stringBuilder = new StringBuilder();
+	private Map<String,String> valuesOfElement = new HashMap<String,String>();
 
 	public ParserObservationLM(String filename) {
 		super(filename);
+		this.publishDate=new Date();
 	}
 
 	@Override
 	String processElementEnd(XMLStreamReader r, String name) {
 		String newName;
 		newName = r.getLocalName();
+		
 		if (newName.equals("item")) {
-			@SuppressWarnings("unused")
-			Observation a;
-			this.value = stringBuilder.toString();
-			System.out.println("Provider: " + this.provider);
-			a = new Observation(this.time, this.value, this.measure,
+			Observation obs;
+			for (String value : valuesOfElement.keySet()) {
+				this.setValue(value);
+				this.setMeasure(valuesOfElement.get(value));
+				obs = new Observation(this.time, this.value, this.measure,
 					this.indicator, this.area, this.provider, this.publishDate);
-			stringBuilder = new StringBuilder();
-
+				Observation.create(obs);
+			}
+			valuesOfElement.clear();
 		}
 		return newName;
 	}
@@ -36,21 +42,25 @@ public class ParserObservationLM extends ParserObservationXml {
 		if (name.equals("negotiation_status")) {
 			Matcher matcher = pattern.matcher(r.getText());
 			if (matcher.find()) {
-				this.setTime(new InstantTime(matcher.group(0)));
+				String instant = matcher.group(0);
+				createInstantTime(instant);
 			}
-		}
-		if (name.equals("target_country")) {
-			String textoArea = r.getText();
-			this.setArea(new Area(textoArea.replaceAll("[\n\t]", ""),
-					ScopeEnum.COUNTRY));
+		
+		} else if (name.equals("target_country")) {
+			String textoArea = r.getText().replaceAll("[\n\t]", "");
+			createArea(textoArea);
+			
 		} else if (name.equals("intention")) {
-			String textoIndicator = r.getText();
-			this.setIndicator(new Indicator("Deal of "
-					+ textoIndicator.replaceAll("[\n\t]", "")));
-		} else if (name != "") {
-			String texto = r.getText();
-			stringBuilder.append("Field: " + name + "Data:"
-					+ texto.replaceAll("[\n\t]", "") + "\n");
+			String textoIndicator = r.getText().replaceAll("[\n\t]", "");
+			createIndicator(textoIndicator);
+		
+		} else if (name.equals("production_size") 
+				|| name.equals("contract_size")
+				|| name.equals("intended_size")) {
+			String value = r.getText().replaceAll("[\n\t]", "");
+			if( value.compareToIgnoreCase("None")!=0 ){
+				valuesOfElement.put(value, name);
+			}
 		}
 	}
 
@@ -63,5 +73,24 @@ public class ParserObservationLM extends ParserObservationXml {
 			newName = "";
 		}
 		return newName;
+	}
+	
+	private void createArea(String textoArea) {
+		Area area = new Area(textoArea, ScopeEnum.COUNTRY);
+		area.setId((long) Area.all().size() + 1);
+		area = Area.create(area);
+		this.setArea(area);
+	}
+	
+	private void createInstantTime(String instant) {
+		InstantTime time = new InstantTime(instant);
+		time = (InstantTime) time.create(time);
+		this.setTime(time);
+	}
+	
+	private void createIndicator(String indicatorText) {
+		Indicator ind = new Indicator("Deal of " + indicatorText);
+		ind = Indicator.create(ind);
+		this.setIndicator(ind);
 	}
 }

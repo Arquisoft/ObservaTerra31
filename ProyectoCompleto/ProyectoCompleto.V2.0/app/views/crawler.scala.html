@@ -1,9 +1,18 @@
-
 @import play.i18n.Messages
+@import java.util.Date
+
+<script type="text/javascript">
+	<!-- reload cada 24 horas -->
+	window.setTimeout(
+			function(){window.location.href=window.location.href},
+			86400000);
+</script>
 
 @navbarGuest {
-
-	<h2>@Messages.get("crawler")</h2>
-	
-
+	<p>
+		<center>
+		@{new Date().format("dd MMMM yyyy hh:mm:ss")}
+		@Messages.get("crawler")
+		</center>
+	</p>
 }
