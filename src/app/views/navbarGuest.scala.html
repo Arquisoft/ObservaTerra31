@@ -1,0 +1,16 @@
+@(content: Html) 
+@import play.i18n.Messages 
+
+@main("ObservaTerra") {
+	@navbarSnippet {
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/login">@Messages.get("sign")</a></li>
+			<li><a href="/registro">@Messages.get("register")</a></li>			
+		</ul>
+}
+
+<main> 
+	@content 
+</main>
+
+}
