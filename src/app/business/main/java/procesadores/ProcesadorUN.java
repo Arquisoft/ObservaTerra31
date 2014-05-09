@@ -19,11 +19,11 @@ public class ProcesadorUN implements Procesador {
 	
 	@Override
 	public void procesar(){
-		Organization.create(UN);
+		Organization savedInDataBase = Organization.create(UN);
 		for (String archivo: UNDownloader.DOCUMENTS){
 			ParserObservationUN parser = 
 					new ParserObservationUN(UNDownloader.saveLocation+archivo);
-			parser.setProvider(UN);
+			parser.setProvider(savedInDataBase);
 			parser.parse();
 		}
 	}

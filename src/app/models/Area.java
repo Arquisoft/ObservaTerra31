@@ -60,9 +60,9 @@ public class Area extends Model {
 		this.scope = scope;
 	}
 
-	// // // // // // // // // //
-	// METODOS PERSISTENCIA PLAY
-	// // // // // // // // // //
+	// // // // // // // // // // // // //
+	// METODOS PERSISTENCIA ACTIVE RECORD
+	// // // // // // // // // // // // //
 	
 	public static List<Area> all() {
 		return find.all();

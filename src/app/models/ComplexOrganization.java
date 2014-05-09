@@ -44,12 +44,12 @@ public class ComplexOrganization extends Organization {
 	// METODOS
 	// // // // //
 	
-	@Override
 	public Organization addOrganization(String name, String site,
 			String acronym, Organization organization) {
 		if (this.getParent() != null && organization.getParent() != null)
 			return null;
-		Organization newOrganization = organization.appendOrganization(this);
+		Organization newOrganization = 
+				((ComplexOrganization)organization).appendOrganization(this);
 		
 		if(newOrganization == null)
 			return null;
@@ -58,10 +58,8 @@ public class ComplexOrganization extends Organization {
 		else
 			return newOrganization.setName(name).setAcronym(acronym)
 					.setSite(site);
-		
 	}
 
-	@Override
 	protected Organization appendOrganization(
 			SampleOrganization sampleOrganization) {
 		if (sampleOrganization.getParent() == null) {
@@ -72,7 +70,6 @@ public class ComplexOrganization extends Organization {
 		return null;
 	}
 
-	@Override
 	protected Organization appendOrganization(
 			ComplexOrganization complexOrganization) {
 		Set<Organization> organizations = new HashSet<Organization>();
@@ -85,28 +82,32 @@ public class ComplexOrganization extends Organization {
 			return org;
 		}
 		return null;
-
 	}
 
-	@Override
 	public Organization removeOrganization(Organization organization) {
-		for (Organization org : organization.getOrganizations())
+		for (Organization org : 
+				((ComplexOrganization)organization).getOrganizations()){
 			organizations.remove(org);
+		}
 		organizations.remove(organization);
 		organization.setParent(null);
 		return this;
 	}
 	
-	@Override
 	public Set<User> getUsers() {
 		Set<User> users = new HashSet<User>();
 
 		for (Membership mmb : this.memberships)
 			users.add(mmb.getUser());
 
-		for (Organization org : this.organizations)
-			users.addAll(org.getUsers());
-
+		for (Organization org : this.organizations){
+			Set<User> usersOrg = new HashSet<User>();
+			if( org instanceof ComplexOrganization )
+				usersOrg = ((ComplexOrganization)org).getUsers(); 
+			if( org instanceof SampleOrganization )
+				usersOrg = ((SampleOrganization)org).getUsers();
+			users.addAll(usersOrg);
+		}
 		return users;
 	}
 	
@@ -121,7 +122,6 @@ public class ComplexOrganization extends Organization {
 	public Set<Organization> _getOrganizations() {
 		return organizations;
 	}
-	@Override
 	public Set<Organization> getOrganizations() {
 		return Collections.unmodifiableSet(organizations);
 	}

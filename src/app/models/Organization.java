@@ -18,8 +18,7 @@ import javax.persistence.Table;
 import play.db.ebean.Model;
 
 /**
- * Clase abstracta que representa una organizacion (tanto simple como
- * compuesta).
+ * Representa una organizacion (tanto simple como compuesta).
  * 
  * @author Sergio
  * 
@@ -29,8 +28,18 @@ import play.db.ebean.Model;
 @Table(name="Organization")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="organization_type")
-public abstract class Organization extends Model{
-
+public class Organization extends Model{
+	
+	/*
+	 * Un mejor diseno requiriria que esta clase sea abstracta.
+	 * Pero cuando una clase abstracta posee una coleccion de entidades
+	 * (en este caso, Set observatons) se produce un error (no entro en detalle),
+	 * debido a un bug de Ebean: http://www.avaje.org/bugdetail-408.html
+	 * 
+	 * El error se produciria al anadir una Observation a la Organization,
+	 * como sucede por ejemplo en Observation.link().
+	 */
+	
 	private static final long serialVersionUID = 7960656525676750384L;
 	
 	// // // // //
@@ -94,46 +103,29 @@ public abstract class Organization extends Model{
 		return this;
 	}
 	
-	/**
-	 * Agrupa dos organizaciones en otra. Resuelve el problema mediante
-	 * double-dispatch y sobrecarga de metodos.
-	 * 
-	 * @param name
-	 *            nombre de la nueva organizacion
-	 * @param site
-	 *            pagina web de la nueva organizacion
-	 * @param acronym
-	 *            acronimo de la nueva organizacion
-	 * @param organization
-	 *            otra organizacion dada
-	 * @return nueva organizacion
-	 */
-	public abstract Organization addOrganization(String name, String site,
-			String acronym, Organization organization);
-
-	protected abstract Organization appendOrganization(
-			SampleOrganization sampleOrganization);
-
-	protected abstract Organization appendOrganization(
-			ComplexOrganization sampleOrganization);
-
-	public abstract Organization removeOrganization(Organization organization);
-
-	/** Por cada Membership, obtiene su User  */
-	public abstract Set<User> getUsers();
-	
-	// // // // // // // // // //
-	// METODOS PERSISTENCIA PLAY
-	// // // // // // // // // //
+	// // // // // // // // // // // // //
+	// METODOS PERSISTENCIA ACTIVE RECORD
+	// // // // // // // // // // // // //
 	
 	public static List<Organization> all(){
 		return find.all();
 	}
 
-	public static void create(Organization organization){
-		if (Organization.findByName(organization.name) == null) {
-			organization.save();
+	/**
+	 * Trata de insertar una Organization en la base de datos.
+	 * @param newOrganization Organization a insertar
+	 * @return Devuelve una Organization. <br>
+	 * Si tiene exito, devuelve la Organization insertada.
+	 * Si ya exitia, devuelve la Organization existente.
+	 */
+	public static Organization create(Organization newOrganization){
+		Organization alreadyExisting = 
+				Organization.findByName(newOrganization.getName());
+		if( alreadyExisting == null ){
+			newOrganization.save();
+			return newOrganization;
 		}
+		return alreadyExisting;
 	}
 
 	public static void remove(long id){
@@ -200,18 +192,12 @@ public abstract class Organization extends Model{
 	/* Relacion entre entidades:
 	 *  * Organizations <--> 1 ComplexOrganization
 	 */
-	/*public Organization _setParent(Organization parent) {
-		this.parent = parent;
-		return parent;
-	}*/
 	public void setParent(Organization parent) {
 		this.parent = parent;
 	}
 	public Organization getParent() {
 		return parent;
 	}
-	// Implementado en ComplexOrganization:
-	public abstract Set<Organization> getOrganizations();
 	
 	// // // // // // // //
 	// GETTERS & SETTERS
@@ -301,7 +287,6 @@ public abstract class Organization extends Model{
 		  .append("\"parent\": ")
 		  .append(getParent() != null ? getParent().toJson() : null)
 		  .append("}");
-		
 		return sb.toString();
 	 }
 

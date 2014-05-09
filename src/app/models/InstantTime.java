@@ -26,9 +26,9 @@ public class InstantTime extends Time {
 		this.instant = instant;
 	}
 
-	// // // // // // // // // //
-	// METODOS PERSISTENCIA PLAY
-	// // // // // // // // // //
+	// // // // // // // // // // // // //
+	// METODOS PERSISTENCIA ACTIVE RECORD
+	// // // // // // // // // // // // //
 	
 	/**
 	 * Trata de insertar un InstantTime en la base de datos.

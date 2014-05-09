@@ -89,9 +89,9 @@ public class Observation extends Model {
 		indicator._getObservations().remove(this);
 	}
 
-	// // // // // // // // // //
-	// METODOS PERSISTENCIA PLAY
-	// // // // // // // // // //
+	// // // // // // // // // // // // //
+	// METODOS PERSISTENCIA ACTIVE RECORD
+	// // // // // // // // // // // // //
 
 	public static List<Observation> all() {
 		return find.all();

@@ -40,9 +40,9 @@ public class RangeTime extends Time {
 		this.end = end;
 	}
 
-	// // // // // // // // // //
-	// METODOS PERSISTENCIA PLAY
-	// // // // // // // // // //
+	// // // // // // // // // // // // //
+	// METODOS PERSISTENCIA ACTIVE RECORD
+	// // // // // // // // // // // // //
 	
 	/**
 	 * Trata de insertar un RangeTime en la base de datos.

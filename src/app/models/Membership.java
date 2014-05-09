@@ -66,9 +66,9 @@ public class Membership extends Model {
 		organization._getMemberships().remove(this);
 	}
 	
-	// // // // // // // // // //
-	// METODOS PERSISTENCIA PLAY
-	// // // // // // // // // //
+	// // // // // // // // // // // // //
+	// METODOS PERSISTENCIA ACTIVE RECORD
+	// // // // // // // // // // // // //
 	
 	public static List<Membership> all() {
 		return find.all();

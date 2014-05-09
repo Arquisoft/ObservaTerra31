@@ -57,9 +57,9 @@ public class Time extends Model{
 	
 	public Time(){}
 	
-	// // // // // // // // // //
-	// METODOS PERSISTENCIA PLAY
-	// // // // // // // // // //
+	// // // // // // // // // // // // //
+	// METODOS PERSISTENCIA ACTIVE RECORD
+	// // // // // // // // // // // // //
 	
 	public static List<Time> all(){
 		return find.all();

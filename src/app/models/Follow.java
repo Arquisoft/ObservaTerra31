@@ -70,9 +70,9 @@ public class Follow extends Model {
 		user._getFollows().remove(this);
 	}
 	
-	// // // // // // // // // //
-	// METODOS PERSISTENCIA PLAY
-	// // // // // // // // // //
+	// // // // // // // // // // // // //
+	// METODOS PERSISTENCIA ACTIVE RECORD
+	// // // // // // // // // // // // //
 	
 	public static List<Follow> all() {
 		return find.all();

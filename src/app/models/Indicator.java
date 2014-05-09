@@ -55,9 +55,9 @@ public class Indicator extends Model {
 		this.name = name;
 	}
 
-	// // // // // // // // // //
-	// METODOS PERSISTENCIA PLAY
-	// // // // // // // // // //
+	// // // // // // // // // // // // //
+	// METODOS PERSISTENCIA ACTIVE RECORD
+	// // // // // // // // // // // // //
 	
 	public static List<Indicator> all() {
 		return find.all();

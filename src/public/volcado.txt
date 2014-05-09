@@ -1,2 +1,2 @@
-[Login]	Sergio es pimp	655faa8ba799a3a1ae309c2b40d142fc	Fri May 09 18:56:51 CEST 2014	
-[Register]	juas@dew.com	c7aa5f1a78e45bf788b16528b69c13ab	Fri May 09 18:57:14 CEST 2014	
+[Register]	nombrePrueba	apellidoPrueba	email@prueba.es	c4ca4238a0b923820dcc509a6f75849b	Fri May 09 20:16:46 CEST 2014	
+[Login]	email@prueba.es	c4ca4238a0b923820dcc509a6f75849b	Fri May 09 20:16:55 CEST 2014	

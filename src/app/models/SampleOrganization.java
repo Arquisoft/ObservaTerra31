@@ -37,19 +37,18 @@ public class SampleOrganization extends Organization {
 	// METODOS
 	// // // // //
 	
-	@Override
 	public Organization addOrganization(String name, String site,
 			String acronym, Organization organization) {
 		if (this.getParent() != null && organization.getParent() != null)
 			return null;
-		Organization newOrganization = organization.appendOrganization(this);
+		Organization newOrganization = 
+				((SampleOrganization)organization).appendOrganization(this);
 		if (newOrganization != null)
 			return newOrganization.setName(name).setAcronym(acronym)
 					.setSite(site);
 		return null;
 	}
 
-	@Override
 	protected Organization appendOrganization(
 			SampleOrganization sampleOrganization) {
 		Set<Organization> organizations = new HashSet<Organization>();
@@ -63,29 +62,20 @@ public class SampleOrganization extends Organization {
 		return null;
 	}
 
-	@Override
 	protected Organization appendOrganization(
 			ComplexOrganization complexOrganization) {
 		return complexOrganization.appendOrganization(this);
 	}
 
-	@Override
-	public Organization removeOrganization(Organization organization) {
-		return null;
-	}
-
-	@Override
 	public Set<Organization> getOrganizations() {
 		return new HashSet<Organization>();
 	}
 	
-	@Override
 	public Set<User> getUsers() {
 		Set<User> users = new HashSet<User>();
 		for (Membership mmb : this.memberships)
 			users.add(mmb.getUser());
 		return users;
-
 	}
 	
 	// // // //

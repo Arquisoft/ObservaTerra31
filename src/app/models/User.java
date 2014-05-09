@@ -66,13 +66,6 @@ public class User extends Model {
 	// METODOS
 	// // // // //
 	
-	public String validate() {
-	    /*if (User.authenticate(email, password) == null) {
-	      return "Invalid user or password";
-	    }*/
-		return null;
-	}
-	
 	public User follow(Indicator indicator) {
 		for (Follow f : follows)
 			if (f.getIndicator().equals(indicator))
@@ -99,9 +92,9 @@ public class User extends Model {
 		return orgs;
 	}
 	
-	// // // // // // // // // //
-	// METODOS PERSISTENCIA PLAY
-	// // // // // // // // // //
+	// // // // // // // // // // // // //
+	// METODOS PERSISTENCIA ACTIVE RECORD
+	// // // // // // // // // // // // //
 	
 	public static List<User> all(){
 		return find.all();
@@ -237,6 +230,10 @@ public class User extends Model {
 		return true;
 	}
 
+	// // // //
+	// TO_JSON
+	// // // //
+	
 	public static JsonNode toJson(User user) {
 		return Json.toJson(user);
 	}

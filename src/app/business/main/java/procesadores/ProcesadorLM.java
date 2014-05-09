@@ -18,10 +18,10 @@ public class ProcesadorLM implements Procesador {
 	
 	@Override
 	public void procesar(){
-		Organization.create(LM);
+		Organization savedInDataBase = Organization.create(LM);
 		for (String archivo: ARCHIVOS){
 			ParserObservationLM parser = new ParserObservationLM(archivo);
-			parser.setProvider(LM);
+			parser.setProvider(savedInDataBase);
 			parser.parse();
 		}
 	}
